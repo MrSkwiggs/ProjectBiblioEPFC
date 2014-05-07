@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
             generalTreeView.Nodes.Add(nodeOuvrage());
             generalTreeView.Nodes.Add(nodeMembre());
             generalTreeView.Nodes.Add(nodeEmprunt());
-            //generalTreeView.Nodes.Add(nodeReservation());
+            generalTreeView.Nodes.Add(nodeReservation());
             generalTreeView.Sort();
             fill_CacheTree();
             generalTreeView.EndUpdate();
@@ -148,45 +148,58 @@ namespace WindowsFormsApplication1
             TreeNode empruntNode = new TreeNode();
             empruntNode.Name = empruntNode.Text = "Emprunt(s)";
 
-            TreeNode ouvrages = new TreeNode();
-            ouvrages.Nodes.Add((TreeNode)generalTreeView.Nodes[generalTreeView.Nodes.IndexOfKey("Ouvrages")].Clone());
-
-            foreach(TreeNode ouvrage in ouvrages.Nodes)
-                foreach(TreeNode category in ouvrage.Nodes)
-                {
-                    int emprunt = category.Nodes.IndexOfKey("Emprunt");
-                    if(category.Nodes[emprunt].GetNodeCount(false) > 0)
-                        empruntNode.Nodes.Add(nodeEmpruntChildren(ouvrage, category.Nodes[emprunt]));
-                }
+            nodeGenericCategory(ref empruntNode, "Emprunt");
 
             return empruntNode;
         }
 
-        private TreeNode nodeEmpruntChildren(TreeNode ouvrage, TreeNode membre)
+        private void nodeGenericCategory(ref TreeNode categoryNode, String categoryName)
         {
-            TreeNode emprunt = new TreeNode();
-            emprunt.Name = ouvrage.Name;
-            emprunt.Text = ouvrage.Text;
+            foreach (TreeNode ouvrage in generalTreeView.Nodes[generalTreeView.Nodes.IndexOfKey("Ouvrages")].Nodes)
+            {
+                int categoryIndex = ouvrage.Nodes.IndexOfKey(categoryName);
+                if (ouvrage.Nodes[categoryIndex].Nodes.Count > 0)
+                {
+                    categoryNode.Nodes.Add(nodeOuvrageCategory(ouvrage, categoryIndex));
+                }
+            }
+        }
 
+        private TreeNode nodeOuvrageCategory(TreeNode ouvrage, int categoryIndex)
+        {
+            TreeNode ouvrageNode = new TreeNode();
+            ouvrageNode.Name = ouvrage.Name;
+            ouvrageNode.Text = ouvrage.Text;
+            foreach (TreeNode categoryChild in ouvrage.Nodes[categoryIndex].Nodes)
+            {
+                ouvrageNode.Nodes.Add(nodeGenericCategoryChildren(ouvrage, categoryChild));
+            }
+
+            return ouvrageNode;
+        }
+
+        private TreeNode nodeGenericCategoryChildren(TreeNode ouvrage, TreeNode membre)
+        {
             TreeNode membreNode = new TreeNode();
             membreNode.Name = membre.Name;
             membreNode.Text = membre.Text;
 
-            emprunt.Nodes.Add(membreNode);
-
-            return emprunt;
+            return membreNode;
         }
 
         #endregion
 
         #region nodeReservation
 
-        //private TreeNode nodeReservation()
-        //{
-        //    TreeNode resNode = new TreeNode();
-        //    resNode.Name = resNode.Text = "Réservation(s)";
-        //    DataTable reservations = this.
-        //}
+        private TreeNode nodeReservation()
+        {
+            TreeNode resNode = new TreeNode();
+            resNode.Name = resNode.Text = "Réservation(s)";
+
+            nodeGenericCategory(ref resNode, "Réservation(s)");
+
+            return resNode;
+        }
 
         #endregion
 
