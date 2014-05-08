@@ -28,5 +28,10 @@ namespace WindowsFormsApplication1
             this.reserverTableAdapter1.InsertQuery(membre, ouvrage, date, duree);
             this.Close();
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

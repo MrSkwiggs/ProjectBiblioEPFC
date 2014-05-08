@@ -42,7 +42,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(57, 110);
+            this.button1.Location = new System.Drawing.Point(92, 110);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 31);
             this.button1.TabIndex = 0;
@@ -52,9 +52,11 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Location = new System.Drawing.Point(66, 84);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(165, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(238, 20);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // label1
@@ -86,23 +88,29 @@
             // 
             // membreBox
             // 
+            this.membreBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.membreBox.Location = new System.Drawing.Point(66, 6);
             this.membreBox.Name = "membreBox";
-            this.membreBox.Size = new System.Drawing.Size(165, 20);
+            this.membreBox.Size = new System.Drawing.Size(238, 20);
             this.membreBox.TabIndex = 5;
             // 
             // ouvrageBox
             // 
+            this.ouvrageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ouvrageBox.Location = new System.Drawing.Point(66, 32);
             this.ouvrageBox.Name = "ouvrageBox";
-            this.ouvrageBox.Size = new System.Drawing.Size(165, 20);
+            this.ouvrageBox.Size = new System.Drawing.Size(238, 20);
             this.ouvrageBox.TabIndex = 6;
             // 
             // dureeBox
             // 
+            this.dureeBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dureeBox.Location = new System.Drawing.Point(66, 58);
             this.dureeBox.Name = "dureeBox";
-            this.dureeBox.Size = new System.Drawing.Size(165, 20);
+            this.dureeBox.Size = new System.Drawing.Size(238, 20);
             this.dureeBox.TabIndex = 7;
             // 
             // label4
@@ -122,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 153);
+            this.ClientSize = new System.Drawing.Size(316, 367);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dureeBox);
             this.Controls.Add(this.ouvrageBox);
@@ -133,7 +141,8 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Réservation";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

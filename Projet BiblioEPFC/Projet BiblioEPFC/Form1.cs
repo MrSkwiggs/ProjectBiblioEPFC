@@ -36,6 +36,7 @@ namespace WindowsFormsApplication1
             generalTreeView.Nodes.Add(nodeMembre());
             generalTreeView.Nodes.Add(nodeEmprunt());
             generalTreeView.Nodes.Add(nodeReservation());
+            generalTreeView.Nodes.Add(nodeAuteurSuper());
             generalTreeView.Sort();
             fill_CacheTree();
             generalTreeView.EndUpdate();
@@ -132,6 +133,7 @@ namespace WindowsFormsApplication1
         {
             TreeNode membreNode = new TreeNode();
             membreNode.Name = membreNode.Text = "Membres";
+
             DataTable membres = this.membreTableAdapter1.GetData();
             foreach(DataRow membre in membres.Rows)
                 membreNode.Nodes.Add(nodeGenericPerson(membre.ItemArray[0].ToString(), membre.ItemArray[1].ToString(), membre.ItemArray[2].ToString()));
@@ -203,6 +205,23 @@ namespace WindowsFormsApplication1
 
         #endregion
 
+        #region nodeAuteurSuper
+
+        private TreeNode nodeAuteurSuper()
+        {
+            TreeNode auteurSuperNode = new TreeNode();
+            auteurSuperNode.Name = auteurSuperNode.Text = "Auteurs";
+
+            DataTable auteurs = this.auteurSuperviseurTableAdapter1.GetData();
+            foreach(DataRow auteur in auteurs.Rows)
+                auteurSuperNode.Nodes.Add(nodeGenericPerson(auteur.ItemArray[0].ToString(), auteur.ItemArray[1].ToString(), auteur.ItemArray[2].ToString()));
+
+            return auteurSuperNode;
+        }
+        
+
+        #endregion
+
         private void fill_CacheTree()
         {
             foreach (TreeNode _node in generalTreeView.Nodes)
@@ -211,58 +230,6 @@ namespace WindowsFormsApplication1
 
         #endregion
 
-        //private void fill_Treeview()
-        //{
-        //    generalTreeView.BeginUpdate();
-        //    DataTable ouvrages = this.ouvrageTableAdapter.GetData();
-        //    DataTable membres = this.membreTableAdapter1.GetData();
-        //    generalTreeView.Nodes.Clear();
-        //    generalTreeView.Nodes.Add("Ouvrages");
-        //    generalTreeView.Nodes.Add("Membres");
-
-        //    int it = 0;
-        //    foreach (DataRow row in ouvrages.Rows)  //pour chaque ouvrage
-        //    {
-        //        //crée le noeud ouvrage
-        //        generalTreeView.Nodes[0].Nodes.Add(row.ItemArray[1].ToString());
-
-        //        //rajoute les noeuds enfants suivants:
-        //        generalTreeView.Nodes[0].Nodes[it].Nodes.Add("Auteur(s)");
-        //        generalTreeView.Nodes[0].Nodes[it].Nodes.Add("Superviseur(s)");
-        //        generalTreeView.Nodes[0].Nodes[it].Nodes.Add("Emprunt(s)");
-        //        generalTreeView.Nodes[0].Nodes[it].Nodes.Add("Réservation(s)");
-
-        //        //charge les data pour chacun des noeuds ci dessus
-        //        DataTable auteurs = this.auteurParOuvrageTableAdapter1.GetData((int)row.ItemArray[0]);
-        //        DataTable superviseurs = this.superParOuvrageTableAdapter1.GetData((int)row.ItemArray[0]);
-        //        DataTable empruntMembres = this.empruntMembreParOuvrageTableAdapter1.GetData((int)row.ItemArray[0]);
-        //        DataTable reservationMembres = this.reservationParOuvrageTableAdapter1.GetData((int)row.ItemArray[0]);
-
-        //        //pour chacun de ces noeuds, crée les noeuds enfants correspondants
-        //        foreach (DataRow auteur in auteurs.Rows)
-        //            generalTreeView.Nodes[0].Nodes[it].Nodes[0].Nodes.Add(auteur.ItemArray[1].ToString() + ' ' + auteur.ItemArray[2].ToString());
-
-        //        foreach (DataRow superviseur in superviseurs.Rows)
-        //            generalTreeView.Nodes[0].Nodes[it].Nodes[1].Nodes.Add(superviseur.ItemArray[0].ToString() + ' ' + superviseur.ItemArray[1].ToString());
-
-        //        foreach (DataRow empruntMembre in empruntMembres.Rows)
-        //            generalTreeView.Nodes[0].Nodes[it].Nodes[2].Nodes.Add(empruntMembre.ItemArray[1].ToString() + ' ' + empruntMembre.ItemArray[2].ToString());
-
-        //        foreach (DataRow reservationMembre in reservationMembres.Rows)
-        //            generalTreeView.Nodes[0].Nodes[it].Nodes[3].Nodes.Add(reservationMembre.ItemArray[1].ToString() + ' ' + reservationMembre.ItemArray[2].ToString());
-
-        //        ++it;
-        //    }
-
-        //    it = 0;
-        //    foreach (DataRow row in membres.Rows)
-        //        generalTreeView.Nodes[1].Nodes.Add(row.ItemArray[1].ToString());
-
-        //    foreach (TreeNode _node in generalTreeView.Nodes)
-        //        treeViewCache.Nodes.Add((TreeNode)_node.Clone());
-        //    generalTreeView.EndUpdate();
-        //}
-
         private void update_Treeview()
         {
             generalTreeView.Nodes.Clear();
@@ -270,11 +237,6 @@ namespace WindowsFormsApplication1
             treeViewCache.Nodes.Clear();
             foreach (TreeNode _node in generalTreeView.Nodes)
                 treeViewCache.Nodes.Add((TreeNode)_node.Clone());
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            
         }
 
         private bool treeContains(string s)
@@ -302,8 +264,6 @@ namespace WindowsFormsApplication1
                         }
                         foreach (TreeNode _c_ChildNode in _childNode.Nodes)
                         {
-                            //if (_c_ChildNode.Text.IndexOf(textBoxRechercher.Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                            //    generalTreeView.Nodes.Add((TreeNode)_c_ChildNode.Clone());
                             foreach (TreeNode _c_c_ChildNode in _c_ChildNode.Nodes)
                             {
                                 if (_c_c_ChildNode.Text.IndexOf(textBoxRechercher.Text, StringComparison.OrdinalIgnoreCase) >= 0)
@@ -325,11 +285,6 @@ namespace WindowsFormsApplication1
             }
             //enables redrawing tree after all objects have been added
             this.generalTreeView.EndUpdate();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void ajouterToolStripMenuItem3_Click(object sender, EventArgs e)
