@@ -52,9 +52,9 @@ namespace WindowsFormsApplication1
             this.generalTreeView = new System.Windows.Forms.TreeView();
             this.ouvrageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.biblioEPFCDataSet = new WindowsFormsApplication1.BiblioEPFCDataSet();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.infoTabs = new System.Windows.Forms.TabControl();
+            this.ouvrageInfoPage = new System.Windows.Forms.TabPage();
+            this.auteurInfoPage = new System.Windows.Forms.TabPage();
             this.ouvrageTableAdapter = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
             this.membreTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.MembreTableAdapter();
             this.auteurParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.AuteurParOuvrageTableAdapter();
@@ -63,6 +63,13 @@ namespace WindowsFormsApplication1
             this.reservationParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.ReservationParOuvrageTableAdapter();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.auteurSuperviseurTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
+            this.membreInfoPage = new System.Windows.Forms.TabPage();
+            this.empruntInfoPage = new System.Windows.Forms.TabPage();
+            this.reservationInfoPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutOuvrageInfo = new System.Windows.Forms.TableLayoutPanel();
+            this.infoBox = new System.Windows.Forms.GroupBox();
+            this.empruntBox = new System.Windows.Forms.GroupBox();
+            this.reservationBox = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,7 +85,9 @@ namespace WindowsFormsApplication1
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.infoTabs.SuspendLayout();
+            this.ouvrageInfoPage.SuspendLayout();
+            this.tableLayoutOuvrageInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -90,7 +99,7 @@ namespace WindowsFormsApplication1
             this.réservationsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(691, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(974, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -185,6 +194,7 @@ namespace WindowsFormsApplication1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 24);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Name = "splitContainer1";
@@ -196,12 +206,12 @@ namespace WindowsFormsApplication1
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel2.Controls.Add(this.infoTabs);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer1.Size = new System.Drawing.Size(691, 417);
+            this.splitContainer1.Size = new System.Drawing.Size(974, 524);
             this.splitContainer1.SplitterDistance = 229;
-            this.splitContainer1.TabIndex = 1;
+            this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -224,7 +234,7 @@ namespace WindowsFormsApplication1
             // 
             this.splitContainer2.Panel2.Controls.Add(this.generalTreeView);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(223, 411);
+            this.splitContainer2.Size = new System.Drawing.Size(223, 518);
             this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
@@ -266,7 +276,7 @@ namespace WindowsFormsApplication1
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRechercher.Location = new System.Drawing.Point(3, 3);
             this.textBoxRechercher.Name = "textBoxRechercher";
-            this.textBoxRechercher.Size = new System.Drawing.Size(137, 20);
+            this.textBoxRechercher.Size = new System.Drawing.Size(140, 20);
             this.textBoxRechercher.TabIndex = 0;
             this.textBoxRechercher.WordWrap = false;
             this.textBoxRechercher.TextChanged += new System.EventHandler(this.textBoxRechercher_TextChanged);
@@ -279,7 +289,7 @@ namespace WindowsFormsApplication1
             this.generalTreeView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.ouvrageBindingSource, "titre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "null"));
             this.generalTreeView.Location = new System.Drawing.Point(3, 3);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(217, 381);
+            this.generalTreeView.Size = new System.Drawing.Size(217, 485);
             this.generalTreeView.TabIndex = 0;
             // 
             // ouvrageBindingSource
@@ -292,39 +302,43 @@ namespace WindowsFormsApplication1
             this.biblioEPFCDataSet.DataSetName = "BiblioEPFCDataSet";
             this.biblioEPFCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // tabControl1
+            // infoTabs
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.infoTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(452, 411);
-            this.tabControl1.TabIndex = 0;
+            this.infoTabs.Controls.Add(this.ouvrageInfoPage);
+            this.infoTabs.Controls.Add(this.auteurInfoPage);
+            this.infoTabs.Controls.Add(this.membreInfoPage);
+            this.infoTabs.Controls.Add(this.empruntInfoPage);
+            this.infoTabs.Controls.Add(this.reservationInfoPage);
+            this.infoTabs.Location = new System.Drawing.Point(3, 3);
+            this.infoTabs.Name = "infoTabs";
+            this.infoTabs.SelectedIndex = 0;
+            this.infoTabs.Size = new System.Drawing.Size(734, 518);
+            this.infoTabs.TabIndex = 0;
             // 
-            // tabPage1
+            // ouvrageInfoPage
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(444, 385);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.ouvrageInfoPage.Controls.Add(this.tableLayoutOuvrageInfo);
+            this.ouvrageInfoPage.Location = new System.Drawing.Point(4, 22);
+            this.ouvrageInfoPage.Name = "ouvrageInfoPage";
+            this.ouvrageInfoPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ouvrageInfoPage.Size = new System.Drawing.Size(726, 492);
+            this.ouvrageInfoPage.TabIndex = 0;
+            this.ouvrageInfoPage.Text = "Ouvrage";
+            this.ouvrageInfoPage.UseVisualStyleBackColor = true;
+            this.ouvrageInfoPage.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // tabPage2
+            // auteurInfoPage
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(444, 385);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.auteurInfoPage.Location = new System.Drawing.Point(4, 22);
+            this.auteurInfoPage.Name = "auteurInfoPage";
+            this.auteurInfoPage.Padding = new System.Windows.Forms.Padding(3);
+            this.auteurInfoPage.Size = new System.Drawing.Size(727, 492);
+            this.auteurInfoPage.TabIndex = 1;
+            this.auteurInfoPage.Text = "Auteur";
+            this.auteurInfoPage.UseVisualStyleBackColor = true;
             // 
             // ouvrageTableAdapter
             // 
@@ -352,9 +366,9 @@ namespace WindowsFormsApplication1
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 441);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 548);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(691, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(974, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -362,11 +376,93 @@ namespace WindowsFormsApplication1
             // 
             this.auteurSuperviseurTableAdapter1.ClearBeforeFill = true;
             // 
+            // membreInfoPage
+            // 
+            this.membreInfoPage.Location = new System.Drawing.Point(4, 22);
+            this.membreInfoPage.Name = "membreInfoPage";
+            this.membreInfoPage.Padding = new System.Windows.Forms.Padding(3);
+            this.membreInfoPage.Size = new System.Drawing.Size(727, 492);
+            this.membreInfoPage.TabIndex = 2;
+            this.membreInfoPage.Text = "Membre";
+            this.membreInfoPage.UseVisualStyleBackColor = true;
+            // 
+            // empruntInfoPage
+            // 
+            this.empruntInfoPage.Location = new System.Drawing.Point(4, 22);
+            this.empruntInfoPage.Name = "empruntInfoPage";
+            this.empruntInfoPage.Padding = new System.Windows.Forms.Padding(3);
+            this.empruntInfoPage.Size = new System.Drawing.Size(727, 492);
+            this.empruntInfoPage.TabIndex = 3;
+            this.empruntInfoPage.Text = "Emprunt";
+            this.empruntInfoPage.UseVisualStyleBackColor = true;
+            // 
+            // reservationInfoPage
+            // 
+            this.reservationInfoPage.Location = new System.Drawing.Point(4, 22);
+            this.reservationInfoPage.Name = "reservationInfoPage";
+            this.reservationInfoPage.Padding = new System.Windows.Forms.Padding(3);
+            this.reservationInfoPage.Size = new System.Drawing.Size(727, 492);
+            this.reservationInfoPage.TabIndex = 4;
+            this.reservationInfoPage.Text = "Réservation(s)";
+            this.reservationInfoPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutOuvrageInfo
+            // 
+            this.tableLayoutOuvrageInfo.ColumnCount = 1;
+            this.tableLayoutOuvrageInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutOuvrageInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutOuvrageInfo.Controls.Add(this.infoBox, 0, 0);
+            this.tableLayoutOuvrageInfo.Controls.Add(this.empruntBox, 0, 1);
+            this.tableLayoutOuvrageInfo.Controls.Add(this.reservationBox, 0, 2);
+            this.tableLayoutOuvrageInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutOuvrageInfo.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutOuvrageInfo.Name = "tableLayoutOuvrageInfo";
+            this.tableLayoutOuvrageInfo.RowCount = 3;
+            this.tableLayoutOuvrageInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.5F));
+            this.tableLayoutOuvrageInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.5F));
+            this.tableLayoutOuvrageInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 119F));
+            this.tableLayoutOuvrageInfo.Size = new System.Drawing.Size(720, 486);
+            this.tableLayoutOuvrageInfo.TabIndex = 0;
+            // 
+            // infoBox
+            // 
+            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoBox.Location = new System.Drawing.Point(3, 3);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(714, 241);
+            this.infoBox.TabIndex = 0;
+            this.infoBox.TabStop = false;
+            this.infoBox.Text = "Infos";
+            // 
+            // empruntBox
+            // 
+            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.empruntBox.Location = new System.Drawing.Point(3, 250);
+            this.empruntBox.Name = "empruntBox";
+            this.empruntBox.Size = new System.Drawing.Size(714, 113);
+            this.empruntBox.TabIndex = 1;
+            this.empruntBox.TabStop = false;
+            this.empruntBox.Text = "Emprunt";
+            // 
+            // reservationBox
+            // 
+            this.reservationBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reservationBox.Location = new System.Drawing.Point(3, 369);
+            this.reservationBox.Name = "reservationBox";
+            this.reservationBox.Size = new System.Drawing.Size(714, 114);
+            this.reservationBox.TabIndex = 2;
+            this.reservationBox.TabStop = false;
+            this.reservationBox.Text = "Réservation(s)";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 463);
+            this.ClientSize = new System.Drawing.Size(974, 570);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
@@ -391,7 +487,9 @@ namespace WindowsFormsApplication1
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.infoTabs.ResumeLayout(false);
+            this.ouvrageInfoPage.ResumeLayout(false);
+            this.tableLayoutOuvrageInfo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,11 +525,18 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.ToolStripMenuItem réservationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem3;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl infoTabs;
+        private System.Windows.Forms.TabPage ouvrageInfoPage;
+        private System.Windows.Forms.TabPage auteurInfoPage;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter auteurSuperviseurTableAdapter1;
+        private System.Windows.Forms.TabPage membreInfoPage;
+        private System.Windows.Forms.TabPage empruntInfoPage;
+        private System.Windows.Forms.TabPage reservationInfoPage;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutOuvrageInfo;
+        private System.Windows.Forms.GroupBox infoBox;
+        private System.Windows.Forms.GroupBox empruntBox;
+        private System.Windows.Forms.GroupBox reservationBox;
 
     }
 }
