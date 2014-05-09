@@ -343,13 +343,11 @@ namespace WindowsFormsApplication1
             // 
             // generalTreeView
             // 
-            this.generalTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.generalTreeView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.ouvrageBindingSource, "titre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "null"));
-            this.generalTreeView.Location = new System.Drawing.Point(3, 3);
+            this.generalTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generalTreeView.Location = new System.Drawing.Point(0, 0);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(217, 530);
+            this.generalTreeView.Size = new System.Drawing.Size(223, 531);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             // 
@@ -365,18 +363,16 @@ namespace WindowsFormsApplication1
             // 
             // infoTabs
             // 
-            this.infoTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.infoTabs.Controls.Add(this.ouvrageInfoPage);
             this.infoTabs.Controls.Add(this.auteurInfoPage);
             this.infoTabs.Controls.Add(this.membreInfoPage);
             this.infoTabs.Controls.Add(this.empruntInfoPage);
             this.infoTabs.Controls.Add(this.reservationInfoPage);
-            this.infoTabs.Location = new System.Drawing.Point(3, 3);
+            this.infoTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.infoTabs.Location = new System.Drawing.Point(0, 0);
             this.infoTabs.Name = "infoTabs";
             this.infoTabs.SelectedIndex = 0;
-            this.infoTabs.Size = new System.Drawing.Size(756, 557);
+            this.infoTabs.Size = new System.Drawing.Size(763, 563);
             this.infoTabs.TabIndex = 0;
             // 
             // ouvrageInfoPage
@@ -385,7 +381,7 @@ namespace WindowsFormsApplication1
             this.ouvrageInfoPage.Location = new System.Drawing.Point(4, 22);
             this.ouvrageInfoPage.Name = "ouvrageInfoPage";
             this.ouvrageInfoPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ouvrageInfoPage.Size = new System.Drawing.Size(748, 531);
+            this.ouvrageInfoPage.Size = new System.Drawing.Size(755, 537);
             this.ouvrageInfoPage.TabIndex = 0;
             this.ouvrageInfoPage.Text = "Ouvrage";
             this.ouvrageInfoPage.UseVisualStyleBackColor = true;
@@ -404,7 +400,7 @@ namespace WindowsFormsApplication1
             this.tableLayoutOuvrageInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutOuvrageInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutOuvrageInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutOuvrageInfo.Size = new System.Drawing.Size(742, 525);
+            this.tableLayoutOuvrageInfo.Size = new System.Drawing.Size(749, 531);
             this.tableLayoutOuvrageInfo.TabIndex = 0;
             // 
             // infoBox
@@ -415,7 +411,7 @@ namespace WindowsFormsApplication1
             this.infoBox.Controls.Add(this.infosTableLayout);
             this.infoBox.Location = new System.Drawing.Point(3, 3);
             this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(736, 256);
+            this.infoBox.Size = new System.Drawing.Size(743, 259);
             this.infoBox.TabIndex = 0;
             this.infoBox.TabStop = false;
             this.infoBox.Text = "Infos";
@@ -452,7 +448,7 @@ namespace WindowsFormsApplication1
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.infosTableLayout.Size = new System.Drawing.Size(730, 237);
+            this.infosTableLayout.Size = new System.Drawing.Size(737, 240);
             this.infosTableLayout.TabIndex = 0;
             // 
             // auteursListBox
@@ -470,10 +466,10 @@ namespace WindowsFormsApplication1
             "e",
             "f",
             "r"});
-            this.auteursListBox.Location = new System.Drawing.Point(441, 3);
+            this.auteursListBox.Location = new System.Drawing.Point(443, 3);
             this.auteursListBox.MinimumSize = new System.Drawing.Size(4, 56);
             this.auteursListBox.Name = "auteursListBox";
-            this.auteursListBox.Size = new System.Drawing.Size(286, 56);
+            this.auteursListBox.Size = new System.Drawing.Size(291, 56);
             this.auteursListBox.Sorted = true;
             this.auteursListBox.TabIndex = 1;
             // 
@@ -481,7 +477,7 @@ namespace WindowsFormsApplication1
             // 
             this.auteursLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.auteursLabel.AutoSize = true;
-            this.auteursLabel.Location = new System.Drawing.Point(386, 23);
+            this.auteursLabel.Location = new System.Drawing.Point(388, 23);
             this.auteursLabel.Name = "auteursLabel";
             this.auteursLabel.Size = new System.Drawing.Size(49, 13);
             this.auteursLabel.TabIndex = 0;
@@ -502,26 +498,26 @@ namespace WindowsFormsApplication1
             // titreTextBox
             // 
             this.titreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.titreTextBox.Location = new System.Drawing.Point(76, 19);
+            this.titreTextBox.Location = new System.Drawing.Point(76, 20);
             this.titreTextBox.Name = "titreTextBox";
             this.titreTextBox.ReadOnly = true;
-            this.titreTextBox.Size = new System.Drawing.Size(286, 20);
+            this.titreTextBox.Size = new System.Drawing.Size(288, 20);
             this.titreTextBox.TabIndex = 3;
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(76, 78);
+            this.textBox2.Location = new System.Drawing.Point(76, 80);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(286, 20);
+            this.textBox2.Size = new System.Drawing.Size(288, 20);
             this.textBox2.TabIndex = 4;
             // 
             // dateCreaLabel
             // 
             this.dateCreaLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dateCreaLabel.AutoSize = true;
-            this.dateCreaLabel.Location = new System.Drawing.Point(22, 75);
+            this.dateCreaLabel.Location = new System.Drawing.Point(22, 77);
             this.dateCreaLabel.Name = "dateCreaLabel";
             this.dateCreaLabel.Size = new System.Drawing.Size(48, 26);
             this.dateCreaLabel.TabIndex = 7;
@@ -531,7 +527,7 @@ namespace WindowsFormsApplication1
             // 
             this.sectionLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.sectionLabel.AutoSize = true;
-            this.sectionLabel.Location = new System.Drawing.Point(27, 141);
+            this.sectionLabel.Location = new System.Drawing.Point(27, 143);
             this.sectionLabel.Name = "sectionLabel";
             this.sectionLabel.Size = new System.Drawing.Size(43, 13);
             this.sectionLabel.TabIndex = 9;
@@ -540,17 +536,17 @@ namespace WindowsFormsApplication1
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(76, 137);
+            this.textBox4.Location = new System.Drawing.Point(76, 140);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(286, 20);
+            this.textBox4.Size = new System.Drawing.Size(288, 20);
             this.textBox4.TabIndex = 6;
             // 
             // localLabel
             // 
             this.localLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.localLabel.AutoSize = true;
-            this.localLabel.Location = new System.Drawing.Point(7, 200);
+            this.localLabel.Location = new System.Drawing.Point(7, 203);
             this.localLabel.Name = "localLabel";
             this.localLabel.Size = new System.Drawing.Size(63, 13);
             this.localLabel.TabIndex = 8;
@@ -559,17 +555,17 @@ namespace WindowsFormsApplication1
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(76, 197);
+            this.textBox3.Location = new System.Drawing.Point(76, 200);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(286, 20);
+            this.textBox3.Size = new System.Drawing.Size(288, 20);
             this.textBox3.TabIndex = 5;
             // 
             // superLabel
             // 
             this.superLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.superLabel.AutoSize = true;
-            this.superLabel.Location = new System.Drawing.Point(370, 82);
+            this.superLabel.Location = new System.Drawing.Point(372, 83);
             this.superLabel.Name = "superLabel";
             this.superLabel.Size = new System.Drawing.Size(63, 13);
             this.superLabel.TabIndex = 12;
@@ -579,17 +575,17 @@ namespace WindowsFormsApplication1
             // textBox13
             // 
             this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Location = new System.Drawing.Point(441, 78);
+            this.textBox13.Location = new System.Drawing.Point(443, 80);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(286, 20);
+            this.textBox13.Size = new System.Drawing.Size(291, 20);
             this.textBox13.TabIndex = 13;
             // 
             // entrepriseLabel
             // 
             this.entrepriseLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.entrepriseLabel.AutoSize = true;
-            this.entrepriseLabel.Location = new System.Drawing.Point(381, 141);
+            this.entrepriseLabel.Location = new System.Drawing.Point(383, 143);
             this.entrepriseLabel.Name = "entrepriseLabel";
             this.entrepriseLabel.Size = new System.Drawing.Size(54, 13);
             this.entrepriseLabel.TabIndex = 10;
@@ -598,19 +594,19 @@ namespace WindowsFormsApplication1
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(441, 137);
+            this.textBox1.Location = new System.Drawing.Point(443, 140);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(286, 20);
+            this.textBox1.Size = new System.Drawing.Size(291, 20);
             this.textBox1.TabIndex = 11;
             // 
             // editerOuvrageBouton
             // 
-            this.editerOuvrageBouton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.editerOuvrageBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.editerOuvrageBouton.ForeColor = System.Drawing.Color.DarkBlue;
-            this.editerOuvrageBouton.Location = new System.Drawing.Point(441, 192);
+            this.editerOuvrageBouton.Location = new System.Drawing.Point(538, 195);
             this.editerOuvrageBouton.Name = "editerOuvrageBouton";
-            this.editerOuvrageBouton.Size = new System.Drawing.Size(286, 30);
+            this.editerOuvrageBouton.Size = new System.Drawing.Size(100, 30);
             this.editerOuvrageBouton.TabIndex = 14;
             this.editerOuvrageBouton.Text = "Éditer";
             this.editerOuvrageBouton.UseVisualStyleBackColor = true;
@@ -621,9 +617,9 @@ namespace WindowsFormsApplication1
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.empruntBox.Controls.Add(this.empruntSplitContainer);
-            this.empruntBox.Location = new System.Drawing.Point(3, 265);
+            this.empruntBox.Location = new System.Drawing.Point(3, 268);
             this.empruntBox.Name = "empruntBox";
-            this.empruntBox.Size = new System.Drawing.Size(736, 125);
+            this.empruntBox.Size = new System.Drawing.Size(743, 126);
             this.empruntBox.TabIndex = 1;
             this.empruntBox.TabStop = false;
             this.empruntBox.Text = "Emprunt";
@@ -641,8 +637,8 @@ namespace WindowsFormsApplication1
             // empruntSplitContainer.Panel2
             // 
             this.empruntSplitContainer.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.empruntSplitContainer.Size = new System.Drawing.Size(730, 106);
-            this.empruntSplitContainer.SplitterDistance = 607;
+            this.empruntSplitContainer.Size = new System.Drawing.Size(737, 107);
+            this.empruntSplitContainer.SplitterDistance = 612;
             this.empruntSplitContainer.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -666,41 +662,41 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(607, 106);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(612, 107);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBox8
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(365, 69);
+            this.textBox8.Location = new System.Drawing.Point(369, 70);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(239, 20);
+            this.textBox8.Size = new System.Drawing.Size(240, 20);
             this.textBox8.TabIndex = 7;
             // 
             // textBox7
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(63, 69);
+            this.textBox7.Location = new System.Drawing.Point(64, 70);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(236, 20);
+            this.textBox7.Size = new System.Drawing.Size(238, 20);
             this.textBox7.TabIndex = 6;
             // 
             // textBox6
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(365, 16);
+            this.textBox6.Location = new System.Drawing.Point(369, 16);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(239, 20);
+            this.textBox6.Size = new System.Drawing.Size(240, 20);
             this.textBox6.TabIndex = 5;
             // 
             // emprunteParLabel
             // 
             this.emprunteParLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.emprunteParLabel.AutoSize = true;
-            this.emprunteParLabel.Location = new System.Drawing.Point(5, 13);
+            this.emprunteParLabel.Location = new System.Drawing.Point(6, 13);
             this.emprunteParLabel.Name = "emprunteParLabel";
             this.emprunteParLabel.Size = new System.Drawing.Size(52, 26);
             this.emprunteParLabel.TabIndex = 0;
@@ -711,7 +707,7 @@ namespace WindowsFormsApplication1
             // 
             this.dateEmpruntLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dateEmpruntLabel.AutoSize = true;
-            this.dateEmpruntLabel.Location = new System.Drawing.Point(27, 73);
+            this.dateEmpruntLabel.Location = new System.Drawing.Point(28, 73);
             this.dateEmpruntLabel.Name = "dateEmpruntLabel";
             this.dateEmpruntLabel.Size = new System.Drawing.Size(30, 13);
             this.dateEmpruntLabel.TabIndex = 1;
@@ -722,7 +718,7 @@ namespace WindowsFormsApplication1
             // 
             this.dureeEmpruntLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dureeEmpruntLabel.AutoSize = true;
-            this.dureeEmpruntLabel.Location = new System.Drawing.Point(323, 20);
+            this.dureeEmpruntLabel.Location = new System.Drawing.Point(327, 20);
             this.dureeEmpruntLabel.Name = "dureeEmpruntLabel";
             this.dureeEmpruntLabel.Size = new System.Drawing.Size(36, 13);
             this.dureeEmpruntLabel.TabIndex = 2;
@@ -733,7 +729,7 @@ namespace WindowsFormsApplication1
             // 
             this.etatEmpruntLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.etatEmpruntLabel.AutoSize = true;
-            this.etatEmpruntLabel.Location = new System.Drawing.Point(333, 73);
+            this.etatEmpruntLabel.Location = new System.Drawing.Point(337, 73);
             this.etatEmpruntLabel.Name = "etatEmpruntLabel";
             this.etatEmpruntLabel.Size = new System.Drawing.Size(26, 13);
             this.etatEmpruntLabel.TabIndex = 3;
@@ -743,10 +739,10 @@ namespace WindowsFormsApplication1
             // textBox5
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(63, 16);
+            this.textBox5.Location = new System.Drawing.Point(64, 16);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(236, 20);
+            this.textBox5.Size = new System.Drawing.Size(238, 20);
             this.textBox5.TabIndex = 4;
             // 
             // tableLayoutPanel2
@@ -762,14 +758,14 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(119, 106);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(121, 107);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // ajouterEmpruntBouton
             // 
             this.ajouterEmpruntBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ajouterEmpruntBouton.ForeColor = System.Drawing.Color.DarkGreen;
-            this.ajouterEmpruntBouton.Location = new System.Drawing.Point(9, 11);
+            this.ajouterEmpruntBouton.Location = new System.Drawing.Point(10, 11);
             this.ajouterEmpruntBouton.Name = "ajouterEmpruntBouton";
             this.ajouterEmpruntBouton.Size = new System.Drawing.Size(100, 30);
             this.ajouterEmpruntBouton.TabIndex = 0;
@@ -781,7 +777,7 @@ namespace WindowsFormsApplication1
             this.boutonSuppEmprunt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.boutonSuppEmprunt.Enabled = false;
             this.boutonSuppEmprunt.ForeColor = System.Drawing.Color.DarkRed;
-            this.boutonSuppEmprunt.Location = new System.Drawing.Point(9, 64);
+            this.boutonSuppEmprunt.Location = new System.Drawing.Point(10, 65);
             this.boutonSuppEmprunt.Name = "boutonSuppEmprunt";
             this.boutonSuppEmprunt.Size = new System.Drawing.Size(100, 30);
             this.boutonSuppEmprunt.TabIndex = 1;
@@ -792,9 +788,9 @@ namespace WindowsFormsApplication1
             // 
             this.reservationBox.Controls.Add(this.reservationSplitContainer);
             this.reservationBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reservationBox.Location = new System.Drawing.Point(3, 396);
+            this.reservationBox.Location = new System.Drawing.Point(3, 400);
             this.reservationBox.Name = "reservationBox";
-            this.reservationBox.Size = new System.Drawing.Size(736, 126);
+            this.reservationBox.Size = new System.Drawing.Size(743, 128);
             this.reservationBox.TabIndex = 2;
             this.reservationBox.TabStop = false;
             this.reservationBox.Text = "Réservation(s)";
@@ -812,8 +808,8 @@ namespace WindowsFormsApplication1
             // reservationSplitContainer.Panel2
             // 
             this.reservationSplitContainer.Panel2.Controls.Add(this.tableLayoutPanel4);
-            this.reservationSplitContainer.Size = new System.Drawing.Size(730, 107);
-            this.reservationSplitContainer.SplitterDistance = 607;
+            this.reservationSplitContainer.Size = new System.Drawing.Size(737, 109);
+            this.reservationSplitContainer.SplitterDistance = 612;
             this.reservationSplitContainer.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -837,50 +833,50 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(607, 107);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(612, 109);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // textBox12
             // 
             this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(365, 70);
+            this.textBox12.Location = new System.Drawing.Point(369, 71);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(239, 20);
+            this.textBox12.Size = new System.Drawing.Size(240, 20);
             this.textBox12.TabIndex = 8;
             // 
             // textBox11
             // 
             this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(63, 70);
+            this.textBox11.Location = new System.Drawing.Point(64, 71);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(236, 20);
+            this.textBox11.Size = new System.Drawing.Size(238, 20);
             this.textBox11.TabIndex = 7;
             // 
             // textBox10
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(365, 16);
+            this.textBox10.Location = new System.Drawing.Point(369, 17);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(239, 20);
+            this.textBox10.Size = new System.Drawing.Size(240, 20);
             this.textBox10.TabIndex = 6;
             // 
             // textBox9
             // 
             this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(63, 16);
+            this.textBox9.Location = new System.Drawing.Point(64, 17);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(236, 20);
+            this.textBox9.Size = new System.Drawing.Size(238, 20);
             this.textBox9.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 20);
+            this.label5.Location = new System.Drawing.Point(23, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 0;
@@ -891,7 +887,7 @@ namespace WindowsFormsApplication1
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 73);
+            this.label6.Location = new System.Drawing.Point(23, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 1;
@@ -902,7 +898,7 @@ namespace WindowsFormsApplication1
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(324, 20);
+            this.label7.Location = new System.Drawing.Point(328, 20);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 2;
@@ -913,7 +909,7 @@ namespace WindowsFormsApplication1
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(324, 73);
+            this.label8.Location = new System.Drawing.Point(328, 75);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 3;
@@ -933,14 +929,14 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(119, 107);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(121, 109);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // ajouterReservBouton
             // 
             this.ajouterReservBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ajouterReservBouton.ForeColor = System.Drawing.Color.DarkGreen;
-            this.ajouterReservBouton.Location = new System.Drawing.Point(9, 6);
+            this.ajouterReservBouton.Location = new System.Drawing.Point(10, 7);
             this.ajouterReservBouton.Name = "ajouterReservBouton";
             this.ajouterReservBouton.Size = new System.Drawing.Size(100, 40);
             this.ajouterReservBouton.TabIndex = 0;
@@ -951,7 +947,7 @@ namespace WindowsFormsApplication1
             // 
             this.suppReservBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.suppReservBouton.ForeColor = System.Drawing.Color.DarkRed;
-            this.suppReservBouton.Location = new System.Drawing.Point(9, 60);
+            this.suppReservBouton.Location = new System.Drawing.Point(10, 61);
             this.suppReservBouton.Name = "suppReservBouton";
             this.suppReservBouton.Size = new System.Drawing.Size(100, 40);
             this.suppReservBouton.TabIndex = 1;
