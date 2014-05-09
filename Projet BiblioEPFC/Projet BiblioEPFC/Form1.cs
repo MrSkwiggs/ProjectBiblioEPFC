@@ -58,7 +58,7 @@ namespace WindowsFormsApplication1
         private TreeNode nodeOuvrageChild(DataRow ouvrage)
         {
             TreeNode ouvrageNode = new TreeNode();
-            ouvrageNode.Name = ouvrage.ItemArray[0].ToString();
+            ouvrageNode.Name = "ouvrage " + ouvrage.ItemArray[0].ToString();
             ouvrageNode.Text = ouvrage.ItemArray[1].ToString();
             ouvrageNode.Nodes.Add(nodeAuteur(ouvrage));
             ouvrageNode.Nodes.Add(nodeSuper(ouvrage));
@@ -74,15 +74,15 @@ namespace WindowsFormsApplication1
             TreeNode auteursNode = new TreeNode();
             auteursNode.Name = auteursNode.Text = "Auteur(s)";
             foreach (DataRow auteur in auteurs.Rows)
-                auteursNode.Nodes.Add(nodeGenericPerson(auteur.ItemArray[0].ToString(), auteur.ItemArray[1].ToString(), auteur.ItemArray[2].ToString()));
+                auteursNode.Nodes.Add(nodeGenericPerson("auteur", auteur.ItemArray[0].ToString(), auteur.ItemArray[1].ToString(), auteur.ItemArray[2].ToString()));
 
             return auteursNode;
         }
 
-        private TreeNode nodeGenericPerson(String id, String nom, String prenom)
+        private TreeNode nodeGenericPerson(String type, String id, String nom, String prenom)
         {
             TreeNode auteurNode = new TreeNode();
-            auteurNode.Name = id;
+            auteurNode.Name = "person " + id;
             auteurNode.Text = nom + ' ' + prenom;
 
             return auteurNode;
@@ -94,7 +94,7 @@ namespace WindowsFormsApplication1
             TreeNode superNode = new TreeNode();
             superNode.Name = superNode.Text = "Superviseur(s)";
             foreach(DataRow super in superviseur.Rows)
-                superNode.Nodes.Add(nodeGenericPerson(super.ItemArray[2].ToString(), super.ItemArray[0].ToString(), super.ItemArray[1].ToString()));
+                superNode.Nodes.Add(nodeGenericPerson("auteur", super.ItemArray[2].ToString(), super.ItemArray[0].ToString(), super.ItemArray[1].ToString()));
 
             return superNode;
         }
@@ -120,7 +120,7 @@ namespace WindowsFormsApplication1
             TreeNode nodeReservation = new TreeNode();
             nodeReservation.Name = nodeReservation.Text = "Réservation(s)";
             foreach (DataRow reservation in reservationMembres.Rows)
-                nodeReservation.Nodes.Add(nodeGenericPerson(reservation.ItemArray[0].ToString(), reservation.ItemArray[1].ToString(), reservation.ItemArray[2].ToString()));
+                nodeReservation.Nodes.Add(nodeGenericPerson("membre", reservation.ItemArray[0].ToString(), reservation.ItemArray[1].ToString(), reservation.ItemArray[2].ToString()));
 
             return nodeReservation;
         }
@@ -136,7 +136,7 @@ namespace WindowsFormsApplication1
 
             DataTable membres = this.membreTableAdapter1.GetData();
             foreach(DataRow membre in membres.Rows)
-                membreNode.Nodes.Add(nodeGenericPerson(membre.ItemArray[0].ToString(), membre.ItemArray[1].ToString(), membre.ItemArray[2].ToString()));
+                membreNode.Nodes.Add(nodeGenericPerson("membre", membre.ItemArray[0].ToString(), membre.ItemArray[1].ToString(), membre.ItemArray[2].ToString()));
 
             return membreNode;
         }
@@ -214,7 +214,7 @@ namespace WindowsFormsApplication1
 
             DataTable auteurs = this.auteurSuperviseurTableAdapter1.GetData();
             foreach(DataRow auteur in auteurs.Rows)
-                auteurSuperNode.Nodes.Add(nodeGenericPerson(auteur.ItemArray[0].ToString(), auteur.ItemArray[1].ToString(), auteur.ItemArray[2].ToString()));
+                auteurSuperNode.Nodes.Add(nodeGenericPerson("auteur", auteur.ItemArray[0].ToString(), auteur.ItemArray[1].ToString(), auteur.ItemArray[2].ToString()));
 
             return auteurSuperNode;
         }
@@ -246,6 +246,8 @@ namespace WindowsFormsApplication1
                     return true;
             return false;
         }
+
+        #region Recherche de node
 
         private void textBoxRechercher_TextChanged(object sender, EventArgs e)
         {
@@ -287,6 +289,8 @@ namespace WindowsFormsApplication1
             this.generalTreeView.EndUpdate();
         }
 
+        #endregion 
+
         private void ajouterToolStripMenuItem3_Click(object sender, EventArgs e)
         {
             Form2 reservationForm = new Form2();
@@ -294,10 +298,31 @@ namespace WindowsFormsApplication1
             update_Treeview();
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void generalTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            
+            fill_InfoPage(e.Node);
         }
 
+        #region Fill InfoPage
+
+        private void fill_InfoPage(TreeNode infos)
+        {
+            //switch(infos.Parent.Text)
+            //{
+            //    case "Ouvrage(s)":
+            //        {
+            //            fill_OuvragePage(infos);
+            //            break;
+            //        }
+            //    case  "Auteur(s)":
+            //        {
+            //            fill_AuteurPage(infos);
+            //            break;
+            //        }
+            //        //case "Membres
+            //}
+        }
+
+        #endregion 
     }
 }
