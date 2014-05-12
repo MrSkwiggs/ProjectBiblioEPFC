@@ -62,17 +62,16 @@ namespace WindowsFormsApplication1
             this.auteursLabel = new System.Windows.Forms.Label();
             this.titreLabel = new System.Windows.Forms.Label();
             this.titreTextBox = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dateCreaTextBox = new System.Windows.Forms.TextBox();
             this.dateCreaLabel = new System.Windows.Forms.Label();
             this.sectionLabel = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.sectionTextBox = new System.Windows.Forms.TextBox();
             this.localLabel = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.localTextBox = new System.Windows.Forms.TextBox();
             this.superLabel = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.superTextBox = new System.Windows.Forms.TextBox();
             this.entrepriseLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.editerOuvrageBouton = new System.Windows.Forms.Button();
+            this.entrepTextBox = new System.Windows.Forms.TextBox();
             this.empruntBox = new System.Windows.Forms.GroupBox();
             this.empruntSplitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -113,6 +112,8 @@ namespace WindowsFormsApplication1
             this.empruntMembreParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.EmpruntMembreParOuvrageTableAdapter();
             this.reservationParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.ReservationParOuvrageTableAdapter();
             this.auteurSuperviseurTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.typeTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).BeginInit();
             this.formSplitContainer.Panel1.SuspendLayout();
@@ -175,13 +176,13 @@ namespace WindowsFormsApplication1
             // ajouterOuvrageMenu
             // 
             this.ajouterOuvrageMenu.Name = "ajouterOuvrageMenu";
-            this.ajouterOuvrageMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterOuvrageMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterOuvrageMenu.Text = "Ajouter";
             // 
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             // 
             // membresToolStripMenuItem
@@ -196,13 +197,13 @@ namespace WindowsFormsApplication1
             // ajouterMembreMenu
             // 
             this.ajouterMembreMenu.Name = "ajouterMembreMenu";
-            this.ajouterMembreMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterMembreMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterMembreMenu.Text = "Ajouter";
             // 
             // supprimerToolStripMenuItem2
             // 
             this.supprimerToolStripMenuItem2.Name = "supprimerToolStripMenuItem2";
-            this.supprimerToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.supprimerToolStripMenuItem2.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem2.Text = "Supprimer";
             // 
             // empruntsToolStripMenuItem
@@ -217,13 +218,13 @@ namespace WindowsFormsApplication1
             // ajouterEmpruntMenu
             // 
             this.ajouterEmpruntMenu.Name = "ajouterEmpruntMenu";
-            this.ajouterEmpruntMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterEmpruntMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterEmpruntMenu.Text = "Ajouter";
             // 
             // supprimerToolStripMenuItem1
             // 
             this.supprimerToolStripMenuItem1.Name = "supprimerToolStripMenuItem1";
-            this.supprimerToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.supprimerToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem1.Text = "Supprimer";
             // 
             // réservationsToolStripMenuItem
@@ -238,14 +239,14 @@ namespace WindowsFormsApplication1
             // ajouterReservationMenu
             // 
             this.ajouterReservationMenu.Name = "ajouterReservationMenu";
-            this.ajouterReservationMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterReservationMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterReservationMenu.Text = "Ajouter";
             this.ajouterReservationMenu.Click += new System.EventHandler(this.ajouterToolStripMenuItem3_Click);
             // 
             // supprimerToolStripMenuItem3
             // 
             this.supprimerToolStripMenuItem3.Name = "supprimerToolStripMenuItem3";
-            this.supprimerToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.supprimerToolStripMenuItem3.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem3.Text = "Supprimer";
             // 
             // formSplitContainer
@@ -430,17 +431,18 @@ namespace WindowsFormsApplication1
             this.infosTableLayout.Controls.Add(this.auteursLabel, 2, 0);
             this.infosTableLayout.Controls.Add(this.titreLabel, 0, 0);
             this.infosTableLayout.Controls.Add(this.titreTextBox, 1, 0);
-            this.infosTableLayout.Controls.Add(this.textBox2, 1, 1);
+            this.infosTableLayout.Controls.Add(this.dateCreaTextBox, 1, 1);
             this.infosTableLayout.Controls.Add(this.dateCreaLabel, 0, 1);
             this.infosTableLayout.Controls.Add(this.sectionLabel, 0, 2);
-            this.infosTableLayout.Controls.Add(this.textBox4, 1, 2);
+            this.infosTableLayout.Controls.Add(this.sectionTextBox, 1, 2);
             this.infosTableLayout.Controls.Add(this.localLabel, 0, 3);
-            this.infosTableLayout.Controls.Add(this.textBox3, 1, 3);
+            this.infosTableLayout.Controls.Add(this.localTextBox, 1, 3);
             this.infosTableLayout.Controls.Add(this.superLabel, 2, 1);
-            this.infosTableLayout.Controls.Add(this.textBox13, 3, 1);
+            this.infosTableLayout.Controls.Add(this.superTextBox, 3, 1);
             this.infosTableLayout.Controls.Add(this.entrepriseLabel, 2, 2);
-            this.infosTableLayout.Controls.Add(this.textBox1, 3, 2);
-            this.infosTableLayout.Controls.Add(this.editerOuvrageBouton, 3, 3);
+            this.infosTableLayout.Controls.Add(this.entrepTextBox, 3, 2);
+            this.infosTableLayout.Controls.Add(this.typeLabel, 2, 3);
+            this.infosTableLayout.Controls.Add(this.typeTextBox, 3, 3);
             this.infosTableLayout.Location = new System.Drawing.Point(3, 16);
             this.infosTableLayout.Name = "infosTableLayout";
             this.infosTableLayout.RowCount = 4;
@@ -504,14 +506,14 @@ namespace WindowsFormsApplication1
             this.titreTextBox.Size = new System.Drawing.Size(288, 20);
             this.titreTextBox.TabIndex = 3;
             // 
-            // textBox2
+            // dateCreaTextBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(76, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(288, 20);
-            this.textBox2.TabIndex = 4;
+            this.dateCreaTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateCreaTextBox.Location = new System.Drawing.Point(76, 80);
+            this.dateCreaTextBox.Name = "dateCreaTextBox";
+            this.dateCreaTextBox.ReadOnly = true;
+            this.dateCreaTextBox.Size = new System.Drawing.Size(288, 20);
+            this.dateCreaTextBox.TabIndex = 4;
             // 
             // dateCreaLabel
             // 
@@ -533,14 +535,14 @@ namespace WindowsFormsApplication1
             this.sectionLabel.TabIndex = 9;
             this.sectionLabel.Text = "Section";
             // 
-            // textBox4
+            // sectionTextBox
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(76, 140);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(288, 20);
-            this.textBox4.TabIndex = 6;
+            this.sectionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.sectionTextBox.Location = new System.Drawing.Point(76, 140);
+            this.sectionTextBox.Name = "sectionTextBox";
+            this.sectionTextBox.ReadOnly = true;
+            this.sectionTextBox.Size = new System.Drawing.Size(288, 20);
+            this.sectionTextBox.TabIndex = 6;
             // 
             // localLabel
             // 
@@ -552,14 +554,14 @@ namespace WindowsFormsApplication1
             this.localLabel.TabIndex = 8;
             this.localLabel.Text = "Localisation";
             // 
-            // textBox3
+            // localTextBox
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(76, 200);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(288, 20);
-            this.textBox3.TabIndex = 5;
+            this.localTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.localTextBox.Location = new System.Drawing.Point(76, 200);
+            this.localTextBox.Name = "localTextBox";
+            this.localTextBox.ReadOnly = true;
+            this.localTextBox.Size = new System.Drawing.Size(288, 20);
+            this.localTextBox.TabIndex = 5;
             // 
             // superLabel
             // 
@@ -572,14 +574,14 @@ namespace WindowsFormsApplication1
             this.superLabel.Text = "Superviseur";
             this.superLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox13
+            // superTextBox
             // 
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Location = new System.Drawing.Point(443, 80);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(291, 20);
-            this.textBox13.TabIndex = 13;
+            this.superTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.superTextBox.Location = new System.Drawing.Point(443, 80);
+            this.superTextBox.Name = "superTextBox";
+            this.superTextBox.ReadOnly = true;
+            this.superTextBox.Size = new System.Drawing.Size(291, 20);
+            this.superTextBox.TabIndex = 13;
             // 
             // entrepriseLabel
             // 
@@ -591,25 +593,14 @@ namespace WindowsFormsApplication1
             this.entrepriseLabel.TabIndex = 10;
             this.entrepriseLabel.Text = "Entreprise";
             // 
-            // textBox1
+            // entrepTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(443, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(291, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // editerOuvrageBouton
-            // 
-            this.editerOuvrageBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.editerOuvrageBouton.ForeColor = System.Drawing.Color.DarkBlue;
-            this.editerOuvrageBouton.Location = new System.Drawing.Point(538, 195);
-            this.editerOuvrageBouton.Name = "editerOuvrageBouton";
-            this.editerOuvrageBouton.Size = new System.Drawing.Size(100, 30);
-            this.editerOuvrageBouton.TabIndex = 14;
-            this.editerOuvrageBouton.Text = "Éditer";
-            this.editerOuvrageBouton.UseVisualStyleBackColor = true;
+            this.entrepTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.entrepTextBox.Location = new System.Drawing.Point(443, 140);
+            this.entrepTextBox.Name = "entrepTextBox";
+            this.entrepTextBox.ReadOnly = true;
+            this.entrepTextBox.Size = new System.Drawing.Size(291, 20);
+            this.entrepTextBox.TabIndex = 11;
             // 
             // empruntBox
             // 
@@ -959,7 +950,7 @@ namespace WindowsFormsApplication1
             this.auteurInfoPage.Location = new System.Drawing.Point(4, 22);
             this.auteurInfoPage.Name = "auteurInfoPage";
             this.auteurInfoPage.Padding = new System.Windows.Forms.Padding(3);
-            this.auteurInfoPage.Size = new System.Drawing.Size(748, 531);
+            this.auteurInfoPage.Size = new System.Drawing.Size(755, 537);
             this.auteurInfoPage.TabIndex = 1;
             this.auteurInfoPage.Text = "Auteur";
             this.auteurInfoPage.UseVisualStyleBackColor = true;
@@ -969,7 +960,7 @@ namespace WindowsFormsApplication1
             this.membreInfoPage.Location = new System.Drawing.Point(4, 22);
             this.membreInfoPage.Name = "membreInfoPage";
             this.membreInfoPage.Padding = new System.Windows.Forms.Padding(3);
-            this.membreInfoPage.Size = new System.Drawing.Size(748, 531);
+            this.membreInfoPage.Size = new System.Drawing.Size(755, 537);
             this.membreInfoPage.TabIndex = 2;
             this.membreInfoPage.Text = "Membre";
             this.membreInfoPage.UseVisualStyleBackColor = true;
@@ -979,7 +970,7 @@ namespace WindowsFormsApplication1
             this.empruntInfoPage.Location = new System.Drawing.Point(4, 22);
             this.empruntInfoPage.Name = "empruntInfoPage";
             this.empruntInfoPage.Padding = new System.Windows.Forms.Padding(3);
-            this.empruntInfoPage.Size = new System.Drawing.Size(748, 531);
+            this.empruntInfoPage.Size = new System.Drawing.Size(755, 537);
             this.empruntInfoPage.TabIndex = 3;
             this.empruntInfoPage.Text = "Emprunt";
             this.empruntInfoPage.UseVisualStyleBackColor = true;
@@ -989,7 +980,7 @@ namespace WindowsFormsApplication1
             this.reservationInfoPage.Location = new System.Drawing.Point(4, 22);
             this.reservationInfoPage.Name = "reservationInfoPage";
             this.reservationInfoPage.Padding = new System.Windows.Forms.Padding(3);
-            this.reservationInfoPage.Size = new System.Drawing.Size(748, 531);
+            this.reservationInfoPage.Size = new System.Drawing.Size(755, 537);
             this.reservationInfoPage.TabIndex = 4;
             this.reservationInfoPage.Text = "Réservation(s)";
             this.reservationInfoPage.UseVisualStyleBackColor = true;
@@ -1029,6 +1020,26 @@ namespace WindowsFormsApplication1
             // auteurSuperviseurTableAdapter1
             // 
             this.auteurSuperviseurTableAdapter1.ClearBeforeFill = true;
+            // 
+            // typeLabel
+            // 
+            this.typeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Location = new System.Drawing.Point(388, 203);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(31, 13);
+            this.typeLabel.TabIndex = 14;
+            this.typeLabel.Text = "Type";
+            this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // typeTextBox
+            // 
+            this.typeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.typeTextBox.Location = new System.Drawing.Point(443, 200);
+            this.typeTextBox.Name = "typeTextBox";
+            this.typeTextBox.ReadOnly = true;
+            this.typeTextBox.Size = new System.Drawing.Size(291, 20);
+            this.typeTextBox.TabIndex = 15;
             // 
             // mainForm
             // 
@@ -1135,14 +1146,14 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.ListBox auteursListBox;
         private System.Windows.Forms.Label titreLabel;
         private System.Windows.Forms.TextBox titreTextBox;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox dateCreaTextBox;
+        private System.Windows.Forms.TextBox localTextBox;
+        private System.Windows.Forms.TextBox sectionTextBox;
         private System.Windows.Forms.Label dateCreaLabel;
         private System.Windows.Forms.Label localLabel;
         private System.Windows.Forms.Label sectionLabel;
         private System.Windows.Forms.Label entrepriseLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox entrepTextBox;
         private System.Windows.Forms.SplitContainer empruntSplitContainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -1170,8 +1181,9 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label superLabel;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Button editerOuvrageBouton;
+        private System.Windows.Forms.TextBox superTextBox;
+        private System.Windows.Forms.Label typeLabel;
+        private System.Windows.Forms.TextBox typeTextBox;
 
     }
 }

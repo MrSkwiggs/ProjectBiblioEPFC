@@ -307,20 +307,37 @@ namespace WindowsFormsApplication1
 
         private void fill_InfoPage(TreeNode infos)
         {
-            //switch(infos.Parent.Text)
-            //{
-            //    case "Ouvrage(s)":
-            //        {
-            //            fill_OuvragePage(infos);
-            //            break;
-            //        }
-            //    case  "Auteur(s)":
-            //        {
-            //            fill_AuteurPage(infos);
-            //            break;
-            //        }
-            //        //case "Membres
-            //}
+            String[] s;
+            s = infos.Name.Split(' ');
+            switch (s[0])
+            {
+                case "ouvrage":
+                    {
+                        Console.WriteLine("Valeur clé du champ: " + s[1]);
+                        fill_OuvragePage(infos, Convert.ToInt32(s[1]));
+                        break;
+                    }
+                //case "Auteur(s)":
+                //    {
+                //        fill_AuteurPage(infos);
+                //        break;
+                //    }
+                //case "Membres
+            }
+        }
+
+        private void fill_OuvragePage(TreeNode infos, int idOuvrage)
+        {
+            DataTable dT = this.ouvrageTableAdapter.GetDataByIdOuvrage(idOuvrage);
+            DataRow ouvrage = dT.Rows[0];
+            int it = 0;
+            this.titreTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            this.localTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            this.dateCreaTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            this.sectionTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            this.typeTextBox.Text = ouvrage.ItemArray[it++].ToString() + " - " + ouvrage.ItemArray[it++].ToString();
+            //this.
+
         }
 
         #endregion 
