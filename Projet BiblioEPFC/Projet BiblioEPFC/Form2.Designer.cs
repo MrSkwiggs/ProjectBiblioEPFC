@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace ApplicationBiblioEPFC
 {
     partial class Form2
     {
@@ -37,7 +37,7 @@
             this.ouvrageBox = new System.Windows.Forms.TextBox();
             this.dureeBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.reserverTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.reserverTableAdapter();
+            this.reserverTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.reserverTableAdapter();
             this.SuspendLayout();
             // 
             // button1

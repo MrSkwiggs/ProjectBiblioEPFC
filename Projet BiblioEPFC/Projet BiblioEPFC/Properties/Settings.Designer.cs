@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication1.Properties {
+namespace ApplicationBiblioEPFC.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,24 +26,12 @@ namespace WindowsFormsApplication1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\EPFCSQLEXPRESS;AttachDbFilename=\"E:\\EPFC\\Apprentissage\\Visual Studi" +
-            "o C#\\Projet C#\\BiblioEPFC.mdf\";Integrated Security=True;Connect Timeout=30;User " +
-            "Instance=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=Z:\\Documents\\Documents\\GitHub\\ProjectBi" +
+            "blioEPFC\\BiblioEPFC.mdf;Integrated Security=True;Connect Timeout=30;User Instanc" +
+            "e=True")]
         public string BiblioEPFCConnectionString {
             get {
                 return ((string)(this["BiblioEPFCConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=\"F:\\EPFC\\Apprentissage\\Visual Studio C#" +
-            "\\Projet C#\\BiblioEPFC.mdf\";Integrated Security=True;Connect Timeout=30;User Inst" +
-            "ance=True")]
-        public string BiblioEPFCConnectionHome {
-            get {
-                return ((string)(this["BiblioEPFCConnectionHome"]));
             }
         }
     }

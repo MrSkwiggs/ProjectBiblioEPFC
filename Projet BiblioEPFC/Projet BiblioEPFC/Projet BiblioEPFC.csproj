@@ -8,7 +8,7 @@
     <ProjectGuid>{0D63FB60-3817-4AFF-9B2C-0B76B7C20936}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication1</RootNamespace>
+    <RootNamespace>ApplicationBiblioEPFC</RootNamespace>
     <AssemblyName>Projet BiblioEPFC</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>

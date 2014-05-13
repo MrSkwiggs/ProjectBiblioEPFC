@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1 {
+﻿namespace ApplicationBiblioEPFC {
     
     
     public partial class BiblioEPFCDataSet {

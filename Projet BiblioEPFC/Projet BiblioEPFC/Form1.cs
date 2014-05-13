@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace ApplicationBiblioEPFC
 {
     public partial class mainForm : Form
     {
+        #region Initialisation
+
         public mainForm()
         {
             InitializeComponent();
             treeViewCache = new TreeView();
+            listeIDAuteur = new List<int>();
+            listeIDMembre = new List<int>();
+            editState = Edition.NORMAL;
+            stopEditionMenuClick(null,null);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,6 +32,10 @@ namespace WindowsFormsApplication1
 
             this.ActiveControl = textBoxRechercher;
         }
+
+        #endregion
+
+        #region Gestion du Treeview
 
         #region Remplissage du TreeView
 
@@ -109,6 +119,7 @@ namespace WindowsFormsApplication1
             {
                 nodeEmpruntChild.Name = empruntMembres.Rows[0].ItemArray[0].ToString();
                 nodeEmpruntChild.Text = empruntMembres.Rows[0].ItemArray[1].ToString() + ' ' + empruntMembres.Rows[0].ItemArray[2].ToString();
+                nodeEmprunt.Nodes.Add(nodeEmpruntChild);
             }
 
             return nodeEmprunt;
@@ -291,17 +302,7 @@ namespace WindowsFormsApplication1
 
         #endregion 
 
-        private void ajouterToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            Form2 reservationForm = new Form2();
-            reservationForm.ShowDialog();
-            update_Treeview();
-        }
-
-        private void generalTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            fill_InfoPage(e.Node);
-        }
+        #endregion
 
         #region Fill InfoPage
 
@@ -313,8 +314,7 @@ namespace WindowsFormsApplication1
             {
                 case "ouvrage":
                     {
-                        Console.WriteLine("Valeur clé du champ: " + s[1]);
-                        fill_OuvragePage(infos, Convert.ToInt32(s[1]));
+                        fill_OuvragePage(Convert.ToInt32(s[1]));
                         break;
                     }
                 //case "Auteur(s)":
@@ -326,20 +326,282 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void fill_OuvragePage(TreeNode infos, int idOuvrage)
-        {
-            DataTable dT = this.ouvrageTableAdapter.GetDataByIdOuvrage(idOuvrage);
-            DataRow ouvrage = dT.Rows[0];
-            int it = 0;
-            this.titreTextBox.Text = ouvrage.ItemArray[it++].ToString();
-            this.localTextBox.Text = ouvrage.ItemArray[it++].ToString();
-            this.dateCreaTextBox.Text = ouvrage.ItemArray[it++].ToString();
-            this.sectionTextBox.Text = ouvrage.ItemArray[it++].ToString();
-            this.typeTextBox.Text = ouvrage.ItemArray[it++].ToString() + " - " + ouvrage.ItemArray[it++].ToString();
-            //this.
+        #region fill OuvragePage
 
+        private void fill_OuvragePage(int idOuvrage)
+        {
+            this.SELECTEDOUVRAGE = idOuvrage;
+            fill_OuvrageInfoBox(idOuvrage);
+            fill_OuvrageEmpruntBox(idOuvrage);
+            fill_OuvrageAuteursSuper(idOuvrage);
+            fill_OuvrageReservBox(idOuvrage);
+
+            refreshStateDisplay();
         }
 
-        #endregion 
+        private void fill_OuvrageInfoBox(int idOuvrage)
+        {
+            this.auteursListBox.Items.Clear();
+            this.listeIDAuteur.Clear();
+            DataTable ouvrages = this.infoOuvrageTableAdapter1.GetDataByID(idOuvrage);
+            DataRow ouvrage = ouvrages.Rows[0];
+            int it = 0;
+            DateTime dateCrea = new DateTime();
+
+            this.titreTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            this.localTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            dateCrea = DateTime.Parse(ouvrage.ItemArray[it++].ToString());
+            this.dateCreaTextBox.Text = dateCrea.ToShortDateString();
+            this.sectionTextBox.Text = ouvrage.ItemArray[it++].ToString();
+            this.typeTextBox.Text = ouvrage.ItemArray[it++].ToString() + " - " + ouvrage.ItemArray[it++].ToString();
+            this.entrepTextBox.Text = ouvrage.ItemArray[it++].ToString();
+        }
+
+        private void fill_OuvrageEmpruntBox(int idOuvrage)
+        {
+            DataTable emprunts = this.empruntMembreParOuvrageTableAdapter1.GetData(idOuvrage);
+            DateTime dateRetour = new DateTime();
+            int it = 1, duree = 0;
+            if (emprunts.Rows.Count != 0)
+            {
+                empruntState = Emprunt.EMPRUNTE;
+                DataRow emprunt = emprunts.Rows[0];
+                this.membreEmpruntTextBox.Text = emprunt.ItemArray[it++].ToString() + ' ' + emprunt.ItemArray[it++].ToString();
+                dateRetour = DateTime.Parse(emprunt.ItemArray[it++].ToString());
+                this.dateEmpruntTextBox.Text = dateRetour.ToShortDateString();
+                duree = Convert.ToInt32(emprunt.ItemArray[it++].ToString());
+                this.dureeEmpruntTextBox.Text = duree + " jours";
+                this.etatEmpruntTextBox.Text = etatEmprunt(dateRetour.AddDays(duree));
+            }
+            else
+            {
+                empruntState = Emprunt.AUCUN;
+                this.membreEmpruntTextBox.Clear();
+                this.dateEmpruntTextBox.Clear();
+                this.dureeEmpruntTextBox.Clear();
+                this.etatEmpruntTextBox.Text = etatEmprunt(null);
+            }
+        }
+
+        private void fill_OuvrageAuteursSuper(int idOuvrage)
+        {
+            DataTable supers = this.superParOuvrageTableAdapter1.GetData(idOuvrage);
+            if (supers.Rows.Count != 0)
+            {
+                DataRow super = supers.Rows[0];
+                this.superTextBox.Text = super.ItemArray[0].ToString() + ' ' + super.ItemArray[1].ToString();
+            }
+            else
+                this.superTextBox.Clear();
+
+            DataTable auteurs = this.auteurParOuvrageTableAdapter1.GetData(idOuvrage);
+            foreach (DataRow auteur in auteurs.Rows)
+            {
+                this.auteursListBox.Items.Add(auteur.ItemArray[1].ToString() + ' ' + auteur.ItemArray[2].ToString());
+                listeIDAuteur.Add(Convert.ToInt32(auteur.ItemArray[0].ToString()));
+            }
+        }
+
+        private void fill_OuvrageReservBox(int idOuvrage)
+        {
+            reservListBox.Items.Clear();
+            DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(idOuvrage);
+            reservState = Reservation.AUCUNE;
+            foreach(DataRow res in reservs.Rows)
+            {
+                reservState = Reservation.EXISTANTE;
+                reservListBox.Items.Add(res.ItemArray[1].ToString() + ' ' + res.ItemArray[2].ToString());
+                listeIDMembre.Add(Convert.ToInt32(res.ItemArray[0].ToString()));
+            }
+            if (reservListBox.Items.Count > 0)
+                reservListBox.SelectedIndex = 0;
+            refreshOuvrageReservBox(0);
+        }
+
+        private String etatEmprunt(DateTime? dateRetour)
+        {
+            String res;
+            if (dateRetour != null)
+            {
+                DateTime currDate = DateTime.Today;
+                int x = currDate.CompareTo(dateRetour);
+                if (x < 0)
+                    res = "En cours";
+                else if (x == 0)
+                    res = "Retour aujourd'hui !";
+                else
+                    res = "En retard";
+            }
+            else
+                res = "Aucun emprunt en cours";
+
+            return res;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Methods
+
+        private void refreshStateDisplay()
+        {
+            #region editionState
+
+            switch (this.editState)
+            {
+                case Edition.EDITING:
+                    this.modifierToolStripMenuItem.Enabled = false;
+                    this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = true;
+                    break;
+
+                case Edition.NORMAL:
+                    this.modifierToolStripMenuItem.Enabled = true;
+                    this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = false;
+                    break;
+            }
+
+            #endregion
+
+            #region empruntState
+
+            switch(this.empruntState)
+            {
+                case Emprunt.EMPRUNTE:
+                    this.ajouterEmpruntMenu.Enabled = false;
+                    this.supprEmpruntMenu.Enabled = true;
+                    this.ajouterEmpruntBouton.Enabled = false;
+                    this.supprEmpruntBouton.Enabled = true;
+                    break;
+                    
+                case Emprunt.AUCUN:
+                    this.ajouterEmpruntMenu.Enabled = true;
+                    this.supprEmpruntMenu.Enabled = false;
+                    this.ajouterEmpruntBouton.Enabled = true;
+                    this.supprEmpruntBouton.Enabled = false;
+                    break;
+            }
+
+            #endregion
+
+            #region reservState
+
+            switch(reservState)
+            {
+                case Reservation.EXISTANTE:
+                    this.supprReservBouton.Enabled = true;
+                    this.supprReservMenu.Enabled = true;
+                    break;
+                case Reservation.AUCUNE:
+                    this.supprReservBouton.Enabled = false;
+                    this.supprReservMenu.Enabled = false;
+                    break;
+            }
+
+            #endregion
+        }
+
+        private void showInfoPage(TreeNode n)
+        {
+            String[] s = n.Name.Split(' ');
+            switch(s[0])
+            {
+                case "ouvrage":
+                    infoTabs.SelectedIndex = 0;
+                    break;
+                case "auteur":
+                case "super":
+                    infoTabs.SelectedIndex = 1;
+                    break;
+                case "membre":
+                    infoTabs.SelectedIndex = 2;
+                    break;
+                case "emprunt":
+                    infoTabs.SelectedIndex = 3;
+                    break;
+                case "reservation":
+                    infoTabs.SelectedIndex = 4;
+                    break;
+            }
+        }
+
+        private void refreshOuvrageReservBox(int index)
+        {
+            switch (reservState)
+            {
+                case Reservation.EXISTANTE:
+                    DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(this.SELECTEDOUVRAGE);
+                    DataRow res = reservs.Rows[index];
+                    DateTime dateReserv = DateTime.Parse(res.ItemArray[3].ToString());
+                    this.dateReservTextBox.Text = dateReserv.ToShortDateString();
+                    this.dureeReservTextBox.Text = res.ItemArray[4].ToString() + " jours";
+                    break;
+                case Reservation.AUCUNE:
+                    this.dateReservTextBox.Clear();
+                    this.dureeReservTextBox.Clear();
+                    break;
+            }
+        }  
+
+        #endregion
+
+        #region Events
+
+        private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
+                {
+                    editState = Edition.EDITING;
+                    foreach (Control c in this.infosTableLayout.Controls)
+                    {
+                        if (c.GetType() == typeof(TextBox))
+                            ((TextBox)c).ReadOnly = false;
+                    }
+
+                    foreach(Control c in auteursBoutonsFlowLayout.Controls)
+                        if (c.GetType() == typeof(Button))
+                            c.Enabled = true;
+
+                    refreshStateDisplay();
+                }
+
+        private void stopEditionMenuClick(object sender, EventArgs e)
+                        {
+                            editState = Edition.NORMAL;
+                            foreach (Control c in this.infosTableLayout.Controls)
+                            {
+                                if (c.GetType() == typeof(TextBox))
+                                    ((TextBox)c).ReadOnly = true;
+                            }
+
+                            foreach (Control c in auteursBoutonsFlowLayout.Controls)
+                                if (c.GetType() == typeof(Button))
+                                    c.Enabled = false;
+
+                            refreshStateDisplay();
+                        }
+
+        private void generalTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+                {
+                    generalTreeView_NodeMouseClick(sender, e);
+                    showInfoPage(e.Node);
+                }
+
+        private void reservListBox_SelectedIndexChanged(object sender, EventArgs e)
+                {
+                    refreshOuvrageReservBox(reservListBox.SelectedIndex);
+                }
+
+        private void generalTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+                {
+                    fill_InfoPage(e.Node);
+                }
+
+        private void ajouterReserv(object sender, EventArgs e)
+                {
+                    Form2 reservationForm = new Form2();
+                    reservationForm.ShowDialog();
+                    update_Treeview();
+                }
+
+        #endregion
     }
 }

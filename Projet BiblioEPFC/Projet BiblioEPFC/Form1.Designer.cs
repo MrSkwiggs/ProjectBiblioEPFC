@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WindowsFormsApplication1
+namespace ApplicationBiblioEPFC
 {
     partial class mainForm
     {
@@ -33,18 +33,25 @@ namespace WindowsFormsApplication1
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.editerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sauvegarderLesModificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ignorerLesModificationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ouvragesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterOuvrageMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprOuvrageMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.auteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprAuteurMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.membresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterMembreMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprMembreMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.empruntsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterEmpruntMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprEmpruntMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.réservationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterReservationMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimerToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.supprReservMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.formSplitContainer = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -52,13 +59,12 @@ namespace WindowsFormsApplication1
             this.textBoxRechercher = new System.Windows.Forms.TextBox();
             this.generalTreeView = new System.Windows.Forms.TreeView();
             this.ouvrageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.biblioEPFCDataSet = new WindowsFormsApplication1.BiblioEPFCDataSet();
+            this.biblioEPFCDataSet = new ApplicationBiblioEPFC.BiblioEPFCDataSet();
             this.infoTabs = new System.Windows.Forms.TabControl();
             this.ouvrageInfoPage = new System.Windows.Forms.TabPage();
             this.tableLayoutOuvrageInfo = new System.Windows.Forms.TableLayoutPanel();
             this.infoBox = new System.Windows.Forms.GroupBox();
             this.infosTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.auteursListBox = new System.Windows.Forms.ListBox();
             this.auteursLabel = new System.Windows.Forms.Label();
             this.titreLabel = new System.Windows.Forms.Label();
             this.titreTextBox = new System.Windows.Forms.TextBox();
@@ -72,48 +78,52 @@ namespace WindowsFormsApplication1
             this.superTextBox = new System.Windows.Forms.TextBox();
             this.entrepriseLabel = new System.Windows.Forms.Label();
             this.entrepTextBox = new System.Windows.Forms.TextBox();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.typeTextBox = new System.Windows.Forms.TextBox();
+            this.auteursSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.auteursListBox = new System.Windows.Forms.ListBox();
+            this.auteursBoutonsFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.ajouterAuteurBouton = new System.Windows.Forms.Button();
+            this.supprAuteurBouton = new System.Windows.Forms.Button();
             this.empruntBox = new System.Windows.Forms.GroupBox();
             this.empruntSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.empruntInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.etatEmpruntTextBox = new System.Windows.Forms.TextBox();
+            this.dateEmpruntTextBox = new System.Windows.Forms.TextBox();
+            this.dureeEmpruntTextBox = new System.Windows.Forms.TextBox();
             this.emprunteParLabel = new System.Windows.Forms.Label();
             this.dateEmpruntLabel = new System.Windows.Forms.Label();
             this.dureeEmpruntLabel = new System.Windows.Forms.Label();
             this.etatEmpruntLabel = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.membreEmpruntTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.ajouterEmpruntBouton = new System.Windows.Forms.Button();
-            this.boutonSuppEmprunt = new System.Windows.Forms.Button();
+            this.supprEmpruntBouton = new System.Windows.Forms.Button();
             this.reservationBox = new System.Windows.Forms.GroupBox();
             this.reservationSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.reservOuvrageInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.dateReservTextBox = new System.Windows.Forms.TextBox();
+            this.dureeReservTextBox = new System.Windows.Forms.TextBox();
+            this.reserveParLabel = new System.Windows.Forms.Label();
+            this.dateReservLabel = new System.Windows.Forms.Label();
+            this.dureeReservLabel = new System.Windows.Forms.Label();
+            this.reservListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ajouterReservBouton = new System.Windows.Forms.Button();
-            this.suppReservBouton = new System.Windows.Forms.Button();
+            this.supprReservBouton = new System.Windows.Forms.Button();
             this.auteurInfoPage = new System.Windows.Forms.TabPage();
             this.membreInfoPage = new System.Windows.Forms.TabPage();
             this.empruntInfoPage = new System.Windows.Forms.TabPage();
             this.reservationInfoPage = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ouvrageTableAdapter = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
-            this.membreTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.MembreTableAdapter();
-            this.auteurParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.AuteurParOuvrageTableAdapter();
-            this.superParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.SuperParOuvrageTableAdapter();
-            this.empruntMembreParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.EmpruntMembreParOuvrageTableAdapter();
-            this.reservationParOuvrageTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.ReservationParOuvrageTableAdapter();
-            this.auteurSuperviseurTableAdapter1 = new WindowsFormsApplication1.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
-            this.typeLabel = new System.Windows.Forms.Label();
-            this.typeTextBox = new System.Windows.Forms.TextBox();
+            this.ouvrageTableAdapter = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
+            this.membreTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.MembreTableAdapter();
+            this.auteurParOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurParOuvrageTableAdapter();
+            this.superParOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.SuperParOuvrageTableAdapter();
+            this.empruntMembreParOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.EmpruntMembreParOuvrageTableAdapter();
+            this.reservationParOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ReservationParOuvrageTableAdapter();
+            this.auteurSuperviseurTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
+            this.infoOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.InfoOuvrageTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).BeginInit();
             this.formSplitContainer.Panel1.SuspendLayout();
@@ -134,19 +144,24 @@ namespace WindowsFormsApplication1
             this.tableLayoutOuvrageInfo.SuspendLayout();
             this.infoBox.SuspendLayout();
             this.infosTableLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.auteursSplitContainer)).BeginInit();
+            this.auteursSplitContainer.Panel1.SuspendLayout();
+            this.auteursSplitContainer.Panel2.SuspendLayout();
+            this.auteursSplitContainer.SuspendLayout();
+            this.auteursBoutonsFlowLayout.SuspendLayout();
             this.empruntBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empruntSplitContainer)).BeginInit();
             this.empruntSplitContainer.Panel1.SuspendLayout();
             this.empruntSplitContainer.Panel2.SuspendLayout();
             this.empruntSplitContainer.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.empruntInfoTableLayout.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.reservationBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reservationSplitContainer)).BeginInit();
             this.reservationSplitContainer.Panel1.SuspendLayout();
             this.reservationSplitContainer.Panel2.SuspendLayout();
             this.reservationSplitContainer.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.reservOuvrageInfoTableLayout.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,7 +169,9 @@ namespace WindowsFormsApplication1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editerToolStripMenuItem,
             this.ouvragesToolStripMenuItem,
+            this.auteursToolStripMenuItem,
             this.membresToolStripMenuItem,
             this.empruntsToolStripMenuItem,
             this.réservationsToolStripMenuItem});
@@ -164,11 +181,47 @@ namespace WindowsFormsApplication1
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // editerToolStripMenuItem
+            // 
+            this.editerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierToolStripMenuItem,
+            this.sauvegarderLesModificationsToolStripMenuItem,
+            this.ignorerLesModificationsToolStripMenuItem});
+            this.editerToolStripMenuItem.Name = "editerToolStripMenuItem";
+            this.editerToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.editerToolStripMenuItem.Text = "Edition";
+            // 
+            // modifierToolStripMenuItem
+            // 
+            this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
+            this.modifierToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.modifierToolStripMenuItem.Text = "Modifier";
+            this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
+            // 
+            // sauvegarderLesModificationsToolStripMenuItem
+            // 
+            this.sauvegarderLesModificationsToolStripMenuItem.Enabled = false;
+            this.sauvegarderLesModificationsToolStripMenuItem.Name = "sauvegarderLesModificationsToolStripMenuItem";
+            this.sauvegarderLesModificationsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.sauvegarderLesModificationsToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.sauvegarderLesModificationsToolStripMenuItem.Text = "Sauvegarder les modifications";
+            this.sauvegarderLesModificationsToolStripMenuItem.Click += new System.EventHandler(this.stopEditionMenuClick);
+            // 
+            // ignorerLesModificationsToolStripMenuItem
+            // 
+            this.ignorerLesModificationsToolStripMenuItem.Enabled = false;
+            this.ignorerLesModificationsToolStripMenuItem.Name = "ignorerLesModificationsToolStripMenuItem";
+            this.ignorerLesModificationsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.ignorerLesModificationsToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.ignorerLesModificationsToolStripMenuItem.Text = "Ignorer les modifications";
+            this.ignorerLesModificationsToolStripMenuItem.Click += new System.EventHandler(this.stopEditionMenuClick);
+            // 
             // ouvragesToolStripMenuItem
             // 
             this.ouvragesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterOuvrageMenu,
-            this.supprimerToolStripMenuItem});
+            this.supprOuvrageMenu});
             this.ouvragesToolStripMenuItem.Name = "ouvragesToolStripMenuItem";
             this.ouvragesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.ouvragesToolStripMenuItem.Text = "Ouvrage";
@@ -179,17 +232,38 @@ namespace WindowsFormsApplication1
             this.ajouterOuvrageMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterOuvrageMenu.Text = "Ajouter";
             // 
-            // supprimerToolStripMenuItem
+            // supprOuvrageMenu
             // 
-            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.supprimerToolStripMenuItem.Text = "Supprimer";
+            this.supprOuvrageMenu.Name = "supprOuvrageMenu";
+            this.supprOuvrageMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprOuvrageMenu.Text = "Supprimer";
+            // 
+            // auteursToolStripMenuItem
+            // 
+            this.auteursToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajouterToolStripMenuItem,
+            this.supprAuteurMenu});
+            this.auteursToolStripMenuItem.Name = "auteursToolStripMenuItem";
+            this.auteursToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.auteursToolStripMenuItem.Text = "Auteur";
+            // 
+            // ajouterToolStripMenuItem
+            // 
+            this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
+            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.ajouterToolStripMenuItem.Text = "Ajouter";
+            // 
+            // supprAuteurMenu
+            // 
+            this.supprAuteurMenu.Name = "supprAuteurMenu";
+            this.supprAuteurMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprAuteurMenu.Text = "Supprimer";
             // 
             // membresToolStripMenuItem
             // 
             this.membresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterMembreMenu,
-            this.supprimerToolStripMenuItem2});
+            this.supprMembreMenu});
             this.membresToolStripMenuItem.Name = "membresToolStripMenuItem";
             this.membresToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.membresToolStripMenuItem.Text = "Membre";
@@ -200,17 +274,17 @@ namespace WindowsFormsApplication1
             this.ajouterMembreMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterMembreMenu.Text = "Ajouter";
             // 
-            // supprimerToolStripMenuItem2
+            // supprMembreMenu
             // 
-            this.supprimerToolStripMenuItem2.Name = "supprimerToolStripMenuItem2";
-            this.supprimerToolStripMenuItem2.Size = new System.Drawing.Size(129, 22);
-            this.supprimerToolStripMenuItem2.Text = "Supprimer";
+            this.supprMembreMenu.Name = "supprMembreMenu";
+            this.supprMembreMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprMembreMenu.Text = "Supprimer";
             // 
             // empruntsToolStripMenuItem
             // 
             this.empruntsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterEmpruntMenu,
-            this.supprimerToolStripMenuItem1});
+            this.supprEmpruntMenu});
             this.empruntsToolStripMenuItem.Name = "empruntsToolStripMenuItem";
             this.empruntsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.empruntsToolStripMenuItem.Text = "Emprunt";
@@ -221,17 +295,17 @@ namespace WindowsFormsApplication1
             this.ajouterEmpruntMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterEmpruntMenu.Text = "Ajouter";
             // 
-            // supprimerToolStripMenuItem1
+            // supprEmpruntMenu
             // 
-            this.supprimerToolStripMenuItem1.Name = "supprimerToolStripMenuItem1";
-            this.supprimerToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
-            this.supprimerToolStripMenuItem1.Text = "Supprimer";
+            this.supprEmpruntMenu.Name = "supprEmpruntMenu";
+            this.supprEmpruntMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprEmpruntMenu.Text = "Supprimer";
             // 
             // réservationsToolStripMenuItem
             // 
             this.réservationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterReservationMenu,
-            this.supprimerToolStripMenuItem3});
+            this.supprReservMenu});
             this.réservationsToolStripMenuItem.Name = "réservationsToolStripMenuItem";
             this.réservationsToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.réservationsToolStripMenuItem.Text = "Réservation";
@@ -239,21 +313,21 @@ namespace WindowsFormsApplication1
             // ajouterReservationMenu
             // 
             this.ajouterReservationMenu.Name = "ajouterReservationMenu";
-            this.ajouterReservationMenu.Size = new System.Drawing.Size(129, 22);
+            this.ajouterReservationMenu.Size = new System.Drawing.Size(152, 22);
             this.ajouterReservationMenu.Text = "Ajouter";
-            this.ajouterReservationMenu.Click += new System.EventHandler(this.ajouterToolStripMenuItem3_Click);
+            this.ajouterReservationMenu.Click += new System.EventHandler(this.ajouterReserv);
             // 
-            // supprimerToolStripMenuItem3
+            // supprReservMenu
             // 
-            this.supprimerToolStripMenuItem3.Name = "supprimerToolStripMenuItem3";
-            this.supprimerToolStripMenuItem3.Size = new System.Drawing.Size(129, 22);
-            this.supprimerToolStripMenuItem3.Text = "Supprimer";
+            this.supprReservMenu.Name = "supprReservMenu";
+            this.supprReservMenu.Size = new System.Drawing.Size(152, 22);
+            this.supprReservMenu.Text = "Supprimer";
             // 
             // formSplitContainer
             // 
-            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.formSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.formSplitContainer.IsSplitterFixed = true;
             this.formSplitContainer.Location = new System.Drawing.Point(0, 24);
@@ -276,12 +350,11 @@ namespace WindowsFormsApplication1
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 4);
             this.splitContainer2.MinimumSize = new System.Drawing.Size(223, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -295,16 +368,16 @@ namespace WindowsFormsApplication1
             // 
             this.splitContainer2.Panel2.Controls.Add(this.generalTreeView);
             this.splitContainer2.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer2.Size = new System.Drawing.Size(223, 557);
+            this.splitContainer2.Size = new System.Drawing.Size(229, 563);
             this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 1;
             // 
             // splitContainer3
             // 
-            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
@@ -318,8 +391,8 @@ namespace WindowsFormsApplication1
             // 
             this.splitContainer3.Panel2.Controls.Add(this.textBoxRechercher);
             this.splitContainer3.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.splitContainer3.Size = new System.Drawing.Size(220, 26);
-            this.splitContainer3.SplitterDistance = 73;
+            this.splitContainer3.Size = new System.Drawing.Size(226, 26);
+            this.splitContainer3.SplitterDistance = 74;
             this.splitContainer3.TabIndex = 0;
             // 
             // labelRechercher
@@ -333,24 +406,28 @@ namespace WindowsFormsApplication1
             // 
             // textBoxRechercher
             // 
-            this.textBoxRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRechercher.Location = new System.Drawing.Point(3, 3);
             this.textBoxRechercher.Name = "textBoxRechercher";
-            this.textBoxRechercher.Size = new System.Drawing.Size(140, 20);
+            this.textBoxRechercher.Size = new System.Drawing.Size(145, 20);
             this.textBoxRechercher.TabIndex = 0;
             this.textBoxRechercher.WordWrap = false;
             this.textBoxRechercher.TextChanged += new System.EventHandler(this.textBoxRechercher_TextChanged);
             // 
             // generalTreeView
             // 
+            this.generalTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.generalTreeView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.ouvrageBindingSource, "titre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "null"));
-            this.generalTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.generalTreeView.Location = new System.Drawing.Point(0, 0);
+            this.generalTreeView.Location = new System.Drawing.Point(3, 0);
+            this.generalTreeView.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(223, 531);
+            this.generalTreeView.Size = new System.Drawing.Size(220, 548);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
+            this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
             // 
             // ouvrageBindingSource
             // 
@@ -406,9 +483,9 @@ namespace WindowsFormsApplication1
             // 
             // infoBox
             // 
-            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.infoBox.Controls.Add(this.infosTableLayout);
             this.infoBox.Location = new System.Drawing.Point(3, 3);
             this.infoBox.Name = "infoBox";
@@ -419,15 +496,14 @@ namespace WindowsFormsApplication1
             // 
             // infosTableLayout
             // 
-            this.infosTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.infosTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.infosTableLayout.ColumnCount = 4;
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.infosTableLayout.Controls.Add(this.auteursListBox, 3, 0);
             this.infosTableLayout.Controls.Add(this.auteursLabel, 2, 0);
             this.infosTableLayout.Controls.Add(this.titreLabel, 0, 0);
             this.infosTableLayout.Controls.Add(this.titreTextBox, 1, 0);
@@ -443,6 +519,7 @@ namespace WindowsFormsApplication1
             this.infosTableLayout.Controls.Add(this.entrepTextBox, 3, 2);
             this.infosTableLayout.Controls.Add(this.typeLabel, 2, 3);
             this.infosTableLayout.Controls.Add(this.typeTextBox, 3, 3);
+            this.infosTableLayout.Controls.Add(this.auteursSplitContainer, 3, 0);
             this.infosTableLayout.Location = new System.Drawing.Point(3, 16);
             this.infosTableLayout.Name = "infosTableLayout";
             this.infosTableLayout.RowCount = 4;
@@ -452,28 +529,6 @@ namespace WindowsFormsApplication1
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.infosTableLayout.Size = new System.Drawing.Size(737, 240);
             this.infosTableLayout.TabIndex = 0;
-            // 
-            // auteursListBox
-            // 
-            this.auteursListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.auteursListBox.FormattingEnabled = true;
-            this.auteursListBox.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c",
-            "c",
-            "d",
-            "e",
-            "f",
-            "r"});
-            this.auteursListBox.Location = new System.Drawing.Point(443, 3);
-            this.auteursListBox.MinimumSize = new System.Drawing.Size(4, 56);
-            this.auteursListBox.Name = "auteursListBox";
-            this.auteursListBox.Size = new System.Drawing.Size(291, 56);
-            this.auteursListBox.Sorted = true;
-            this.auteursListBox.TabIndex = 1;
             // 
             // auteursLabel
             // 
@@ -602,11 +657,91 @@ namespace WindowsFormsApplication1
             this.entrepTextBox.Size = new System.Drawing.Size(291, 20);
             this.entrepTextBox.TabIndex = 11;
             // 
+            // typeLabel
+            // 
+            this.typeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Location = new System.Drawing.Point(388, 203);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(31, 13);
+            this.typeLabel.TabIndex = 14;
+            this.typeLabel.Text = "Type";
+            this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // typeTextBox
+            // 
+            this.typeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.typeTextBox.Location = new System.Drawing.Point(443, 200);
+            this.typeTextBox.Name = "typeTextBox";
+            this.typeTextBox.ReadOnly = true;
+            this.typeTextBox.Size = new System.Drawing.Size(291, 20);
+            this.typeTextBox.TabIndex = 15;
+            // 
+            // auteursSplitContainer
+            // 
+            this.auteursSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auteursSplitContainer.IsSplitterFixed = true;
+            this.auteursSplitContainer.Location = new System.Drawing.Point(440, 0);
+            this.auteursSplitContainer.Margin = new System.Windows.Forms.Padding(0);
+            this.auteursSplitContainer.Name = "auteursSplitContainer";
+            // 
+            // auteursSplitContainer.Panel1
+            // 
+            this.auteursSplitContainer.Panel1.Controls.Add(this.auteursListBox);
+            // 
+            // auteursSplitContainer.Panel2
+            // 
+            this.auteursSplitContainer.Panel2.Controls.Add(this.auteursBoutonsFlowLayout);
+            this.auteursSplitContainer.Size = new System.Drawing.Size(297, 60);
+            this.auteursSplitContainer.SplitterDistance = 266;
+            this.auteursSplitContainer.SplitterWidth = 2;
+            this.auteursSplitContainer.TabIndex = 16;
+            // 
+            // auteursListBox
+            // 
+            this.auteursListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auteursListBox.FormattingEnabled = true;
+            this.auteursListBox.Location = new System.Drawing.Point(0, 0);
+            this.auteursListBox.MinimumSize = new System.Drawing.Size(4, 56);
+            this.auteursListBox.Name = "auteursListBox";
+            this.auteursListBox.Size = new System.Drawing.Size(266, 60);
+            this.auteursListBox.Sorted = true;
+            this.auteursListBox.TabIndex = 1;
+            // 
+            // auteursBoutonsFlowLayout
+            // 
+            this.auteursBoutonsFlowLayout.Controls.Add(this.ajouterAuteurBouton);
+            this.auteursBoutonsFlowLayout.Controls.Add(this.supprAuteurBouton);
+            this.auteursBoutonsFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auteursBoutonsFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.auteursBoutonsFlowLayout.Location = new System.Drawing.Point(0, 0);
+            this.auteursBoutonsFlowLayout.Name = "auteursBoutonsFlowLayout";
+            this.auteursBoutonsFlowLayout.Size = new System.Drawing.Size(29, 60);
+            this.auteursBoutonsFlowLayout.TabIndex = 0;
+            // 
+            // ajouterAuteurBouton
+            // 
+            this.ajouterAuteurBouton.Location = new System.Drawing.Point(3, 3);
+            this.ajouterAuteurBouton.Name = "ajouterAuteurBouton";
+            this.ajouterAuteurBouton.Size = new System.Drawing.Size(20, 20);
+            this.ajouterAuteurBouton.TabIndex = 0;
+            this.ajouterAuteurBouton.Text = "+";
+            this.ajouterAuteurBouton.UseVisualStyleBackColor = true;
+            // 
+            // supprAuteurBouton
+            // 
+            this.supprAuteurBouton.Location = new System.Drawing.Point(3, 29);
+            this.supprAuteurBouton.Name = "supprAuteurBouton";
+            this.supprAuteurBouton.Size = new System.Drawing.Size(20, 20);
+            this.supprAuteurBouton.TabIndex = 1;
+            this.supprAuteurBouton.Text = "-";
+            this.supprAuteurBouton.UseVisualStyleBackColor = true;
+            // 
             // empruntBox
             // 
-            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.empruntBox.Controls.Add(this.empruntSplitContainer);
             this.empruntBox.Location = new System.Drawing.Point(3, 268);
             this.empruntBox.Name = "empruntBox";
@@ -623,7 +758,7 @@ namespace WindowsFormsApplication1
             // 
             // empruntSplitContainer.Panel1
             // 
-            this.empruntSplitContainer.Panel1.Controls.Add(this.tableLayoutPanel1);
+            this.empruntSplitContainer.Panel1.Controls.Add(this.empruntInfoTableLayout);
             // 
             // empruntSplitContainer.Panel2
             // 
@@ -632,56 +767,56 @@ namespace WindowsFormsApplication1
             this.empruntSplitContainer.SplitterDistance = 612;
             this.empruntSplitContainer.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // empruntInfoTableLayout
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox8, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox6, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.emprunteParLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dateEmpruntLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dureeEmpruntLabel, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.etatEmpruntLabel, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox5, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(612, 107);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.empruntInfoTableLayout.ColumnCount = 4;
+            this.empruntInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.empruntInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.empruntInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.empruntInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.empruntInfoTableLayout.Controls.Add(this.etatEmpruntTextBox, 3, 1);
+            this.empruntInfoTableLayout.Controls.Add(this.dateEmpruntTextBox, 1, 1);
+            this.empruntInfoTableLayout.Controls.Add(this.dureeEmpruntTextBox, 3, 0);
+            this.empruntInfoTableLayout.Controls.Add(this.emprunteParLabel, 0, 0);
+            this.empruntInfoTableLayout.Controls.Add(this.dateEmpruntLabel, 0, 1);
+            this.empruntInfoTableLayout.Controls.Add(this.dureeEmpruntLabel, 2, 0);
+            this.empruntInfoTableLayout.Controls.Add(this.etatEmpruntLabel, 2, 1);
+            this.empruntInfoTableLayout.Controls.Add(this.membreEmpruntTextBox, 1, 0);
+            this.empruntInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.empruntInfoTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.empruntInfoTableLayout.Name = "empruntInfoTableLayout";
+            this.empruntInfoTableLayout.RowCount = 2;
+            this.empruntInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.empruntInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.empruntInfoTableLayout.Size = new System.Drawing.Size(612, 107);
+            this.empruntInfoTableLayout.TabIndex = 0;
             // 
-            // textBox8
+            // etatEmpruntTextBox
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(369, 70);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(240, 20);
-            this.textBox8.TabIndex = 7;
+            this.etatEmpruntTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.etatEmpruntTextBox.Location = new System.Drawing.Point(369, 70);
+            this.etatEmpruntTextBox.Name = "etatEmpruntTextBox";
+            this.etatEmpruntTextBox.ReadOnly = true;
+            this.etatEmpruntTextBox.Size = new System.Drawing.Size(240, 20);
+            this.etatEmpruntTextBox.TabIndex = 7;
             // 
-            // textBox7
+            // dateEmpruntTextBox
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(64, 70);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(238, 20);
-            this.textBox7.TabIndex = 6;
+            this.dateEmpruntTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateEmpruntTextBox.Location = new System.Drawing.Point(64, 70);
+            this.dateEmpruntTextBox.Name = "dateEmpruntTextBox";
+            this.dateEmpruntTextBox.ReadOnly = true;
+            this.dateEmpruntTextBox.Size = new System.Drawing.Size(238, 20);
+            this.dateEmpruntTextBox.TabIndex = 6;
             // 
-            // textBox6
+            // dureeEmpruntTextBox
             // 
-            this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(369, 16);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(240, 20);
-            this.textBox6.TabIndex = 5;
+            this.dureeEmpruntTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dureeEmpruntTextBox.Location = new System.Drawing.Point(369, 16);
+            this.dureeEmpruntTextBox.Name = "dureeEmpruntTextBox";
+            this.dureeEmpruntTextBox.ReadOnly = true;
+            this.dureeEmpruntTextBox.Size = new System.Drawing.Size(240, 20);
+            this.dureeEmpruntTextBox.TabIndex = 5;
             // 
             // emprunteParLabel
             // 
@@ -727,14 +862,14 @@ namespace WindowsFormsApplication1
             this.etatEmpruntLabel.Text = "État";
             this.etatEmpruntLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox5
+            // membreEmpruntTextBox
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(64, 16);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(238, 20);
-            this.textBox5.TabIndex = 4;
+            this.membreEmpruntTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.membreEmpruntTextBox.Location = new System.Drawing.Point(64, 16);
+            this.membreEmpruntTextBox.Name = "membreEmpruntTextBox";
+            this.membreEmpruntTextBox.ReadOnly = true;
+            this.membreEmpruntTextBox.Size = new System.Drawing.Size(238, 20);
+            this.membreEmpruntTextBox.TabIndex = 4;
             // 
             // tableLayoutPanel2
             // 
@@ -742,7 +877,7 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.ajouterEmpruntBouton, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.boutonSuppEmprunt, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.supprEmpruntBouton, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -763,17 +898,17 @@ namespace WindowsFormsApplication1
             this.ajouterEmpruntBouton.Text = "Ajouter Emprunt";
             this.ajouterEmpruntBouton.UseVisualStyleBackColor = true;
             // 
-            // boutonSuppEmprunt
+            // supprEmpruntBouton
             // 
-            this.boutonSuppEmprunt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.boutonSuppEmprunt.Enabled = false;
-            this.boutonSuppEmprunt.ForeColor = System.Drawing.Color.DarkRed;
-            this.boutonSuppEmprunt.Location = new System.Drawing.Point(10, 65);
-            this.boutonSuppEmprunt.Name = "boutonSuppEmprunt";
-            this.boutonSuppEmprunt.Size = new System.Drawing.Size(100, 30);
-            this.boutonSuppEmprunt.TabIndex = 1;
-            this.boutonSuppEmprunt.Text = "Suppr. Emprunt";
-            this.boutonSuppEmprunt.UseVisualStyleBackColor = true;
+            this.supprEmpruntBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.supprEmpruntBouton.Enabled = false;
+            this.supprEmpruntBouton.ForeColor = System.Drawing.Color.DarkRed;
+            this.supprEmpruntBouton.Location = new System.Drawing.Point(10, 65);
+            this.supprEmpruntBouton.Name = "supprEmpruntBouton";
+            this.supprEmpruntBouton.Size = new System.Drawing.Size(100, 30);
+            this.supprEmpruntBouton.TabIndex = 1;
+            this.supprEmpruntBouton.Text = "Suppr. Emprunt";
+            this.supprEmpruntBouton.UseVisualStyleBackColor = true;
             // 
             // reservationBox
             // 
@@ -794,7 +929,7 @@ namespace WindowsFormsApplication1
             // 
             // reservationSplitContainer.Panel1
             // 
-            this.reservationSplitContainer.Panel1.Controls.Add(this.tableLayoutPanel3);
+            this.reservationSplitContainer.Panel1.Controls.Add(this.reservOuvrageInfoTableLayout);
             // 
             // reservationSplitContainer.Panel2
             // 
@@ -803,109 +938,88 @@ namespace WindowsFormsApplication1
             this.reservationSplitContainer.SplitterDistance = 612;
             this.reservationSplitContainer.TabIndex = 1;
             // 
-            // tableLayoutPanel3
+            // reservOuvrageInfoTableLayout
             // 
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.Controls.Add(this.textBox12, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.textBox11, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.textBox10, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox9, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label7, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label8, 2, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(612, 109);
-            this.tableLayoutPanel3.TabIndex = 0;
+            this.reservOuvrageInfoTableLayout.ColumnCount = 4;
+            this.reservOuvrageInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.reservOuvrageInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.reservOuvrageInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.reservOuvrageInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.reservOuvrageInfoTableLayout.Controls.Add(this.dateReservTextBox, 1, 1);
+            this.reservOuvrageInfoTableLayout.Controls.Add(this.dureeReservTextBox, 3, 0);
+            this.reservOuvrageInfoTableLayout.Controls.Add(this.reserveParLabel, 0, 0);
+            this.reservOuvrageInfoTableLayout.Controls.Add(this.dateReservLabel, 0, 1);
+            this.reservOuvrageInfoTableLayout.Controls.Add(this.dureeReservLabel, 2, 0);
+            this.reservOuvrageInfoTableLayout.Controls.Add(this.reservListBox, 1, 0);
+            this.reservOuvrageInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reservOuvrageInfoTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.reservOuvrageInfoTableLayout.Name = "reservOuvrageInfoTableLayout";
+            this.reservOuvrageInfoTableLayout.RowCount = 2;
+            this.reservOuvrageInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.reservOuvrageInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.reservOuvrageInfoTableLayout.Size = new System.Drawing.Size(612, 109);
+            this.reservOuvrageInfoTableLayout.TabIndex = 0;
             // 
-            // textBox12
+            // dateReservTextBox
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(369, 71);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(240, 20);
-            this.textBox12.TabIndex = 8;
+            this.dateReservTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateReservTextBox.Location = new System.Drawing.Point(64, 71);
+            this.dateReservTextBox.Name = "dateReservTextBox";
+            this.dateReservTextBox.ReadOnly = true;
+            this.dateReservTextBox.Size = new System.Drawing.Size(238, 20);
+            this.dateReservTextBox.TabIndex = 7;
             // 
-            // textBox11
+            // dureeReservTextBox
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(64, 71);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(238, 20);
-            this.textBox11.TabIndex = 7;
+            this.dureeReservTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dureeReservTextBox.Location = new System.Drawing.Point(369, 17);
+            this.dureeReservTextBox.Name = "dureeReservTextBox";
+            this.dureeReservTextBox.ReadOnly = true;
+            this.dureeReservTextBox.Size = new System.Drawing.Size(240, 20);
+            this.dureeReservTextBox.TabIndex = 6;
             // 
-            // textBox10
+            // reserveParLabel
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(369, 17);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(240, 20);
-            this.textBox10.TabIndex = 6;
+            this.reserveParLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.reserveParLabel.AutoSize = true;
+            this.reserveParLabel.Location = new System.Drawing.Point(11, 14);
+            this.reserveParLabel.Name = "reserveParLabel";
+            this.reserveParLabel.Size = new System.Drawing.Size(47, 26);
+            this.reserveParLabel.TabIndex = 0;
+            this.reserveParLabel.Text = "Réservé par";
+            this.reserveParLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox9
+            // dateReservLabel
             // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox9.Location = new System.Drawing.Point(64, 17);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(238, 20);
-            this.textBox9.TabIndex = 5;
+            this.dateReservLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.dateReservLabel.AutoSize = true;
+            this.dateReservLabel.Location = new System.Drawing.Point(28, 75);
+            this.dateReservLabel.Name = "dateReservLabel";
+            this.dateReservLabel.Size = new System.Drawing.Size(30, 13);
+            this.dateReservLabel.TabIndex = 1;
+            this.dateReservLabel.Text = "Date";
+            this.dateReservLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // dureeReservLabel
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "label5";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dureeReservLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.dureeReservLabel.AutoSize = true;
+            this.dureeReservLabel.Location = new System.Drawing.Point(327, 20);
+            this.dureeReservLabel.Name = "dureeReservLabel";
+            this.dureeReservLabel.Size = new System.Drawing.Size(36, 13);
+            this.dureeReservLabel.TabIndex = 2;
+            this.dureeReservLabel.Text = "Durée";
+            this.dureeReservLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // reservListBox
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 75);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "label6";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(328, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "label7";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(328, 75);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "label8";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.reservListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reservListBox.FormattingEnabled = true;
+            this.reservListBox.Location = new System.Drawing.Point(64, 3);
+            this.reservListBox.Name = "reservListBox";
+            this.reservListBox.Size = new System.Drawing.Size(238, 48);
+            this.reservListBox.TabIndex = 9;
+            this.reservListBox.SelectedIndexChanged += new System.EventHandler(this.reservListBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel4
             // 
@@ -913,7 +1027,7 @@ namespace WindowsFormsApplication1
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.ajouterReservBouton, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.suppReservBouton, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.supprReservBouton, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -933,17 +1047,18 @@ namespace WindowsFormsApplication1
             this.ajouterReservBouton.TabIndex = 0;
             this.ajouterReservBouton.Text = "Ajouter Réservation";
             this.ajouterReservBouton.UseVisualStyleBackColor = true;
+            this.ajouterReservBouton.Click += new System.EventHandler(this.ajouterReserv);
             // 
-            // suppReservBouton
+            // supprReservBouton
             // 
-            this.suppReservBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.suppReservBouton.ForeColor = System.Drawing.Color.DarkRed;
-            this.suppReservBouton.Location = new System.Drawing.Point(10, 61);
-            this.suppReservBouton.Name = "suppReservBouton";
-            this.suppReservBouton.Size = new System.Drawing.Size(100, 40);
-            this.suppReservBouton.TabIndex = 1;
-            this.suppReservBouton.Text = "Supprimer Réservation";
-            this.suppReservBouton.UseVisualStyleBackColor = true;
+            this.supprReservBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.supprReservBouton.ForeColor = System.Drawing.Color.DarkRed;
+            this.supprReservBouton.Location = new System.Drawing.Point(10, 61);
+            this.supprReservBouton.Name = "supprReservBouton";
+            this.supprReservBouton.Size = new System.Drawing.Size(100, 40);
+            this.supprReservBouton.TabIndex = 1;
+            this.supprReservBouton.Text = "Supprimer Réservation";
+            this.supprReservBouton.UseVisualStyleBackColor = true;
             // 
             // auteurInfoPage
             // 
@@ -1021,25 +1136,9 @@ namespace WindowsFormsApplication1
             // 
             this.auteurSuperviseurTableAdapter1.ClearBeforeFill = true;
             // 
-            // typeLabel
+            // infoOuvrageTableAdapter1
             // 
-            this.typeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.typeLabel.AutoSize = true;
-            this.typeLabel.Location = new System.Drawing.Point(388, 203);
-            this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(31, 13);
-            this.typeLabel.TabIndex = 14;
-            this.typeLabel.Text = "Type";
-            this.typeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // typeTextBox
-            // 
-            this.typeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.typeTextBox.Location = new System.Drawing.Point(443, 200);
-            this.typeTextBox.Name = "typeTextBox";
-            this.typeTextBox.ReadOnly = true;
-            this.typeTextBox.Size = new System.Drawing.Size(291, 20);
-            this.typeTextBox.TabIndex = 15;
+            this.infoOuvrageTableAdapter1.ClearBeforeFill = true;
             // 
             // mainForm
             // 
@@ -1078,21 +1177,26 @@ namespace WindowsFormsApplication1
             this.infoBox.ResumeLayout(false);
             this.infosTableLayout.ResumeLayout(false);
             this.infosTableLayout.PerformLayout();
+            this.auteursSplitContainer.Panel1.ResumeLayout(false);
+            this.auteursSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.auteursSplitContainer)).EndInit();
+            this.auteursSplitContainer.ResumeLayout(false);
+            this.auteursBoutonsFlowLayout.ResumeLayout(false);
             this.empruntBox.ResumeLayout(false);
             this.empruntSplitContainer.Panel1.ResumeLayout(false);
             this.empruntSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.empruntSplitContainer)).EndInit();
             this.empruntSplitContainer.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.empruntInfoTableLayout.ResumeLayout(false);
+            this.empruntInfoTableLayout.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.reservationBox.ResumeLayout(false);
             this.reservationSplitContainer.Panel1.ResumeLayout(false);
             this.reservationSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reservationSplitContainer)).EndInit();
             this.reservationSplitContainer.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.reservOuvrageInfoTableLayout.ResumeLayout(false);
+            this.reservOuvrageInfoTableLayout.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1116,19 +1220,19 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.TreeView treeViewCache;
         private System.Windows.Forms.ToolStripMenuItem ouvragesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterOuvrageMenu;
-        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprOuvrageMenu;
         private System.Windows.Forms.ToolStripMenuItem empruntsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterEmpruntMenu;
-        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem supprEmpruntMenu;
         private System.Windows.Forms.ToolStripMenuItem membresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterMembreMenu;
-        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem supprMembreMenu;
         private BiblioEPFCDataSetTableAdapters.SuperParOuvrageTableAdapter superParOuvrageTableAdapter1;
         private BiblioEPFCDataSetTableAdapters.EmpruntMembreParOuvrageTableAdapter empruntMembreParOuvrageTableAdapter1;
         private BiblioEPFCDataSetTableAdapters.ReservationParOuvrageTableAdapter reservationParOuvrageTableAdapter1;
         private System.Windows.Forms.ToolStripMenuItem réservationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajouterReservationMenu;
-        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem supprReservMenu;
         private System.Windows.Forms.TabControl infoTabs;
         private System.Windows.Forms.TabPage ouvrageInfoPage;
         private System.Windows.Forms.TabPage auteurInfoPage;
@@ -1155,35 +1259,54 @@ namespace WindowsFormsApplication1
         private System.Windows.Forms.Label entrepriseLabel;
         private System.Windows.Forms.TextBox entrepTextBox;
         private System.Windows.Forms.SplitContainer empruntSplitContainer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel empruntInfoTableLayout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button ajouterEmpruntBouton;
-        private System.Windows.Forms.Button boutonSuppEmprunt;
+        private System.Windows.Forms.Button supprEmpruntBouton;
         private System.Windows.Forms.SplitContainer reservationSplitContainer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel reservOuvrageInfoTableLayout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button ajouterReservBouton;
-        private System.Windows.Forms.Button suppReservBouton;
+        private System.Windows.Forms.Button supprReservBouton;
         private System.Windows.Forms.Label emprunteParLabel;
         private System.Windows.Forms.Label dateEmpruntLabel;
         private System.Windows.Forms.Label dureeEmpruntLabel;
         private System.Windows.Forms.Label etatEmpruntLabel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label reserveParLabel;
+        private System.Windows.Forms.Label dateReservLabel;
+        private System.Windows.Forms.Label dureeReservLabel;
+        private System.Windows.Forms.TextBox etatEmpruntTextBox;
+        private System.Windows.Forms.TextBox dateEmpruntTextBox;
+        private System.Windows.Forms.TextBox dureeEmpruntTextBox;
+        private System.Windows.Forms.TextBox membreEmpruntTextBox;
+        private System.Windows.Forms.TextBox dateReservTextBox;
+        private System.Windows.Forms.TextBox dureeReservTextBox;
         private System.Windows.Forms.Label superLabel;
         private System.Windows.Forms.TextBox superTextBox;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.TextBox typeTextBox;
+        private BiblioEPFCDataSetTableAdapters.InfoOuvrageTableAdapter infoOuvrageTableAdapter1;
+        private System.Windows.Forms.ToolStripMenuItem editerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sauvegarderLesModificationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ignorerLesModificationsToolStripMenuItem;
+        private enum Edition        { NORMAL, EDITING };
+        private enum Emprunt        { AUCUN, EMPRUNTE };
+        private enum Reservation    { AUCUNE, EXISTANTE };
+        private Edition editState;
+        private Emprunt empruntState;
+        private Reservation reservState;
+        private List<int> listeIDAuteur;
+        private List<int> listeIDMembre;
+        private int SELECTEDOUVRAGE;
+        private System.Windows.Forms.ToolStripMenuItem auteursToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supprAuteurMenu;
+        private System.Windows.Forms.SplitContainer auteursSplitContainer;
+        private System.Windows.Forms.FlowLayoutPanel auteursBoutonsFlowLayout;
+        private System.Windows.Forms.Button ajouterAuteurBouton;
+        private System.Windows.Forms.Button supprAuteurBouton;
+        private System.Windows.Forms.ListBox reservListBox;
 
     }
 }
