@@ -1,6 +1,6 @@
 ﻿namespace ApplicationBiblioEPFC
 {
-    partial class Form2
+    partial class addResForm
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

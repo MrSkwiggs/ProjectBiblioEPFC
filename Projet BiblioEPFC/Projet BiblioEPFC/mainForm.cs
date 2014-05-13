@@ -385,14 +385,13 @@ namespace ApplicationBiblioEPFC
 
         private void fill_OuvrageAuteursSuper(int idOuvrage)
         {
+            this.superListBox.Items.Clear();
             DataTable supers = this.superParOuvrageTableAdapter1.GetData(idOuvrage);
             if (supers.Rows.Count != 0)
             {
                 DataRow super = supers.Rows[0];
-                this.superTextBox.Text = super.ItemArray[0].ToString() + ' ' + super.ItemArray[1].ToString();
+                this.superListBox.Items.Add(super.ItemArray[0].ToString() + ' ' + super.ItemArray[1].ToString());
             }
-            else
-                this.superTextBox.Clear();
 
             DataTable auteurs = this.auteurParOuvrageTableAdapter1.GetData(idOuvrage);
             foreach (DataRow auteur in auteurs.Rows)
@@ -597,7 +596,7 @@ namespace ApplicationBiblioEPFC
 
         private void ajouterReserv(object sender, EventArgs e)
                 {
-                    Form2 reservationForm = new Form2();
+                    addResForm reservationForm = new addResForm();
                     reservationForm.ShowDialog();
                     update_Treeview();
                 }

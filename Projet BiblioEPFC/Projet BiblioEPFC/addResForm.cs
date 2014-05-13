@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ApplicationBiblioEPFC
 {
-    public partial class Form2 : Form
+    public partial class addResForm : Form
     {
-        public Form2()
+        public addResForm()
         {
             InitializeComponent();
         }

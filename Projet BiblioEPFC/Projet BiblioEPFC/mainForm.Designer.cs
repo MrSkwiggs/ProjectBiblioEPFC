@@ -75,7 +75,6 @@ namespace ApplicationBiblioEPFC
             this.localLabel = new System.Windows.Forms.Label();
             this.localTextBox = new System.Windows.Forms.TextBox();
             this.superLabel = new System.Windows.Forms.Label();
-            this.superTextBox = new System.Windows.Forms.TextBox();
             this.entrepriseLabel = new System.Windows.Forms.Label();
             this.entrepTextBox = new System.Windows.Forms.TextBox();
             this.typeLabel = new System.Windows.Forms.Label();
@@ -124,6 +123,10 @@ namespace ApplicationBiblioEPFC
             this.reservationParOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ReservationParOuvrageTableAdapter();
             this.auteurSuperviseurTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
             this.infoOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.InfoOuvrageTableAdapter();
+            this.superListBox = new System.Windows.Forms.ListBox();
+            this.auteurInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.infAuteurGroupBox = new System.Windows.Forms.GroupBox();
+            this.travailAuteurGroupBox = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).BeginInit();
             this.formSplitContainer.Panel1.SuspendLayout();
@@ -163,6 +166,8 @@ namespace ApplicationBiblioEPFC
             this.reservationSplitContainer.SuspendLayout();
             this.reservOuvrageInfoTableLayout.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.auteurInfoPage.SuspendLayout();
+            this.auteurInfoTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -313,21 +318,21 @@ namespace ApplicationBiblioEPFC
             // ajouterReservationMenu
             // 
             this.ajouterReservationMenu.Name = "ajouterReservationMenu";
-            this.ajouterReservationMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterReservationMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterReservationMenu.Text = "Ajouter";
             this.ajouterReservationMenu.Click += new System.EventHandler(this.ajouterReserv);
             // 
             // supprReservMenu
             // 
             this.supprReservMenu.Name = "supprReservMenu";
-            this.supprReservMenu.Size = new System.Drawing.Size(152, 22);
+            this.supprReservMenu.Size = new System.Drawing.Size(129, 22);
             this.supprReservMenu.Text = "Supprimer";
             // 
             // formSplitContainer
             // 
-            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.formSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.formSplitContainer.IsSplitterFixed = true;
             this.formSplitContainer.Location = new System.Drawing.Point(0, 24);
@@ -375,9 +380,9 @@ namespace ApplicationBiblioEPFC
             // 
             // splitContainer3
             // 
-            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
@@ -406,8 +411,8 @@ namespace ApplicationBiblioEPFC
             // 
             // textBoxRechercher
             // 
-            this.textBoxRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRechercher.Location = new System.Drawing.Point(3, 3);
             this.textBoxRechercher.Name = "textBoxRechercher";
             this.textBoxRechercher.Size = new System.Drawing.Size(145, 20);
@@ -417,14 +422,14 @@ namespace ApplicationBiblioEPFC
             // 
             // generalTreeView
             // 
-            this.generalTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.generalTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.generalTreeView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.ouvrageBindingSource, "titre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "null"));
             this.generalTreeView.Location = new System.Drawing.Point(3, 0);
             this.generalTreeView.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(220, 548);
+            this.generalTreeView.Size = new System.Drawing.Size(220, 551);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
@@ -483,9 +488,9 @@ namespace ApplicationBiblioEPFC
             // 
             // infoBox
             // 
-            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.infoBox.Controls.Add(this.infosTableLayout);
             this.infoBox.Location = new System.Drawing.Point(3, 3);
             this.infoBox.Name = "infoBox";
@@ -496,9 +501,9 @@ namespace ApplicationBiblioEPFC
             // 
             // infosTableLayout
             // 
-            this.infosTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.infosTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.infosTableLayout.ColumnCount = 4;
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -514,12 +519,12 @@ namespace ApplicationBiblioEPFC
             this.infosTableLayout.Controls.Add(this.localLabel, 0, 3);
             this.infosTableLayout.Controls.Add(this.localTextBox, 1, 3);
             this.infosTableLayout.Controls.Add(this.superLabel, 2, 1);
-            this.infosTableLayout.Controls.Add(this.superTextBox, 3, 1);
             this.infosTableLayout.Controls.Add(this.entrepriseLabel, 2, 2);
             this.infosTableLayout.Controls.Add(this.entrepTextBox, 3, 2);
             this.infosTableLayout.Controls.Add(this.typeLabel, 2, 3);
             this.infosTableLayout.Controls.Add(this.typeTextBox, 3, 3);
             this.infosTableLayout.Controls.Add(this.auteursSplitContainer, 3, 0);
+            this.infosTableLayout.Controls.Add(this.superListBox, 3, 1);
             this.infosTableLayout.Location = new System.Drawing.Point(3, 16);
             this.infosTableLayout.Name = "infosTableLayout";
             this.infosTableLayout.RowCount = 4;
@@ -629,15 +634,6 @@ namespace ApplicationBiblioEPFC
             this.superLabel.Text = "Superviseur";
             this.superLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // superTextBox
-            // 
-            this.superTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.superTextBox.Location = new System.Drawing.Point(443, 80);
-            this.superTextBox.Name = "superTextBox";
-            this.superTextBox.ReadOnly = true;
-            this.superTextBox.Size = new System.Drawing.Size(291, 20);
-            this.superTextBox.TabIndex = 13;
-            // 
             // entrepriseLabel
             // 
             this.entrepriseLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -739,9 +735,9 @@ namespace ApplicationBiblioEPFC
             // 
             // empruntBox
             // 
-            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.empruntBox.Controls.Add(this.empruntSplitContainer);
             this.empruntBox.Location = new System.Drawing.Point(3, 268);
             this.empruntBox.Name = "empruntBox";
@@ -1062,6 +1058,7 @@ namespace ApplicationBiblioEPFC
             // 
             // auteurInfoPage
             // 
+            this.auteurInfoPage.Controls.Add(this.auteurInfoTableLayout);
             this.auteurInfoPage.Location = new System.Drawing.Point(4, 22);
             this.auteurInfoPage.Name = "auteurInfoPage";
             this.auteurInfoPage.Padding = new System.Windows.Forms.Padding(3);
@@ -1140,6 +1137,51 @@ namespace ApplicationBiblioEPFC
             // 
             this.infoOuvrageTableAdapter1.ClearBeforeFill = true;
             // 
+            // superListBox
+            // 
+            this.superListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.superListBox.FormattingEnabled = true;
+            this.superListBox.Location = new System.Drawing.Point(443, 81);
+            this.superListBox.Name = "superListBox";
+            this.superListBox.Size = new System.Drawing.Size(291, 17);
+            this.superListBox.TabIndex = 17;
+            // 
+            // auteurInfoTableLayout
+            // 
+            this.auteurInfoTableLayout.ColumnCount = 1;
+            this.auteurInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.auteurInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.auteurInfoTableLayout.Controls.Add(this.infAuteurGroupBox, 0, 0);
+            this.auteurInfoTableLayout.Controls.Add(this.travailAuteurGroupBox, 0, 1);
+            this.auteurInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.auteurInfoTableLayout.Location = new System.Drawing.Point(3, 3);
+            this.auteurInfoTableLayout.Name = "auteurInfoTableLayout";
+            this.auteurInfoTableLayout.RowCount = 2;
+            this.auteurInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.auteurInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.auteurInfoTableLayout.Size = new System.Drawing.Size(749, 531);
+            this.auteurInfoTableLayout.TabIndex = 0;
+            // 
+            // infAuteurGroupBox
+            // 
+            this.infAuteurGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.infAuteurGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.infAuteurGroupBox.Name = "infAuteurGroupBox";
+            this.infAuteurGroupBox.Size = new System.Drawing.Size(743, 259);
+            this.infAuteurGroupBox.TabIndex = 0;
+            this.infAuteurGroupBox.TabStop = false;
+            this.infAuteurGroupBox.Text = "Infos";
+            // 
+            // travailAuteurGroupBox
+            // 
+            this.travailAuteurGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.travailAuteurGroupBox.Location = new System.Drawing.Point(3, 268);
+            this.travailAuteurGroupBox.Name = "travailAuteurGroupBox";
+            this.travailAuteurGroupBox.Size = new System.Drawing.Size(743, 260);
+            this.travailAuteurGroupBox.TabIndex = 1;
+            this.travailAuteurGroupBox.TabStop = false;
+            this.travailAuteurGroupBox.Text = "Ouvrages";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1198,6 +1240,8 @@ namespace ApplicationBiblioEPFC
             this.reservOuvrageInfoTableLayout.ResumeLayout(false);
             this.reservOuvrageInfoTableLayout.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.auteurInfoPage.ResumeLayout(false);
+            this.auteurInfoTableLayout.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1282,7 +1326,6 @@ namespace ApplicationBiblioEPFC
         private System.Windows.Forms.TextBox dateReservTextBox;
         private System.Windows.Forms.TextBox dureeReservTextBox;
         private System.Windows.Forms.Label superLabel;
-        private System.Windows.Forms.TextBox superTextBox;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.TextBox typeTextBox;
         private BiblioEPFCDataSetTableAdapters.InfoOuvrageTableAdapter infoOuvrageTableAdapter1;
@@ -1307,6 +1350,10 @@ namespace ApplicationBiblioEPFC
         private System.Windows.Forms.Button ajouterAuteurBouton;
         private System.Windows.Forms.Button supprAuteurBouton;
         private System.Windows.Forms.ListBox reservListBox;
+        private System.Windows.Forms.ListBox superListBox;
+        private System.Windows.Forms.TableLayoutPanel auteurInfoTableLayout;
+        private System.Windows.Forms.GroupBox infAuteurGroupBox;
+        private System.Windows.Forms.GroupBox travailAuteurGroupBox;
 
     }
 }
