@@ -11,6 +11,20 @@ namespace ApplicationBiblioEPFC
 {
     public partial class mainForm : Form
     {
+        private enum Edition { NORMAL, EDITING };
+        private enum Emprunt { AUCUN, EMPRUNTE };
+        private enum Reservation { AUCUNE, EXISTANTE };
+        private Edition editState;
+        private Emprunt empruntState;
+        private Reservation reservState;
+        private List<int> listeIDAuteur;
+        private List<int> listeIDMembre;
+        private List<int> listeIDOuvrageEcrits;
+        private List<int> listeIDOuvrageSuper;
+        private int SELECTEDOUVRAGE;
+        private int SELECTEDAUTEUR;
+        private int SELECTEDMEMBRE;
+
         #region Initialisation
 
         public mainForm()
@@ -19,8 +33,10 @@ namespace ApplicationBiblioEPFC
             treeViewCache = new TreeView();
             listeIDAuteur = new List<int>();
             listeIDMembre = new List<int>();
+            listeIDOuvrageEcrits = new List<int>();
+            listeIDOuvrageSuper = new List<int>();
             editState = Edition.NORMAL;
-            stopEditionMenuClick(null,null);
+            lockControls(true);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,7 +108,7 @@ namespace ApplicationBiblioEPFC
         private TreeNode nodeGenericPerson(String type, String id, String nom, String prenom)
         {
             TreeNode auteurNode = new TreeNode();
-            auteurNode.Name = "person " + id;
+            auteurNode.Name = type + ' ' + id;
             auteurNode.Text = nom + ' ' + prenom;
 
             return auteurNode;
@@ -258,50 +274,6 @@ namespace ApplicationBiblioEPFC
             return false;
         }
 
-        #region Recherche de node
-
-        private void textBoxRechercher_TextChanged(object sender, EventArgs e)
-        {
-            this.generalTreeView.BeginUpdate();
-            this.generalTreeView.Nodes.Clear();
-            if (this.textBoxRechercher.Text != string.Empty)
-            {
-                foreach (TreeNode _parentNode in treeViewCache.Nodes)
-                {
-                    foreach (TreeNode _childNode in _parentNode.Nodes)
-                    {
-                        if (_childNode.Text.IndexOf(textBoxRechercher.Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                        {
-                            if(!treeContains(_childNode.Text))
-                                this.generalTreeView.Nodes.Add((TreeNode)_childNode.Clone());
-                        }
-                        foreach (TreeNode _c_ChildNode in _childNode.Nodes)
-                        {
-                            foreach (TreeNode _c_c_ChildNode in _c_ChildNode.Nodes)
-                            {
-                                if (_c_c_ChildNode.Text.IndexOf(textBoxRechercher.Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                                {
-                                    if (!treeContains(_c_c_ChildNode.Text))
-                                        generalTreeView.Nodes.Add((TreeNode)_c_c_ChildNode.Clone());
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                foreach (TreeNode _node in this.treeViewCache.Nodes)
-                {
-                    generalTreeView.Nodes.Add((TreeNode)_node.Clone());
-                }
-            }
-            //enables redrawing tree after all objects have been added
-            this.generalTreeView.EndUpdate();
-        }
-
-        #endregion 
-
         #endregion
 
         #region Fill InfoPage
@@ -310,40 +282,39 @@ namespace ApplicationBiblioEPFC
         {
             String[] s;
             s = infos.Name.Split(' ');
+            int id = 0;
+            if (s.GetLength(0) > 1)
+                id = Convert.ToInt32(s[1].ToString());
             switch (s[0])
             {
                 case "ouvrage":
-                    {
-                        fill_OuvragePage(Convert.ToInt32(s[1]));
+                        fill_OuvragePage(id);
                         break;
-                    }
-                //case "Auteur(s)":
-                //    {
-                //        fill_AuteurPage(infos);
-                //        break;
-                //    }
-                //case "Membres
+
+                case "auteur":
+                        fill_AuteurPage(id);
+                        break;
             }
         }
 
-        #region fill OuvragePage
+            #region fill OuvragePage
 
         private void fill_OuvragePage(int idOuvrage)
         {
             this.SELECTEDOUVRAGE = idOuvrage;
-            fill_OuvrageInfoBox(idOuvrage);
-            fill_OuvrageEmpruntBox(idOuvrage);
-            fill_OuvrageAuteursSuper(idOuvrage);
-            fill_OuvrageReservBox(idOuvrage);
+            fill_OuvrageInfoBox();
+            fill_OuvrageEmpruntBox();
+            fill_OuvrageAuteursSuper();
+            fill_OuvrageReservBox();
 
             refreshStateDisplay();
         }
 
-        private void fill_OuvrageInfoBox(int idOuvrage)
+        private void fill_OuvrageInfoBox()
         {
             this.auteursListBox.Items.Clear();
             this.listeIDAuteur.Clear();
-            DataTable ouvrages = this.infoOuvrageTableAdapter1.GetDataByID(idOuvrage);
+            DataTable ouvrages = this.infoOuvrageTableAdapter1.GetDataByID(SELECTEDOUVRAGE);
             DataRow ouvrage = ouvrages.Rows[0];
             int it = 0;
             DateTime dateCrea = new DateTime();
@@ -357,9 +328,9 @@ namespace ApplicationBiblioEPFC
             this.entrepTextBox.Text = ouvrage.ItemArray[it++].ToString();
         }
 
-        private void fill_OuvrageEmpruntBox(int idOuvrage)
+        private void fill_OuvrageEmpruntBox()
         {
-            DataTable emprunts = this.empruntMembreParOuvrageTableAdapter1.GetData(idOuvrage);
+            DataTable emprunts = this.empruntMembreParOuvrageTableAdapter1.GetData(SELECTEDOUVRAGE);
             DateTime dateRetour = new DateTime();
             int it = 1, duree = 0;
             if (emprunts.Rows.Count != 0)
@@ -369,7 +340,7 @@ namespace ApplicationBiblioEPFC
                 this.membreEmpruntTextBox.Text = emprunt.ItemArray[it++].ToString() + ' ' + emprunt.ItemArray[it++].ToString();
                 dateRetour = DateTime.Parse(emprunt.ItemArray[it++].ToString());
                 this.dateEmpruntTextBox.Text = dateRetour.ToShortDateString();
-                duree = Convert.ToInt32(emprunt.ItemArray[it++].ToString());
+                duree = Convert.ToInt16(emprunt.ItemArray[it++].ToString());
                 this.dureeEmpruntTextBox.Text = duree + " jours";
                 this.etatEmpruntTextBox.Text = etatEmprunt(dateRetour.AddDays(duree));
             }
@@ -383,28 +354,31 @@ namespace ApplicationBiblioEPFC
             }
         }
 
-        private void fill_OuvrageAuteursSuper(int idOuvrage)
+        private void fill_OuvrageAuteursSuper()
         {
+            this.listeIDAuteur.Clear();
             this.superListBox.Items.Clear();
-            DataTable supers = this.superParOuvrageTableAdapter1.GetData(idOuvrage);
-            if (supers.Rows.Count != 0)
-            {
-                DataRow super = supers.Rows[0];
-                this.superListBox.Items.Add(super.ItemArray[0].ToString() + ' ' + super.ItemArray[1].ToString());
-            }
 
-            DataTable auteurs = this.auteurParOuvrageTableAdapter1.GetData(idOuvrage);
+            DataTable auteurs = this.auteurParOuvrageTableAdapter1.GetData(SELECTEDOUVRAGE);
             foreach (DataRow auteur in auteurs.Rows)
             {
                 this.auteursListBox.Items.Add(auteur.ItemArray[1].ToString() + ' ' + auteur.ItemArray[2].ToString());
                 listeIDAuteur.Add(Convert.ToInt32(auteur.ItemArray[0].ToString()));
             }
+
+            DataTable supers = this.superParOuvrageTableAdapter1.GetData(SELECTEDOUVRAGE);
+            if (supers.Rows.Count != 0)
+            {
+                DataRow super = supers.Rows[0];
+                this.superListBox.Items.Add(super.ItemArray[0].ToString() + ' ' + super.ItemArray[1].ToString());
+                listeIDAuteur.Add(Convert.ToInt32(super.ItemArray[2].ToString()));
+            }
         }
 
-        private void fill_OuvrageReservBox(int idOuvrage)
+        private void fill_OuvrageReservBox()
         {
             reservListBox.Items.Clear();
-            DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(idOuvrage);
+            DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(SELECTEDOUVRAGE);
             reservState = Reservation.AUCUNE;
             foreach(DataRow res in reservs.Rows)
             {
@@ -437,7 +411,52 @@ namespace ApplicationBiblioEPFC
             return res;
         }
 
-        #endregion
+            #endregion
+
+            #region fill AuteurPage
+
+        private void fill_AuteurPage(int idAuteur)
+        {
+            this.SELECTEDAUTEUR = idAuteur;
+            fill_AuteurInfoBox();
+            fill_AuteurPubliBox();
+            fill_AuteurSuperBox();
+        }
+
+        private void fill_AuteurInfoBox()
+        {
+            DataTable infos = this.auteurSuperviseurTableAdapter1.GetDataByIDAutSup(SELECTEDAUTEUR);
+            DataRow info = infos.Rows[0];
+            this.nomAuteurTextBox.Text = info.ItemArray[1].ToString();
+            this.prenomAuteurTextBox.Text = info.ItemArray[2].ToString();
+            this.statutAuteurTextBox.Text = info.ItemArray[3].ToString();
+        }
+
+        private void fill_AuteurPubliBox()
+        {
+            listeIDOuvrageEcrits.Clear();
+            publiAuteurListBox.Items.Clear();
+            DataTable publis = this.publicationsParAuteurTableAdapter1.GetDataByAuteur(SELECTEDAUTEUR);
+            foreach (DataRow publi in publis.Rows)
+            {
+                publiAuteurListBox.Items.Add(publi.ItemArray[1].ToString());
+                listeIDOuvrageEcrits.Add(Convert.ToInt32(publi.ItemArray[0].ToString()));
+            }
+        }
+
+        private void fill_AuteurSuperBox()
+        {
+            listeIDOuvrageSuper.Clear();
+            auteurSuperviseListBox.Items.Clear();
+            DataTable ouvrages = this.titreOuvrageParSuperTableAdapter1.GetTitreBySuper(SELECTEDAUTEUR);
+            foreach (DataRow ouvrage in ouvrages.Rows)
+            {
+                auteurSuperviseListBox.Items.Add(ouvrage.ItemArray[1].ToString());
+                listeIDOuvrageSuper.Add(Convert.ToInt32(ouvrage.ItemArray[0].ToString()));
+            }
+        }
+
+            #endregion
 
         #endregion
 
@@ -500,16 +519,56 @@ namespace ApplicationBiblioEPFC
             #endregion
         }
 
+        private void lockControls(bool locked)
+        {
+            lockOuvragePage(locked);
+            lockAuteurPage(locked);
+        }
+
+        private void lockOuvragePage(bool locked)
+        {
+            foreach (Control c in infosOuvrageTableLayout.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                    ((TextBox)c).ReadOnly = locked;
+            }
+
+            foreach (Control c in auteursSplitContainer.Panel2.Controls)
+                if (c.GetType() == typeof(Button))
+                    c.Enabled = !locked;
+
+            foreach (Control c in superSplitContainer.Panel2.Controls)
+                if (c.GetType() == typeof(Button))
+                    c.Enabled = !locked;
+        }
+
+        private void lockAuteurPage(bool locked)
+        {
+            foreach (Control c in infosAuteurTableLayout.Controls)
+                if (c.GetType() == typeof(TextBox))
+                    ((TextBox)c).ReadOnly = locked;
+
+            foreach (Control c in auteurEcritSplitContainer.Panel2.Controls)
+                c.Enabled = !locked;
+
+            foreach (Control c in auteurSuperviseSplitContainer.Panel2.Controls)
+                c.Enabled = !locked;
+        }
+
         private void showInfoPage(TreeNode n)
         {
             String[] s = n.Name.Split(' ');
-            switch(s[0])
+            showInfoPage(s[0]);
+        }
+
+        private void showInfoPage(String s)
+        {
+            switch (s)
             {
                 case "ouvrage":
                     infoTabs.SelectedIndex = 0;
                     break;
                 case "auteur":
-                case "super":
                     infoTabs.SelectedIndex = 1;
                     break;
                 case "membre":
@@ -546,60 +605,121 @@ namespace ApplicationBiblioEPFC
 
         #region Events
 
-        private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
-                {
-                    editState = Edition.EDITING;
-                    foreach (Control c in this.infosTableLayout.Controls)
-                    {
-                        if (c.GetType() == typeof(TextBox))
-                            ((TextBox)c).ReadOnly = false;
-                    }
-
-                    foreach(Control c in auteursBoutonsFlowLayout.Controls)
-                        if (c.GetType() == typeof(Button))
-                            c.Enabled = true;
-
-                    refreshStateDisplay();
-                }
-
-        private void stopEditionMenuClick(object sender, EventArgs e)
-                        {
-                            editState = Edition.NORMAL;
-                            foreach (Control c in this.infosTableLayout.Controls)
-                            {
-                                if (c.GetType() == typeof(TextBox))
-                                    ((TextBox)c).ReadOnly = true;
-                            }
-
-                            foreach (Control c in auteursBoutonsFlowLayout.Controls)
-                                if (c.GetType() == typeof(Button))
-                                    c.Enabled = false;
-
-                            refreshStateDisplay();
-                        }
+        private void toggleEditionMode(object sender, EventArgs e)
+        {
+            bool locked;
+            if (editState == Edition.NORMAL)
+            {
+                editState = Edition.EDITING;
+                locked = false;
+            }
+            else
+            {
+                editState = Edition.NORMAL;
+                locked = true;
+            }
+            lockControls(locked);
+            refreshStateDisplay();
+        }
 
         private void generalTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-                {
-                    generalTreeView_NodeMouseClick(sender, e);
-                    showInfoPage(e.Node);
-                }
+        {
+            generalTreeView_NodeMouseClick(sender, e);
+            showInfoPage(e.Node);
+        }
 
         private void reservListBox_SelectedIndexChanged(object sender, EventArgs e)
-                {
-                    refreshOuvrageReservBox(reservListBox.SelectedIndex);
-                }
+        {
+            refreshOuvrageReservBox(reservListBox.SelectedIndex);
+        }
 
         private void generalTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-                {
-                    fill_InfoPage(e.Node);
-                }
+        {
+            fill_InfoPage(e.Node);
+        }
 
         private void ajouterReserv(object sender, EventArgs e)
+        {
+            addResForm reservationForm = new addResForm();
+            reservationForm.ShowDialog();
+            update_Treeview();
+        }
+
+        private void textBoxRechercher_TextChanged(object sender, EventArgs e)
+        {
+            this.generalTreeView.BeginUpdate();
+            this.generalTreeView.Nodes.Clear();
+            if (this.textBoxRechercher.Text != string.Empty)
+            {
+                foreach (TreeNode _parentNode in treeViewCache.Nodes)
                 {
-                    addResForm reservationForm = new addResForm();
-                    reservationForm.ShowDialog();
-                    update_Treeview();
+                    foreach (TreeNode _childNode in _parentNode.Nodes)
+                    {
+                        if (_childNode.Text.IndexOf(textBoxRechercher.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            if (!treeContains(_childNode.Text))
+                                this.generalTreeView.Nodes.Add((TreeNode)_childNode.Clone());
+                        }
+                        foreach (TreeNode _c_ChildNode in _childNode.Nodes)
+                        {
+                            foreach (TreeNode _c_c_ChildNode in _c_ChildNode.Nodes)
+                            {
+                                if (_c_c_ChildNode.Text.IndexOf(textBoxRechercher.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                                {
+                                    if (!treeContains(_c_c_ChildNode.Text))
+                                        generalTreeView.Nodes.Add((TreeNode)_c_c_ChildNode.Clone());
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            else
+            {
+                foreach (TreeNode _node in this.treeViewCache.Nodes)
+                {
+                    generalTreeView.Nodes.Add((TreeNode)_node.Clone());
+                }
+            }
+            //enables redrawing tree after all objects have been added
+            this.generalTreeView.EndUpdate();
+        }
+
+        private void auteursListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (auteursListBox.Items.Count != 0 && auteursListBox.SelectedItem != null)
+            {
+                fill_AuteurPage(listeIDAuteur[auteursListBox.SelectedIndex]);
+                showInfoPage("auteur");
+            }
+        }
+
+        private void superListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (superListBox.Items.Count != 0)
+            {
+                fill_AuteurPage(listeIDAuteur[listeIDAuteur.Count-1]);
+                showInfoPage("auteur");
+            }
+        }
+
+        private void publiAuteurListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (publiAuteurListBox.Items.Count != 0 && publiAuteurListBox.SelectedItem != null)
+            {
+                fill_OuvragePage(listeIDOuvrageEcrits[publiAuteurListBox.SelectedIndex]);
+                showInfoPage("ouvrage");
+            }
+        }
+
+        private void auteurSuperviseListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (auteurSuperviseListBox.Items.Count != 0 && auteurSuperviseListBox.SelectedItem != null)
+            {
+                fill_OuvragePage(listeIDOuvrageSuper[auteurSuperviseListBox.SelectedIndex]);
+                showInfoPage("ouvrage");
+            }
+        }
 
         #endregion
     }

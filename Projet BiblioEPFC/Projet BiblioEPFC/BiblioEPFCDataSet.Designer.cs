@@ -46,6 +46,10 @@ namespace ApplicationBiblioEPFC {
         
         private InfoOuvrageParIDOuvrageDataTable tableInfoOuvrageParIDOuvrage;
         
+        private PublicationsParAuteurDataTable tablePublicationsParAuteur;
+        
+        private TitreOuvrageParSuperDataTable tableTitreOuvrageParSuper;
+        
         private global::System.Data.DataRelation relationFK_ecrire_AuteurSuperviseur;
         
         private global::System.Data.DataRelation relationFK_ecrire_Ouvrage;
@@ -75,6 +79,14 @@ namespace ApplicationBiblioEPFC {
         private global::System.Data.DataRelation relationFK_Ouvrage_Membre2;
         
         private global::System.Data.DataRelation relationFK_reserver_Membre2;
+        
+        private global::System.Data.DataRelation relationFK_ecrire_Ouvrage1;
+        
+        private global::System.Data.DataRelation relationFK_reserver_Ouvrage1;
+        
+        private global::System.Data.DataRelation relationFK_ecrire_Ouvrage2;
+        
+        private global::System.Data.DataRelation relationFK_reserver_Ouvrage2;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -136,6 +148,12 @@ namespace ApplicationBiblioEPFC {
                 }
                 if ((ds.Tables["InfoOuvrageParIDOuvrage"] != null)) {
                     base.Tables.Add(new InfoOuvrageParIDOuvrageDataTable(ds.Tables["InfoOuvrageParIDOuvrage"]));
+                }
+                if ((ds.Tables["PublicationsParAuteur"] != null)) {
+                    base.Tables.Add(new PublicationsParAuteurDataTable(ds.Tables["PublicationsParAuteur"]));
+                }
+                if ((ds.Tables["TitreOuvrageParSuper"] != null)) {
+                    base.Tables.Add(new TitreOuvrageParSuperDataTable(ds.Tables["TitreOuvrageParSuper"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -267,6 +285,26 @@ namespace ApplicationBiblioEPFC {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public PublicationsParAuteurDataTable PublicationsParAuteur {
+            get {
+                return this.tablePublicationsParAuteur;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TitreOuvrageParSuperDataTable TitreOuvrageParSuper {
+            get {
+                return this.tableTitreOuvrageParSuper;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -364,6 +402,12 @@ namespace ApplicationBiblioEPFC {
                 }
                 if ((ds.Tables["InfoOuvrageParIDOuvrage"] != null)) {
                     base.Tables.Add(new InfoOuvrageParIDOuvrageDataTable(ds.Tables["InfoOuvrageParIDOuvrage"]));
+                }
+                if ((ds.Tables["PublicationsParAuteur"] != null)) {
+                    base.Tables.Add(new PublicationsParAuteurDataTable(ds.Tables["PublicationsParAuteur"]));
+                }
+                if ((ds.Tables["TitreOuvrageParSuper"] != null)) {
+                    base.Tables.Add(new TitreOuvrageParSuperDataTable(ds.Tables["TitreOuvrageParSuper"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -464,6 +508,18 @@ namespace ApplicationBiblioEPFC {
                     this.tableInfoOuvrageParIDOuvrage.InitVars();
                 }
             }
+            this.tablePublicationsParAuteur = ((PublicationsParAuteurDataTable)(base.Tables["PublicationsParAuteur"]));
+            if ((initTable == true)) {
+                if ((this.tablePublicationsParAuteur != null)) {
+                    this.tablePublicationsParAuteur.InitVars();
+                }
+            }
+            this.tableTitreOuvrageParSuper = ((TitreOuvrageParSuperDataTable)(base.Tables["TitreOuvrageParSuper"]));
+            if ((initTable == true)) {
+                if ((this.tableTitreOuvrageParSuper != null)) {
+                    this.tableTitreOuvrageParSuper.InitVars();
+                }
+            }
             this.relationFK_ecrire_AuteurSuperviseur = this.Relations["FK_ecrire_AuteurSuperviseur"];
             this.relationFK_ecrire_Ouvrage = this.Relations["FK_ecrire_Ouvrage"];
             this.relationFK_Ouvrage_AuteurSuperviseur = this.Relations["FK_Ouvrage_AuteurSuperviseur"];
@@ -479,6 +535,10 @@ namespace ApplicationBiblioEPFC {
             this.relationFK_Ouvrage_AuteurSuperviseur2 = this.Relations["FK_Ouvrage_AuteurSuperviseur2"];
             this.relationFK_Ouvrage_Membre2 = this.Relations["FK_Ouvrage_Membre2"];
             this.relationFK_reserver_Membre2 = this.Relations["FK_reserver_Membre2"];
+            this.relationFK_ecrire_Ouvrage1 = this.Relations["FK_ecrire_Ouvrage1"];
+            this.relationFK_reserver_Ouvrage1 = this.Relations["FK_reserver_Ouvrage1"];
+            this.relationFK_ecrire_Ouvrage2 = this.Relations["FK_ecrire_Ouvrage2"];
+            this.relationFK_reserver_Ouvrage2 = this.Relations["FK_reserver_Ouvrage2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -511,6 +571,10 @@ namespace ApplicationBiblioEPFC {
             base.Tables.Add(this.tableEmpruntMembreParOuvrage);
             this.tableInfoOuvrageParIDOuvrage = new InfoOuvrageParIDOuvrageDataTable();
             base.Tables.Add(this.tableInfoOuvrageParIDOuvrage);
+            this.tablePublicationsParAuteur = new PublicationsParAuteurDataTable();
+            base.Tables.Add(this.tablePublicationsParAuteur);
+            this.tableTitreOuvrageParSuper = new TitreOuvrageParSuperDataTable();
+            base.Tables.Add(this.tableTitreOuvrageParSuper);
             this.relationFK_ecrire_AuteurSuperviseur = new global::System.Data.DataRelation("FK_ecrire_AuteurSuperviseur", new global::System.Data.DataColumn[] {
                         this.tableAuteurSuperviseur.idAuteurSuperColumn}, new global::System.Data.DataColumn[] {
                         this.tableecrire.numAuteurColumn}, false);
@@ -571,6 +635,22 @@ namespace ApplicationBiblioEPFC {
                         this.tableEmpruntMembreParOuvrage.idMembreColumn}, new global::System.Data.DataColumn[] {
                         this.tablereserver.numMembreColumn}, false);
             this.Relations.Add(this.relationFK_reserver_Membre2);
+            this.relationFK_ecrire_Ouvrage1 = new global::System.Data.DataRelation("FK_ecrire_Ouvrage1", new global::System.Data.DataColumn[] {
+                        this.tablePublicationsParAuteur.idOuvrageColumn}, new global::System.Data.DataColumn[] {
+                        this.tableecrire.numOuvrageColumn}, false);
+            this.Relations.Add(this.relationFK_ecrire_Ouvrage1);
+            this.relationFK_reserver_Ouvrage1 = new global::System.Data.DataRelation("FK_reserver_Ouvrage1", new global::System.Data.DataColumn[] {
+                        this.tablePublicationsParAuteur.idOuvrageColumn}, new global::System.Data.DataColumn[] {
+                        this.tablereserver.numOuvrageColumn}, false);
+            this.Relations.Add(this.relationFK_reserver_Ouvrage1);
+            this.relationFK_ecrire_Ouvrage2 = new global::System.Data.DataRelation("FK_ecrire_Ouvrage2", new global::System.Data.DataColumn[] {
+                        this.tableTitreOuvrageParSuper.idOuvrageColumn}, new global::System.Data.DataColumn[] {
+                        this.tableecrire.numOuvrageColumn}, false);
+            this.Relations.Add(this.relationFK_ecrire_Ouvrage2);
+            this.relationFK_reserver_Ouvrage2 = new global::System.Data.DataRelation("FK_reserver_Ouvrage2", new global::System.Data.DataColumn[] {
+                        this.tableTitreOuvrageParSuper.idOuvrageColumn}, new global::System.Data.DataColumn[] {
+                        this.tablereserver.numOuvrageColumn}, false);
+            this.Relations.Add(this.relationFK_reserver_Ouvrage2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -636,6 +716,18 @@ namespace ApplicationBiblioEPFC {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeInfoOuvrageParIDOuvrage() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializePublicationsParAuteur() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeTitreOuvrageParSuper() {
             return false;
         }
         
@@ -726,6 +818,12 @@ namespace ApplicationBiblioEPFC {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void InfoOuvrageParIDOuvrageRowChangeEventHandler(object sender, InfoOuvrageParIDOuvrageRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void PublicationsParAuteurRowChangeEventHandler(object sender, PublicationsParAuteurRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void TitreOuvrageParSuperRowChangeEventHandler(object sender, TitreOuvrageParSuperRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -4286,6 +4384,562 @@ namespace ApplicationBiblioEPFC {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PublicationsParAuteurDataTable : global::System.Data.TypedTableBase<PublicationsParAuteurRow> {
+            
+            private global::System.Data.DataColumn columnidOuvrage;
+            
+            private global::System.Data.DataColumn columntitre;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurDataTable() {
+                this.TableName = "PublicationsParAuteur";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PublicationsParAuteurDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected PublicationsParAuteurDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idOuvrageColumn {
+                get {
+                    return this.columnidOuvrage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn titreColumn {
+                get {
+                    return this.columntitre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow this[int index] {
+                get {
+                    return ((PublicationsParAuteurRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PublicationsParAuteurRowChangeEventHandler PublicationsParAuteurRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PublicationsParAuteurRowChangeEventHandler PublicationsParAuteurRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PublicationsParAuteurRowChangeEventHandler PublicationsParAuteurRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PublicationsParAuteurRowChangeEventHandler PublicationsParAuteurRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddPublicationsParAuteurRow(PublicationsParAuteurRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow AddPublicationsParAuteurRow(string titre) {
+                PublicationsParAuteurRow rowPublicationsParAuteurRow = ((PublicationsParAuteurRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        titre};
+                rowPublicationsParAuteurRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPublicationsParAuteurRow);
+                return rowPublicationsParAuteurRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow FindByidOuvrage(int idOuvrage) {
+                return ((PublicationsParAuteurRow)(this.Rows.Find(new object[] {
+                            idOuvrage})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PublicationsParAuteurDataTable cln = ((PublicationsParAuteurDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PublicationsParAuteurDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnidOuvrage = base.Columns["idOuvrage"];
+                this.columntitre = base.Columns["titre"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnidOuvrage = new global::System.Data.DataColumn("idOuvrage", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidOuvrage);
+                this.columntitre = new global::System.Data.DataColumn("titre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntitre);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnidOuvrage}, true));
+                this.columnidOuvrage.AutoIncrement = true;
+                this.columnidOuvrage.AutoIncrementSeed = -1;
+                this.columnidOuvrage.AutoIncrementStep = -1;
+                this.columnidOuvrage.AllowDBNull = false;
+                this.columnidOuvrage.ReadOnly = true;
+                this.columnidOuvrage.Unique = true;
+                this.columntitre.AllowDBNull = false;
+                this.columntitre.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow NewPublicationsParAuteurRow() {
+                return ((PublicationsParAuteurRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PublicationsParAuteurRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PublicationsParAuteurRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PublicationsParAuteurRowChanged != null)) {
+                    this.PublicationsParAuteurRowChanged(this, new PublicationsParAuteurRowChangeEvent(((PublicationsParAuteurRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PublicationsParAuteurRowChanging != null)) {
+                    this.PublicationsParAuteurRowChanging(this, new PublicationsParAuteurRowChangeEvent(((PublicationsParAuteurRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PublicationsParAuteurRowDeleted != null)) {
+                    this.PublicationsParAuteurRowDeleted(this, new PublicationsParAuteurRowChangeEvent(((PublicationsParAuteurRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PublicationsParAuteurRowDeleting != null)) {
+                    this.PublicationsParAuteurRowDeleting(this, new PublicationsParAuteurRowChangeEvent(((PublicationsParAuteurRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovePublicationsParAuteurRow(PublicationsParAuteurRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BiblioEPFCDataSet ds = new BiblioEPFCDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PublicationsParAuteurDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TitreOuvrageParSuperDataTable : global::System.Data.TypedTableBase<TitreOuvrageParSuperRow> {
+            
+            private global::System.Data.DataColumn columnidOuvrage;
+            
+            private global::System.Data.DataColumn columntitre;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperDataTable() {
+                this.TableName = "TitreOuvrageParSuper";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TitreOuvrageParSuperDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected TitreOuvrageParSuperDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idOuvrageColumn {
+                get {
+                    return this.columnidOuvrage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn titreColumn {
+                get {
+                    return this.columntitre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow this[int index] {
+                get {
+                    return ((TitreOuvrageParSuperRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TitreOuvrageParSuperRowChangeEventHandler TitreOuvrageParSuperRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TitreOuvrageParSuperRowChangeEventHandler TitreOuvrageParSuperRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TitreOuvrageParSuperRowChangeEventHandler TitreOuvrageParSuperRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TitreOuvrageParSuperRowChangeEventHandler TitreOuvrageParSuperRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddTitreOuvrageParSuperRow(TitreOuvrageParSuperRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow AddTitreOuvrageParSuperRow(string titre) {
+                TitreOuvrageParSuperRow rowTitreOuvrageParSuperRow = ((TitreOuvrageParSuperRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        titre};
+                rowTitreOuvrageParSuperRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTitreOuvrageParSuperRow);
+                return rowTitreOuvrageParSuperRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow FindByidOuvrage(int idOuvrage) {
+                return ((TitreOuvrageParSuperRow)(this.Rows.Find(new object[] {
+                            idOuvrage})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TitreOuvrageParSuperDataTable cln = ((TitreOuvrageParSuperDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TitreOuvrageParSuperDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnidOuvrage = base.Columns["idOuvrage"];
+                this.columntitre = base.Columns["titre"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnidOuvrage = new global::System.Data.DataColumn("idOuvrage", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidOuvrage);
+                this.columntitre = new global::System.Data.DataColumn("titre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntitre);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnidOuvrage}, true));
+                this.columnidOuvrage.AutoIncrement = true;
+                this.columnidOuvrage.AutoIncrementSeed = -1;
+                this.columnidOuvrage.AutoIncrementStep = -1;
+                this.columnidOuvrage.AllowDBNull = false;
+                this.columnidOuvrage.ReadOnly = true;
+                this.columnidOuvrage.Unique = true;
+                this.columntitre.AllowDBNull = false;
+                this.columntitre.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow NewTitreOuvrageParSuperRow() {
+                return ((TitreOuvrageParSuperRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TitreOuvrageParSuperRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TitreOuvrageParSuperRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TitreOuvrageParSuperRowChanged != null)) {
+                    this.TitreOuvrageParSuperRowChanged(this, new TitreOuvrageParSuperRowChangeEvent(((TitreOuvrageParSuperRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TitreOuvrageParSuperRowChanging != null)) {
+                    this.TitreOuvrageParSuperRowChanging(this, new TitreOuvrageParSuperRowChangeEvent(((TitreOuvrageParSuperRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TitreOuvrageParSuperRowDeleted != null)) {
+                    this.TitreOuvrageParSuperRowDeleted(this, new TitreOuvrageParSuperRowChangeEvent(((TitreOuvrageParSuperRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TitreOuvrageParSuperRowDeleting != null)) {
+                    this.TitreOuvrageParSuperRowDeleting(this, new TitreOuvrageParSuperRowChangeEvent(((TitreOuvrageParSuperRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveTitreOuvrageParSuperRow(TitreOuvrageParSuperRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                BiblioEPFCDataSet ds = new BiblioEPFCDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TitreOuvrageParSuperDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class AuteurSuperviseurRow : global::System.Data.DataRow {
@@ -4443,6 +5097,28 @@ namespace ApplicationBiblioEPFC {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_ecrire_AuteurSuperviseur2"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow PublicationsParAuteurRow {
+                get {
+                    return ((PublicationsParAuteurRow)(this.GetParentRow(this.Table.ParentRelations["FK_ecrire_Ouvrage1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ecrire_Ouvrage1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow TitreOuvrageParSuperRow {
+                get {
+                    return ((TitreOuvrageParSuperRow)(this.GetParentRow(this.Table.ParentRelations["FK_ecrire_Ouvrage2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ecrire_Ouvrage2"]);
                 }
             }
         }
@@ -5078,6 +5754,28 @@ namespace ApplicationBiblioEPFC {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_reserver_Membre2"]);
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow PublicationsParAuteurRow {
+                get {
+                    return ((PublicationsParAuteurRow)(this.GetParentRow(this.Table.ParentRelations["FK_reserver_Ouvrage1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_reserver_Ouvrage1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow TitreOuvrageParSuperRow {
+                get {
+                    return ((TitreOuvrageParSuperRow)(this.GetParentRow(this.Table.ParentRelations["FK_reserver_Ouvrage2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_reserver_Ouvrage2"]);
+                }
+            }
         }
         
         /// <summary>
@@ -5610,6 +6308,124 @@ namespace ApplicationBiblioEPFC {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PublicationsParAuteurRow : global::System.Data.DataRow {
+            
+            private PublicationsParAuteurDataTable tablePublicationsParAuteur;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PublicationsParAuteurRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePublicationsParAuteur = ((PublicationsParAuteurDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idOuvrage {
+                get {
+                    return ((int)(this[this.tablePublicationsParAuteur.idOuvrageColumn]));
+                }
+                set {
+                    this[this.tablePublicationsParAuteur.idOuvrageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string titre {
+                get {
+                    return ((string)(this[this.tablePublicationsParAuteur.titreColumn]));
+                }
+                set {
+                    this[this.tablePublicationsParAuteur.titreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ecrireRow[] GetecrireRows() {
+                if ((this.Table.ChildRelations["FK_ecrire_Ouvrage1"] == null)) {
+                    return new ecrireRow[0];
+                }
+                else {
+                    return ((ecrireRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecrire_Ouvrage1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public reserverRow[] GetreserverRows() {
+                if ((this.Table.ChildRelations["FK_reserver_Ouvrage1"] == null)) {
+                    return new reserverRow[0];
+                }
+                else {
+                    return ((reserverRow[])(base.GetChildRows(this.Table.ChildRelations["FK_reserver_Ouvrage1"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TitreOuvrageParSuperRow : global::System.Data.DataRow {
+            
+            private TitreOuvrageParSuperDataTable tableTitreOuvrageParSuper;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TitreOuvrageParSuperRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTitreOuvrageParSuper = ((TitreOuvrageParSuperDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idOuvrage {
+                get {
+                    return ((int)(this[this.tableTitreOuvrageParSuper.idOuvrageColumn]));
+                }
+                set {
+                    this[this.tableTitreOuvrageParSuper.idOuvrageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string titre {
+                get {
+                    return ((string)(this[this.tableTitreOuvrageParSuper.titreColumn]));
+                }
+                set {
+                    this[this.tableTitreOuvrageParSuper.titreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ecrireRow[] GetecrireRows() {
+                if ((this.Table.ChildRelations["FK_ecrire_Ouvrage2"] == null)) {
+                    return new ecrireRow[0];
+                }
+                else {
+                    return ((ecrireRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ecrire_Ouvrage2"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public reserverRow[] GetreserverRows() {
+                if ((this.Table.ChildRelations["FK_reserver_Ouvrage2"] == null)) {
+                    return new reserverRow[0];
+                }
+                else {
+                    return ((reserverRow[])(base.GetChildRows(this.Table.ChildRelations["FK_reserver_Ouvrage2"])));
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -5982,6 +6798,74 @@ namespace ApplicationBiblioEPFC {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class PublicationsParAuteurRowChangeEvent : global::System.EventArgs {
+            
+            private PublicationsParAuteurRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRowChangeEvent(PublicationsParAuteurRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PublicationsParAuteurRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class TitreOuvrageParSuperRowChangeEvent : global::System.EventArgs {
+            
+            private TitreOuvrageParSuperRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRowChangeEvent(TitreOuvrageParSuperRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TitreOuvrageParSuperRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters {
@@ -6157,11 +7041,17 @@ SELECT idAuteurSuper, nom, prenom, statut FROM AuteurSuperviseur WHERE (idAuteur
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idAuteurSuper, nom, prenom, statut FROM dbo.AuteurSuperviseur";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        nom, prenom, statut\r\nFROM            AuteurSuperviseur\r\nWHERE      " +
+                "  (idAuteurSuper = @idAutSup)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idAutSup", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idAuteurSuper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6183,6 +7073,18 @@ SELECT idAuteurSuper, nom, prenom, statut FROM AuteurSuperviseur WHERE (idAuteur
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BiblioEPFCDataSet.AuteurSuperviseurDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BiblioEPFCDataSet.AuteurSuperviseurDataTable dataTable = new BiblioEPFCDataSet.AuteurSuperviseurDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BiblioEPFCDataSet.AuteurSuperviseurDataTable GetDataByIDAutSup(int idAutSup) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idAutSup));
             BiblioEPFCDataSet.AuteurSuperviseurDataTable dataTable = new BiblioEPFCDataSet.AuteurSuperviseurDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6498,8 +7400,8 @@ SELECT idAuteurSuper, nom, prenom, statut FROM AuteurSuperviseur WHERE (idAuteur
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ecrire] ([numAuteur], [numOuvrage]) VALUES (@numAuteur, @numOu" +
-                "vrage);\nSELECT numAuteur, numOuvrage FROM ecrire WHERE (numAuteur = @numAuteur) " +
-                "AND (numOuvrage = @numOuvrage)";
+                "vrage);\r\nSELECT numAuteur, numOuvrage FROM ecrire WHERE (numAuteur = @numAuteur)" +
+                " AND (numOuvrage = @numOuvrage)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numAuteur", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numAuteur", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numOuvrage", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numOuvrage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8748,7 +9650,8 @@ SELECT numMembre, numOuvrage, dateReservation, dureeReservation FROM reserver WH
             this._commandCollection[0].CommandText = @"SELECT        AuteurSuperviseur.idAuteurSuper, AuteurSuperviseur.nom, AuteurSuperviseur.prenom
 FROM            ecrire INNER JOIN
                          AuteurSuperviseur ON ecrire.numAuteur = AuteurSuperviseur.idAuteurSuper
-WHERE        (ecrire.numOuvrage = @numOuvrage)";
+WHERE        (ecrire.numOuvrage = @numOuvrage)
+ORDER BY AuteurSuperviseur.nom";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numOuvrage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -9474,6 +10377,374 @@ WHERE        (Ouvrage.idOuvrage = @int)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class PublicationsParAuteurTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public PublicationsParAuteurTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "PublicationsParAuteur";
+            tableMapping.ColumnMappings.Add("idOuvrage", "idOuvrage");
+            tableMapping.ColumnMappings.Add("titre", "titre");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::ApplicationBiblioEPFC.Properties.Settings.Default.BiblioEPFCConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        Ouvrage.idOuvrage, Ouvrage.titre\r\nFROM            ecrire INNER JOIN" +
+                "\r\n                         Ouvrage ON ecrire.numOuvrage = Ouvrage.idOuvrage\r\nWHE" +
+                "RE        (ecrire.numAuteur = @idAuteur)\r\nORDER BY Ouvrage.titre";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idAuteur", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numAuteur", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BiblioEPFCDataSet.PublicationsParAuteurDataTable GetDataByAuteur(int idAuteur) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idAuteur));
+            BiblioEPFCDataSet.PublicationsParAuteurDataTable dataTable = new BiblioEPFCDataSet.PublicationsParAuteurDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class TitreOuvrageParSuperTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public TitreOuvrageParSuperTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "TitreOuvrageParSuper";
+            tableMapping.ColumnMappings.Add("idOuvrage", "idOuvrage");
+            tableMapping.ColumnMappings.Add("titre", "titre");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Ouvrage] WHERE (([idOuvrage] = @Original_idOuvrage) AND ([titre] = @" +
+                "Original_titre))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idOuvrage", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_titre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [Ouvrage] SET [titre] = @titre WHERE (([idOuvrage] = @Original_idOuvrage) " +
+                "AND ([titre] = @Original_titre));\r\nSELECT idOuvrage, titre FROM Ouvrage WHERE (i" +
+                "dOuvrage = @idOuvrage) ORDER BY titre";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@titre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idOuvrage", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_titre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::ApplicationBiblioEPFC.Properties.Settings.Default.BiblioEPFCConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        idOuvrage, titre\r\nFROM            Ouvrage\r\nWHERE        (numSuper =" +
+                " @idSuper)\r\nORDER BY titre";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idSuper", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numSuper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual BiblioEPFCDataSet.TitreOuvrageParSuperDataTable GetTitreBySuper(global::System.Nullable<int> idSuper) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((idSuper.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idSuper.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            BiblioEPFCDataSet.TitreOuvrageParSuperDataTable dataTable = new BiblioEPFCDataSet.TitreOuvrageParSuperDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BiblioEPFCDataSet.TitreOuvrageParSuperDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(BiblioEPFCDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "TitreOuvrageParSuper");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9496,6 +10767,8 @@ WHERE        (Ouvrage.idOuvrage = @int)";
         private reserverTableAdapter _reserverTableAdapter;
         
         private TypeTableAdapter _typeTableAdapter;
+        
+        private TitreOuvrageParSuperTableAdapter _titreOuvrageParSuperTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -9598,6 +10871,20 @@ WHERE        (Ouvrage.idOuvrage = @int)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public TitreOuvrageParSuperTableAdapter TitreOuvrageParSuperTableAdapter {
+            get {
+                return this._titreOuvrageParSuperTableAdapter;
+            }
+            set {
+                this._titreOuvrageParSuperTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -9639,6 +10926,10 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                             && (this._typeTableAdapter.Connection != null))) {
                     return this._typeTableAdapter.Connection;
                 }
+                if (((this._titreOuvrageParSuperTableAdapter != null) 
+                            && (this._titreOuvrageParSuperTableAdapter.Connection != null))) {
+                    return this._titreOuvrageParSuperTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -9668,6 +10959,9 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                     count = (count + 1);
                 }
                 if ((this._typeTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._titreOuvrageParSuperTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -9714,6 +11008,15 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._ouvrageTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._titreOuvrageParSuperTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TitreOuvrageParSuper.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._titreOuvrageParSuperTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9777,6 +11080,14 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._titreOuvrageParSuperTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TitreOuvrageParSuper.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._titreOuvrageParSuperTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._reserverTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.reserver.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -9816,6 +11127,14 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._reserverTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._titreOuvrageParSuperTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TitreOuvrageParSuper.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._titreOuvrageParSuperTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -9920,6 +11239,11 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                 throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
                         "e chaîne de connexion.");
             }
+            if (((this._titreOuvrageParSuperTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._titreOuvrageParSuperTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
+                        "e chaîne de connexion.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager ne contient pas d\'informations de connexion. Définissez chaqu" +
@@ -10008,6 +11332,15 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._typeTableAdapter.Adapter);
                     }
                 }
+                if ((this._titreOuvrageParSuperTableAdapter != null)) {
+                    revertConnections.Add(this._titreOuvrageParSuperTableAdapter, this._titreOuvrageParSuperTableAdapter.Connection);
+                    this._titreOuvrageParSuperTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._titreOuvrageParSuperTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._titreOuvrageParSuperTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._titreOuvrageParSuperTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._titreOuvrageParSuperTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -10089,6 +11422,10 @@ WHERE        (Ouvrage.idOuvrage = @int)";
                 if ((this._typeTableAdapter != null)) {
                     this._typeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._typeTableAdapter]));
                     this._typeTableAdapter.Transaction = null;
+                }
+                if ((this._titreOuvrageParSuperTableAdapter != null)) {
+                    this._titreOuvrageParSuperTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._titreOuvrageParSuperTableAdapter]));
+                    this._titreOuvrageParSuperTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
