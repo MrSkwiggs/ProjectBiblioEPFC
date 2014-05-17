@@ -399,26 +399,6 @@ namespace ApplicationBiblioEPFC
             refreshOuvrageReservBox(0);
         }
 
-        private String etatEmprunt(DateTime? dateRetour)
-        {
-            String res;
-            if (dateRetour != null)
-            {
-                DateTime currDate = DateTime.Today;
-                int x = currDate.CompareTo(dateRetour);
-                if (x < 0)
-                    res = "En cours";
-                else if (x == 0)
-                    res = "Retour aujourd'hui !";
-                else
-                    res = "En retard";
-            }
-            else
-                res = "Aucun emprunt en cours";
-
-            return res;
-        }
-
             #endregion
 
             #region fill AuteurPage
@@ -521,6 +501,24 @@ namespace ApplicationBiblioEPFC
         #endregion
 
         #region Methods
+
+        private String etatEmprunt(DateTime? dateRetour)
+        {
+            String res = "Aucun emprunt en cours";
+            if (dateRetour != null)
+            {
+                DateTime currDate = DateTime.Today;
+                int x = currDate.CompareTo(dateRetour);
+                if (x < 0)
+                    res = "En cours";
+                else if (x == 0)
+                    res = "Retour aujourd'hui !";
+                else
+                    res = "En retard";
+            }
+
+            return res;
+        }
 
         private void refreshStateDisplay()
         {
@@ -816,7 +814,6 @@ namespace ApplicationBiblioEPFC
 
         private void resMembreListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //TODO : event Reservation MembrePage DoubleClick
             if (resMembreListBox.Items.Count != 0 && resMembreListBox.SelectedItem != null)
             {
                 fill_OuvragePage(listeIDMembreReserv[resMembreListBox.SelectedIndex]);
@@ -841,5 +838,16 @@ namespace ApplicationBiblioEPFC
         }
 
         #endregion
+
+        private void ajouterEmpruntBouton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void supprEmpruntBouton_Click(object sender, EventArgs e)
+        {
+            this.ouvrageTableAdapter.UpdateEmprunt(null, null, null, SELECTEDOUVRAGE);
+            fill_OuvragePage(SELECTEDOUVRAGE);
+        }
     }
 }

@@ -63,8 +63,6 @@ namespace ApplicationBiblioEPFC
             this.labelRechercher = new System.Windows.Forms.Label();
             this.textBoxRechercher = new System.Windows.Forms.TextBox();
             this.generalTreeView = new System.Windows.Forms.TreeView();
-            this.ouvrageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.biblioEPFCDataSet = new ApplicationBiblioEPFC.BiblioEPFCDataSet();
             this.infoTabs = new System.Windows.Forms.TabControl();
             this.ouvrageInfoPage = new System.Windows.Forms.TabPage();
             this.tableLayoutOuvrageInfo = new System.Windows.Forms.TableLayoutPanel();
@@ -175,6 +173,8 @@ namespace ApplicationBiblioEPFC
             this.empruntInfoPage = new System.Windows.Forms.TabPage();
             this.reservationInfoPage = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ouvrageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.biblioEPFCDataSet = new ApplicationBiblioEPFC.BiblioEPFCDataSet();
             this.ouvrageTableAdapter = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
             this.membreTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.MembreTableAdapter();
             this.auteurParOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurParOuvrageTableAdapter();
@@ -200,8 +200,6 @@ namespace ApplicationBiblioEPFC
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).BeginInit();
             this.infoTabs.SuspendLayout();
             this.ouvrageInfoPage.SuspendLayout();
             this.tableLayoutOuvrageInfo.SuspendLayout();
@@ -259,6 +257,8 @@ namespace ApplicationBiblioEPFC
             this.empruntMembreSplitContainer.Panel1.SuspendLayout();
             this.empruntMembreSplitContainer.Panel2.SuspendLayout();
             this.empruntMembreSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -560,16 +560,6 @@ namespace ApplicationBiblioEPFC
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
-            // 
-            // ouvrageBindingSource
-            // 
-            this.ouvrageBindingSource.DataMember = "Ouvrage";
-            this.ouvrageBindingSource.DataSource = this.biblioEPFCDataSet;
-            // 
-            // biblioEPFCDataSet
-            // 
-            this.biblioEPFCDataSet.DataSetName = "BiblioEPFCDataSet";
-            this.biblioEPFCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // infoTabs
             // 
@@ -1066,6 +1056,7 @@ namespace ApplicationBiblioEPFC
             this.ajouterEmpruntBouton.TabIndex = 0;
             this.ajouterEmpruntBouton.Text = "Ajouter Emprunt";
             this.ajouterEmpruntBouton.UseVisualStyleBackColor = true;
+            this.ajouterEmpruntBouton.Click += new System.EventHandler(this.ajouterEmpruntBouton_Click);
             // 
             // supprEmpruntBouton
             // 
@@ -1078,6 +1069,7 @@ namespace ApplicationBiblioEPFC
             this.supprEmpruntBouton.TabIndex = 1;
             this.supprEmpruntBouton.Text = "Suppr. Emprunt";
             this.supprEmpruntBouton.UseVisualStyleBackColor = true;
+            this.supprEmpruntBouton.Click += new System.EventHandler(this.supprEmpruntBouton_Click);
             // 
             // reservationBox
             // 
@@ -1900,6 +1892,16 @@ namespace ApplicationBiblioEPFC
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // ouvrageBindingSource
+            // 
+            this.ouvrageBindingSource.DataMember = "Ouvrage";
+            this.ouvrageBindingSource.DataSource = this.biblioEPFCDataSet;
+            // 
+            // biblioEPFCDataSet
+            // 
+            this.biblioEPFCDataSet.DataSetName = "BiblioEPFCDataSet";
+            this.biblioEPFCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // ouvrageTableAdapter
             // 
             this.ouvrageTableAdapter.ClearBeforeFill = true;
@@ -1977,8 +1979,6 @@ namespace ApplicationBiblioEPFC
             this.splitContainer3.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).EndInit();
             this.infoTabs.ResumeLayout(false);
             this.ouvrageInfoPage.ResumeLayout(false);
             this.tableLayoutOuvrageInfo.ResumeLayout(false);
@@ -2044,6 +2044,8 @@ namespace ApplicationBiblioEPFC
             this.empruntMembreSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.empruntMembreSplitContainer)).EndInit();
             this.empruntMembreSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -9355,7 +9355,7 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeE" +
@@ -9367,16 +9367,32 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"UPDATE       Ouvrage
-SET                dateEmprunt = @dateEmprunt, dureeEmprunt = @dureeEmprunt, numMembre = @numMembre
-WHERE        (idOuvrage = @Original_idOuvrage);     
-SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = @idOuvrage)";
+            this._commandCollection[2].CommandText = @"INSERT INTO Ouvrage
+                         (titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper)
+VALUES        (@titre,@localisation,@dateCreation,@section,@dateEmprunt,@dureeEmprunt,@numType,@numMembre,@nomEntreprise,@numSuper); 
+SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = SCOPE_IDENTITY())";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@titre", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@localisation", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "localisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateCreation", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@section", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "section", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEmprunt", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dureeEmprunt", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "dureeEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomEntreprise", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nomEntreprise", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numSuper", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numSuper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"UPDATE       Ouvrage
+SET                dateEmprunt = @dateEmprunt, dureeEmprunt = @dureeEmprunt, numMembre = @numMembre
+WHERE        (idOuvrage = @idOuvrage);       
+SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = @idOuvrage)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEmprunt", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dureeEmprunt", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "dureeEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9796,9 +9812,87 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateEmprunt(string dateEmprunt, global::System.Nullable<short> dureeEmprunt, global::System.Nullable<int> numMembre, int Original_idOuvrage, int idOuvrage) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertNewOuvrage(string titre, string localisation, string dateCreation, string section, string dateEmprunt, global::System.Nullable<short> dureeEmprunt, int numType, global::System.Nullable<int> numMembre, string nomEntreprise, global::System.Nullable<int> numSuper) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((titre == null)) {
+                throw new global::System.ArgumentNullException("titre");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(titre));
+            }
+            if ((localisation == null)) {
+                throw new global::System.ArgumentNullException("localisation");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(localisation));
+            }
+            if ((dateCreation == null)) {
+                throw new global::System.ArgumentNullException("dateCreation");
+            }
+            else {
+                command.Parameters[2].Value = ((string)(dateCreation));
+            }
+            if ((section == null)) {
+                throw new global::System.ArgumentNullException("section");
+            }
+            else {
+                command.Parameters[3].Value = ((string)(section));
+            }
+            if ((dateEmprunt == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(dateEmprunt));
+            }
+            if ((dureeEmprunt.HasValue == true)) {
+                command.Parameters[5].Value = ((short)(dureeEmprunt.Value));
+            }
+            else {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[6].Value = ((int)(numType));
+            if ((numMembre.HasValue == true)) {
+                command.Parameters[7].Value = ((int)(numMembre.Value));
+            }
+            else {
+                command.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((nomEntreprise == null)) {
+                command.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[8].Value = ((string)(nomEntreprise));
+            }
+            if ((numSuper.HasValue == true)) {
+                command.Parameters[9].Value = ((int)(numSuper.Value));
+            }
+            else {
+                command.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateEmprunt(string dateEmprunt, global::System.Nullable<short> dureeEmprunt, global::System.Nullable<int> numMembre, int idOuvrage) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((dateEmprunt == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -9817,8 +9911,7 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;
             }
-            command.Parameters[3].Value = ((int)(Original_idOuvrage));
-            command.Parameters[4].Value = ((int)(idOuvrage));
+            command.Parameters[3].Value = ((int)(idOuvrage));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
