@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace ApplicationBiblioEPFC
 {
     public partial class mainForm : Form
@@ -18,11 +19,11 @@ namespace ApplicationBiblioEPFC
         private Emprunt empruntState;
         private Reservation reservState;
         private List<int> listeIDAuteur;
-        private List<int> listeReservOuvrage;
-        private List<int> listeIDOuvrageEcrits;
-        private List<int> listeIDOuvrageSuper;
-        private List<int> listeIDOuvrageEmprunts;
-        private List<int> listeIDOuvrageReservs;
+        private List<int> listeIDOuvrageReserv;
+        private List<int> listeIDAuteurPubli;
+        private List<int> listeIDAuteurSupervise;
+        private List<int> listeIDMembreEmprunt;
+        private List<int> listeIDMembreReserv;
         private int IDMEMBREEMPRUNT;
         private int SELECTEDOUVRAGE;
         private int SELECTEDAUTEUR;
@@ -35,11 +36,11 @@ namespace ApplicationBiblioEPFC
             InitializeComponent();
             treeViewCache = new TreeView();
             listeIDAuteur = new List<int>();
-            listeReservOuvrage = new List<int>();
-            listeIDOuvrageEcrits = new List<int>();
-            listeIDOuvrageSuper = new List<int>();
-            listeIDOuvrageEmprunts = new List<int>();
-            listeIDOuvrageReservs = new List<int>();
+            listeIDOuvrageReserv = new List<int>();
+            listeIDAuteurPubli = new List<int>();
+            listeIDAuteurSupervise = new List<int>();
+            listeIDMembreEmprunt = new List<int>();
+            listeIDMembreReserv = new List<int>();
             editState = Edition.NORMAL;
             lockControls(true);
         }
@@ -300,11 +301,6 @@ namespace ApplicationBiblioEPFC
                 case "membre":
                     fill_MembrePage(id);
                     break;
-
-                case "emprunt":
-                    //TODO : Fill_EmpruntPage
-                    //fill_EmpruntPage();
-                    break;
             }
         }
 
@@ -396,7 +392,7 @@ namespace ApplicationBiblioEPFC
             {
                 reservState = Reservation.EXISTANTE;
                 reservListBox.Items.Add(res.ItemArray[1].ToString() + ' ' + res.ItemArray[2].ToString());
-                listeReservOuvrage.Add(Convert.ToInt32(res.ItemArray[0].ToString()));
+                listeIDOuvrageReserv.Add(Convert.ToInt32(res.ItemArray[0].ToString()));
             }
             if (reservListBox.Items.Count > 0)
                 reservListBox.SelectedIndex = 0;
@@ -446,25 +442,25 @@ namespace ApplicationBiblioEPFC
 
         private void fill_AuteurPubliBox()
         {
-            listeIDOuvrageEcrits.Clear();
+            listeIDAuteurPubli.Clear();
             publiAuteurListBox.Items.Clear();
             DataTable publis = this.publicationsParAuteurTableAdapter1.GetDataByAuteur(SELECTEDAUTEUR);
             foreach (DataRow publi in publis.Rows)
             {
                 publiAuteurListBox.Items.Add(publi.ItemArray[1].ToString());
-                listeIDOuvrageEcrits.Add(Convert.ToInt32(publi.ItemArray[0].ToString()));
+                listeIDAuteurPubli.Add(Convert.ToInt32(publi.ItemArray[0].ToString()));
             }
         }
 
         private void fill_AuteurSuperBox()
         {
-            listeIDOuvrageSuper.Clear();
+            listeIDAuteurSupervise.Clear();
             auteurSuperviseListBox.Items.Clear();
             DataTable ouvrages = this.titreOuvrageParSuperTableAdapter1.GetTitreBySuper(SELECTEDAUTEUR);
             foreach (DataRow ouvrage in ouvrages.Rows)
             {
                 auteurSuperviseListBox.Items.Add(ouvrage.ItemArray[1].ToString());
-                listeIDOuvrageSuper.Add(Convert.ToInt32(ouvrage.ItemArray[0].ToString()));
+                listeIDAuteurSupervise.Add(Convert.ToInt32(ouvrage.ItemArray[0].ToString()));
             }
         }
 
@@ -496,27 +492,27 @@ namespace ApplicationBiblioEPFC
 
         private void fill_MembreEmpruntBox()
         {
-            this.listeIDOuvrageEmprunts.Clear();
+            this.listeIDMembreEmprunt.Clear();
             this.empruntsMembreListBox.Items.Clear();
-            DataTable emprunts = this.empruntsParMembreTableAdapter1.GetEmpruntsByIDMembre(SELECTEDAUTEUR);
+            DataTable emprunts = this.empruntsParMembreTableAdapter1.GetEmpruntsByIDMembre(IDMEMBREEMPRUNT);
             foreach(DataRow emprunt in emprunts.Rows)
             {
                 DateTime d = DateTime.Parse(emprunt.ItemArray[2].ToString());
                 this.empruntsMembreListBox.Items.Add(emprunt.ItemArray[1].ToString() + " emprunté le " + d.ToShortDateString() + " pour " + emprunt.ItemArray[3].ToString() + " jours");
-                listeIDOuvrageEmprunts.Add(Convert.ToInt32(emprunt.ItemArray[0].ToString()));
+                listeIDMembreEmprunt.Add(Convert.ToInt32(emprunt.ItemArray[0].ToString()));
             }
         }
 
         private void fill_MembreReservBox()
         {
-            this.listeIDOuvrageReservs.Clear();
+            this.listeIDMembreReserv.Clear();
             this.resMembreListBox.Items.Clear();
             DataTable reservs = this.reservParMembreTableAdapter1.GetReservByIDMembre(SELECTEDMEMBRE);
             foreach (DataRow reserv in reservs.Rows)
             {
                 DateTime d = DateTime.Parse(reserv.ItemArray[2].ToString());
                 this.resMembreListBox.Items.Add(reserv.ItemArray[1].ToString() + " réservé le " + d.ToShortDateString() + " pour " + reserv.ItemArray[3].ToString() + " jours");
-                listeIDOuvrageReservs.Add(Convert.ToInt32(reserv.ItemArray[0].ToString()));
+                listeIDMembreReserv.Add(Convert.ToInt32(reserv.ItemArray[0].ToString()));
             }
         }
 
@@ -786,7 +782,7 @@ namespace ApplicationBiblioEPFC
         {
             if (publiAuteurListBox.Items.Count != 0 && publiAuteurListBox.SelectedItem != null)
             {
-                fill_OuvragePage(listeIDOuvrageEcrits[publiAuteurListBox.SelectedIndex]);
+                fill_OuvragePage(listeIDAuteurPubli[publiAuteurListBox.SelectedIndex]);
                 showInfoPage("ouvrage");
             }
         }
@@ -795,7 +791,7 @@ namespace ApplicationBiblioEPFC
         {
             if (auteurSuperviseListBox.Items.Count != 0 && auteurSuperviseListBox.SelectedItem != null)
             {
-                fill_OuvragePage(listeIDOuvrageSuper[auteurSuperviseListBox.SelectedIndex]);
+                fill_OuvragePage(listeIDAuteurSupervise[auteurSuperviseListBox.SelectedIndex]);
                 showInfoPage("ouvrage");
             }
         }
@@ -804,24 +800,44 @@ namespace ApplicationBiblioEPFC
         {
             if (reservListBox.Items.Count != 0 && reservListBox.SelectedItem != null)
             {
-                fill_MembrePage(listeReservOuvrage[reservListBox.SelectedIndex]);
+                fill_MembrePage(listeIDOuvrageReserv[reservListBox.SelectedIndex]);
                 showInfoPage("membre");
             }
         }
 
         private void empruntsMembreListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //TODO : event MembreListBox DoubleClick
+            if (empruntsMembreListBox.Items.Count != 0 && empruntsMembreListBox.SelectedItem != null)
+            {
+                fill_OuvragePage(listeIDMembreEmprunt[empruntsMembreListBox.SelectedIndex]);
+                showInfoPage("ouvrage");
+            }
         }
 
         private void resMembreListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //TODO : event Reservation MembrePage DoubleClick
+            if (resMembreListBox.Items.Count != 0 && resMembreListBox.SelectedItem != null)
+            {
+                fill_OuvragePage(listeIDMembreReserv[resMembreListBox.SelectedIndex]);
+                showInfoPage("ouvrage");
+            }
         }
 
         private void membreEmpruntListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            //TODO : event Emprunt MembrePage DoubleClick
+            fill_MembrePage(IDMEMBREEMPRUNT);
+            showInfoPage("membre");
+        }
+
+        private void infoTabs_Deselecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (editState == Edition.EDITING)
+            {
+                var res = MessageBox.Show("Edtion en cours, quitter la page ? \n(les changements seront perdus !)", "Quitter la page ?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (res == DialogResult.No)
+                    e.Cancel = true;
+            }
         }
 
         #endregion
