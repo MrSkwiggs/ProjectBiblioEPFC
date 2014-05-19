@@ -841,7 +841,8 @@ namespace ApplicationBiblioEPFC
 
         private void ajouterEmpruntBouton_Click(object sender, EventArgs e)
         {
-
+            addEmpruntResForm addEmprunt = new addEmpruntResForm("emprunt", SELECTEDOUVRAGE);
+            addEmprunt.ShowDialog();
         }
 
         private void supprEmpruntBouton_Click(object sender, EventArgs e)

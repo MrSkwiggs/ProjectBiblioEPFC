@@ -8738,7 +8738,7 @@ SELECT numAuteur, numOuvrage FROM ecrire WHERE (numAuteur = @numAuteur) AND (num
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Membre] ([nom], [prenom], [adresseRue], [adresseNum], [adresseCP], [adresseVille], [tel]) VALUES (@nom, @prenom, @adresseRue, @adresseNum, @adresseCP, @adresseVille, @tel);
-SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, tel FROM Membre WHERE (idMembre = SCOPE_IDENTITY())";
+SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, tel FROM Membre WHERE (idMembre = SCOPE_IDENTITY()) ORDER BY nom";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prenom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prenom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8750,7 +8750,7 @@ SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, t
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Membre] SET [nom] = @nom, [prenom] = @prenom, [adresseRue] = @adresseRue, [adresseNum] = @adresseNum, [adresseCP] = @adresseCP, [adresseVille] = @adresseVille, [tel] = @tel WHERE (([idMembre] = @Original_idMembre) AND ([nom] = @Original_nom) AND ([prenom] = @Original_prenom) AND ((@IsNull_adresseRue = 1 AND [adresseRue] IS NULL) OR ([adresseRue] = @Original_adresseRue)) AND ((@IsNull_adresseNum = 1 AND [adresseNum] IS NULL) OR ([adresseNum] = @Original_adresseNum)) AND ((@IsNull_adresseCP = 1 AND [adresseCP] IS NULL) OR ([adresseCP] = @Original_adresseCP)) AND ((@IsNull_adresseVille = 1 AND [adresseVille] IS NULL) OR ([adresseVille] = @Original_adresseVille)) AND ((@IsNull_tel = 1 AND [tel] IS NULL) OR ([tel] = @Original_tel)));
-SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, tel FROM Membre WHERE (idMembre = @idMembre)";
+SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, tel FROM Membre WHERE (idMembre = @idMembre) ORDER BY nom";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@prenom", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "prenom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8789,12 +8789,12 @@ SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, t
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, te" +
-                "l FROM dbo.Membre";
+                "l FROM dbo.Membre ORDER BY nom";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVi" +
-                "lle, tel\r\nFROM            Membre\r\nWHERE        (idMembre = @idMembre)";
+            this._commandCollection[1].CommandText = "SELECT adresseCP, adresseNum, adresseRue, adresseVille, idMembre, nom, prenom, te" +
+                "l FROM Membre WHERE (idMembre = @idMembre)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -9278,7 +9278,7 @@ SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, t
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Ouvrage] WHERE (([idOuvrage] = @Original_idOuvrage) AND ([titre] = @Original_titre) AND ([localisation] = @Original_localisation) AND ([dateCreation] = @Original_dateCreation) AND ([section] = @Original_section) AND ((@IsNull_dateEmprunt = 1 AND [dateEmprunt] IS NULL) OR ([dateEmprunt] = @Original_dateEmprunt)) AND ((@IsNull_dureeEmprunt = 1 AND [dureeEmprunt] IS NULL) OR ([dureeEmprunt] = @Original_dureeEmprunt)) AND ([numType] = @Original_numType) AND ((@IsNull_numMembre = 1 AND [numMembre] IS NULL) OR ([numMembre] = @Original_numMembre)) AND ((@IsNull_nomEntreprise = 1 AND [nomEntreprise] IS NULL) OR ([nomEntreprise] = @Original_nomEntreprise)) AND ((@IsNull_numSuper = 1 AND [numSuper] IS NULL) OR ([numSuper] = @Original_numSuper)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Ouvrage] WHERE (([idOuvrage] = @Original_idOuvrage) AND ([titre] = @Original_titre) AND ([localisation] = @Original_localisation) AND ([dateCreation] = @Original_dateCreation) AND ([section] = @Original_section) AND ((@IsNull_dateEmprunt = 1 AND [dateEmprunt] IS NULL) OR ([dateEmprunt] = @Original_dateEmprunt)) AND ((@IsNull_dureeEmprunt = 1 AND [dureeEmprunt] IS NULL) OR ([dureeEmprunt] = @Original_dureeEmprunt)) AND ([numType] = @Original_numType) AND ((@IsNull_numMembre = 1 AND [numMembre] IS NULL) OR ([numMembre] = @Original_numMembre)) AND ((@IsNull_nomEntreprise = 1 AND [nomEntreprise] IS NULL) OR ([nomEntreprise] = @Original_nomEntreprise)) AND ((@IsNull_numSuper = 1 AND [numSuper] IS NULL) OR ([numSuper] = @Original_numSuper)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idOuvrage", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_titre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -9298,8 +9298,8 @@ SELECT idMembre, nom, prenom, adresseRue, adresseNum, adresseCP, adresseVille, t
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_numSuper", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numSuper", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Ouvrage] ([titre], [localisation], [dateCreation], [section], [dateEmprunt], [dureeEmprunt], [numType], [numMembre], [nomEntreprise], [numSuper]) VALUES (@titre, @localisation, @dateCreation, @section, @dateEmprunt, @dureeEmprunt, @numType, @numMembre, @nomEntreprise, @numSuper);
-SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Ouvrage] ([titre], [localisation], [dateCreation], [section], [dateEmprunt], [dureeEmprunt], [numType], [numMembre], [nomEntreprise], [numSuper]) VALUES (@titre, @localisation, @dateCreation, @section, @dateEmprunt, @dureeEmprunt, @numType, @numMembre, @nomEntreprise, @numSuper);
+SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = SCOPE_IDENTITY()) ORDER BY titre";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@titre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@localisation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "localisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9313,8 +9313,8 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numSuper", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "numSuper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Ouvrage] SET [titre] = @titre, [localisation] = @localisation, [dateCreation] = @dateCreation, [section] = @section, [dateEmprunt] = @dateEmprunt, [dureeEmprunt] = @dureeEmprunt, [numType] = @numType, [numMembre] = @numMembre, [nomEntreprise] = @nomEntreprise, [numSuper] = @numSuper WHERE (([idOuvrage] = @Original_idOuvrage) AND ([titre] = @Original_titre) AND ([localisation] = @Original_localisation) AND ([dateCreation] = @Original_dateCreation) AND ([section] = @Original_section) AND ((@IsNull_dateEmprunt = 1 AND [dateEmprunt] IS NULL) OR ([dateEmprunt] = @Original_dateEmprunt)) AND ((@IsNull_dureeEmprunt = 1 AND [dureeEmprunt] IS NULL) OR ([dureeEmprunt] = @Original_dureeEmprunt)) AND ([numType] = @Original_numType) AND ((@IsNull_numMembre = 1 AND [numMembre] IS NULL) OR ([numMembre] = @Original_numMembre)) AND ((@IsNull_nomEntreprise = 1 AND [nomEntreprise] IS NULL) OR ([nomEntreprise] = @Original_nomEntreprise)) AND ((@IsNull_numSuper = 1 AND [numSuper] IS NULL) OR ([numSuper] = @Original_numSuper)));
-SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = @idOuvrage)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Ouvrage] SET [titre] = @titre, [localisation] = @localisation, [dateCreation] = @dateCreation, [section] = @section, [dateEmprunt] = @dateEmprunt, [dureeEmprunt] = @dureeEmprunt, [numType] = @numType, [numMembre] = @numMembre, [nomEntreprise] = @nomEntreprise, [numSuper] = @numSuper WHERE (([idOuvrage] = @Original_idOuvrage) AND ([titre] = @Original_titre) AND ([localisation] = @Original_localisation) AND ([dateCreation] = @Original_dateCreation) AND ([section] = @Original_section) AND ((@IsNull_dateEmprunt = 1 AND [dateEmprunt] IS NULL) OR ([dateEmprunt] = @Original_dateEmprunt)) AND ((@IsNull_dureeEmprunt = 1 AND [dureeEmprunt] IS NULL) OR ([dureeEmprunt] = @Original_dureeEmprunt)) AND ([numType] = @Original_numType) AND ((@IsNull_numMembre = 1 AND [numMembre] IS NULL) OR ([numMembre] = @Original_numMembre)) AND ((@IsNull_nomEntreprise = 1 AND [nomEntreprise] IS NULL) OR ([nomEntreprise] = @Original_nomEntreprise)) AND ((@IsNull_numSuper = 1 AND [numSuper] IS NULL) OR ([numSuper] = @Original_numSuper)));
+SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = @idOuvrage) ORDER BY titre";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@titre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@localisation", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "localisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9355,44 +9355,53 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeE" +
-                "mprunt, numType, numMembre, nomEntreprise, numSuper FROM dbo.Ouvrage";
+            this._commandCollection[0].CommandText = "SELECT        idOuvrage, titre, localisation, dateCreation, section, dateEmprunt," +
+                " dureeEmprunt, numType, numMembre, nomEntreprise, numSuper\r\nFROM            Ouvr" +
+                "age\r\nORDER BY titre";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT titre\nFROM dbo.Ouvrage";
+            this._commandCollection[1].CommandText = "SELECT dateCreation, dateEmprunt, dureeEmprunt, idOuvrage, localisation, nomEntre" +
+                "prise, numMembre, numSuper, numType, section, titre FROM Ouvrage WHERE (idOuvrag" +
+                "e = @idOuvrage)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"INSERT INTO Ouvrage
+            this._commandCollection[2].CommandText = "SELECT dateCreation, dateEmprunt, dureeEmprunt, idOuvrage, localisation, nomEntre" +
+                "prise, numMembre, numSuper, numType, section, titre FROM Ouvrage";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"INSERT INTO Ouvrage
                          (titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper)
 VALUES        (@titre,@localisation,@dateCreation,@section,@dateEmprunt,@dureeEmprunt,@numType,@numMembre,@nomEntreprise,@numSuper); 
 SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = SCOPE_IDENTITY())";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@titre", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@localisation", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "localisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateCreation", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@section", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "section", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEmprunt", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dureeEmprunt", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "dureeEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomEntreprise", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nomEntreprise", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numSuper", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numSuper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = @"UPDATE       Ouvrage
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@titre", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "titre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@localisation", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "localisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateCreation", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateCreation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@section", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "section", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEmprunt", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dureeEmprunt", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "dureeEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numType", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomEntreprise", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "nomEntreprise", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numSuper", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numSuper", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"UPDATE       Ouvrage
 SET                dateEmprunt = @dateEmprunt, dureeEmprunt = @dureeEmprunt, numMembre = @numMembre
 WHERE        (idOuvrage = @idOuvrage);       
 SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, dureeEmprunt, numType, numMembre, nomEntreprise, numSuper FROM Ouvrage WHERE (idOuvrage = @idOuvrage)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEmprunt", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dureeEmprunt", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "dureeEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateEmprunt", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dureeEmprunt", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "dureeEmprunt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@numMembre", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "numMembre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idOuvrage", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idOuvrage", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9423,8 +9432,34 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByTitre(BiblioEPFCDataSet.OuvrageDataTable dataTable) {
+        public virtual int FillBy(BiblioEPFCDataSet.OuvrageDataTable dataTable, int idOuvrage) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idOuvrage));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BiblioEPFCDataSet.OuvrageDataTable GetDataBy2(int idOuvrage) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idOuvrage));
+            BiblioEPFCDataSet.OuvrageDataTable dataTable = new BiblioEPFCDataSet.OuvrageDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByTitre(BiblioEPFCDataSet.OuvrageDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -9437,7 +9472,7 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual BiblioEPFCDataSet.OuvrageDataTable GetDataByTitre() {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             BiblioEPFCDataSet.OuvrageDataTable dataTable = new BiblioEPFCDataSet.OuvrageDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -9814,7 +9849,7 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertNewOuvrage(string titre, string localisation, string dateCreation, string section, string dateEmprunt, global::System.Nullable<short> dureeEmprunt, int numType, global::System.Nullable<int> numMembre, string nomEntreprise, global::System.Nullable<int> numSuper) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((titre == null)) {
                 throw new global::System.ArgumentNullException("titre");
             }
@@ -9892,7 +9927,7 @@ SELECT idOuvrage, titre, localisation, dateCreation, section, dateEmprunt, duree
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateEmprunt(string dateEmprunt, global::System.Nullable<short> dureeEmprunt, global::System.Nullable<int> numMembre, int idOuvrage) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((dateEmprunt == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
