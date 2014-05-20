@@ -63,9 +63,9 @@ namespace ApplicationBiblioEPFC
 
         private void lockControls()
         {
-            swapAuteurBouton.Enabled = (auteursDispoListBox.Items.Count != 0 && auteursDispoListBox.SelectedItem != null);
+            swapAuteurBouton.Enabled = auteursDispoListBox.Items.Count != 0 && auteursDispoListBox.SelectedItem != null;
             swapSuperBouton.Enabled = swapAuteurBouton.Enabled && superListBox.Items.Count == 0;
-            removeAuteurBouton.Enabled = auteursListBox.Items.Count != 0;
+            removeAuteurBouton.Enabled = auteursListBox.Items.Count != 0 && auteursListBox.SelectedItem != null;
             removeSuperBouton.Enabled = superListBox.Items.Count != 0;
         }
 
@@ -73,10 +73,13 @@ namespace ApplicationBiblioEPFC
         {
             auteursListBox.Items.Add(auteursDispoListBox.SelectedItem);
             listeIDAuteur.Add(listeIDAuteursDispo[auteursDispoListBox.SelectedIndex]);
+
             listeIDAuteursDispo.RemoveAt(auteursDispoListBox.SelectedIndex);
             auteursDispoListBox.Items.RemoveAt(auteursDispoListBox.SelectedIndex);
+
             if (auteursDispoListBox.Items.Count != 0) 
                 auteursDispoListBox.SelectedIndex = 0;
+            auteursListBox.SelectedIndex = 0;
             lockControls();
         }
 
