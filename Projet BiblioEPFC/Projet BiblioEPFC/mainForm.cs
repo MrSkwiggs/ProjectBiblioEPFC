@@ -41,6 +41,7 @@ namespace ApplicationBiblioEPFC
             listeIDAuteurSupervise = new List<int>();
             listeIDMembreEmprunt = new List<int>();
             listeIDMembreReserv = new List<int>();
+            SELECTEDAUTEUR = SELECTEDOUVRAGE = SELECTEDMEMBRE = -1;
             editState = Edition.NORMAL;
             lockControls(true);
         }
@@ -342,6 +343,7 @@ namespace ApplicationBiblioEPFC
             int it = 1, duree = 0;
             if (emprunts.Rows.Count != 0)
             {
+                membreEmpruntListBox.Items.Clear();
                 empruntState = Emprunt.EMPRUNTE;
                 DataRow emprunt = emprunts.Rows[0];
                 this.membreEmpruntListBox.Items.Add(emprunt.ItemArray[it++].ToString() + ' ' + emprunt.ItemArray[it++].ToString());
@@ -386,6 +388,7 @@ namespace ApplicationBiblioEPFC
         private void fill_OuvrageReservBox()
         {
             reservListBox.Items.Clear();
+            listeIDOuvrageReserv.Clear();
             DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(SELECTEDOUVRAGE);
             reservState = Reservation.AUCUNE;
             foreach(DataRow res in reservs.Rows)
@@ -478,7 +481,10 @@ namespace ApplicationBiblioEPFC
             foreach(DataRow emprunt in emprunts.Rows)
             {
                 DateTime d = DateTime.Parse(emprunt.ItemArray[2].ToString());
-                this.empruntsMembreListBox.Items.Add(emprunt.ItemArray[1].ToString() + " emprunté le " + d.ToShortDateString() + " pour " + emprunt.ItemArray[3].ToString() + " jours");
+                String s = emprunt.ItemArray[1].ToString();
+                if (s.Length > 15)
+                    s = s.Substring(0, 15) + "...";
+                this.empruntsMembreListBox.Items.Add(s + ", emprunté le " + d.ToShortDateString() + " pour " + emprunt.ItemArray[3].ToString() + " jours");
                 listeIDMembreEmprunt.Add(Convert.ToInt32(emprunt.ItemArray[0].ToString()));
             }
         }
@@ -491,7 +497,10 @@ namespace ApplicationBiblioEPFC
             foreach (DataRow reserv in reservs.Rows)
             {
                 DateTime d = DateTime.Parse(reserv.ItemArray[2].ToString());
-                this.resMembreListBox.Items.Add(reserv.ItemArray[1].ToString() + " réservé le " + d.ToShortDateString() + " pour " + reserv.ItemArray[3].ToString() + " jours");
+                String s = reserv.ItemArray[1].ToString();
+                if (s.Length > 15)
+                    s = s.Substring(0, 15) + "...";
+                this.resMembreListBox.Items.Add(s + " réservé le " + d.ToShortDateString() + " pour " + reserv.ItemArray[3].ToString() + " jours");
                 listeIDMembreReserv.Add(Convert.ToInt32(reserv.ItemArray[0].ToString()));
             }
         }
@@ -522,59 +531,58 @@ namespace ApplicationBiblioEPFC
 
         private void refreshStateDisplay()
         {
-            #region editionState
-
-            switch (this.editState)
+            if (SELECTEDOUVRAGE != -1)
             {
-                case Edition.EDITING:
-                    this.modifierToolStripMenuItem.Enabled = false;
-                    this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = true;
-                    break;
+                #region editionState
 
-                case Edition.NORMAL:
-                    this.modifierToolStripMenuItem.Enabled = true;
-                    this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = false;
-                    break;
+                switch (this.editState)
+                {
+                    case Edition.EDITING:
+                        this.modifierToolStripMenuItem.Enabled = false;
+                        this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = true;
+                        break;
+
+                    case Edition.NORMAL:
+                        this.modifierToolStripMenuItem.Enabled = true;
+                        this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = false;
+                        break;
+                }
+
+                #endregion
+
+                #region empruntState
+                switch (this.empruntState)
+                {
+                    case Emprunt.EMPRUNTE:
+                        this.ajouterEmpruntBouton.Enabled = false;
+                        this.supprEmpruntBouton.Enabled = true;
+                        break;
+
+                    case Emprunt.AUCUN:
+                        this.ajouterEmpruntBouton.Enabled = true;
+                        this.supprEmpruntBouton.Enabled = false;
+
+                        break;
+                }
+
+                #endregion
+
+                #region reservState
+
+                switch (reservState)
+                {
+                    case Reservation.EXISTANTE:
+                        this.ajouterReservBouton.Enabled = true;
+                        this.supprReservBouton.Enabled = true;
+                        break;
+                    case Reservation.AUCUNE:
+                        this.ajouterReservBouton.Enabled = true;
+                        this.supprReservBouton.Enabled = false;
+                        break;
+                }
+
+                #endregion
             }
-
-            #endregion
-
-            #region empruntState
-
-            switch(this.empruntState)
-            {
-                case Emprunt.EMPRUNTE:
-                    this.ajouterEmpruntMenu.Enabled = false;
-                    this.supprEmpruntMenu.Enabled = true;
-                    this.ajouterEmpruntBouton.Enabled = false;
-                    this.supprEmpruntBouton.Enabled = true;
-                    break;
-                    
-                case Emprunt.AUCUN:
-                    this.ajouterEmpruntMenu.Enabled = true;
-                    this.supprEmpruntMenu.Enabled = false;
-                    this.ajouterEmpruntBouton.Enabled = true;
-                    this.supprEmpruntBouton.Enabled = false;
-                    break;
-            }
-
-            #endregion
-
-            #region reservState
-
-            switch(reservState)
-            {
-                case Reservation.EXISTANTE:
-                    this.supprReservBouton.Enabled = true;
-                    this.supprReservMenu.Enabled = true;
-                    break;
-                case Reservation.AUCUNE:
-                    this.supprReservBouton.Enabled = false;
-                    this.supprReservMenu.Enabled = false;
-                    break;
-            }
-
-            #endregion
         }
 
         private void lockControls(bool locked)
@@ -647,12 +655,6 @@ namespace ApplicationBiblioEPFC
                 case "membre":
                     infoTabs.SelectedIndex = 2;
                     break;
-                case "emprunt":
-                    infoTabs.SelectedIndex = 3;
-                    break;
-                case "reservation":
-                    infoTabs.SelectedIndex = 4;
-                    break;
             }
         }
 
@@ -661,18 +663,31 @@ namespace ApplicationBiblioEPFC
             switch (reservState)
             {
                 case Reservation.EXISTANTE:
-                    DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(this.SELECTEDOUVRAGE);
-                    DataRow res = reservs.Rows[index];
-                    DateTime dateReserv = DateTime.Parse(res.ItemArray[3].ToString());
-                    this.dateReservTextBox.Text = dateReserv.ToShortDateString();
-                    this.dureeReservTextBox.Text = res.ItemArray[4].ToString() + " jours";
+                    if (SELECTEDOUVRAGE != -1)
+                    {
+                        DataTable reservs = this.reservationParOuvrageTableAdapter1.GetData(this.SELECTEDOUVRAGE);
+                        DataRow res = reservs.Rows[index];
+                        DateTime dateReserv = DateTime.Parse(res.ItemArray[3].ToString());
+                        this.dateReservTextBox.Text = dateReserv.ToShortDateString();
+                        this.dureeReservTextBox.Text = res.ItemArray[4].ToString() + " jours";
+                    }
                     break;
                 case Reservation.AUCUNE:
                     this.dateReservTextBox.Clear();
                     this.dureeReservTextBox.Clear();
                     break;
             }
-        }  
+        }
+
+        private void refresh_All()
+        {
+            update_Treeview();
+            if(SELECTEDOUVRAGE != -1)
+                fill_OuvragePage(SELECTEDOUVRAGE);
+            this.ActiveControl = textBoxRechercher;
+            refreshStateDisplay();
+            refreshOuvrageReservBox(0);
+        }
 
         #endregion
 
@@ -711,11 +726,15 @@ namespace ApplicationBiblioEPFC
             fill_InfoPage(e.Node);
         }
 
-        private void ajouterReserv(object sender, EventArgs e)
+        private void ajouterReservBouton_Click(object sender, EventArgs e)
         {
-            addResForm reservationForm = new addResForm();
-            reservationForm.ShowDialog();
-            update_Treeview();
+            addEmpruntResForm addRes = new addEmpruntResForm("réservation", SELECTEDOUVRAGE);
+            var res = addRes.ShowDialog();
+            if (res == DialogResult.Yes)
+            {
+                reservState = Reservation.EXISTANTE;
+            }
+            refresh_All();
         }
 
         private void textBoxRechercher_TextChanged(object sender, EventArgs e)
@@ -823,8 +842,11 @@ namespace ApplicationBiblioEPFC
 
         private void membreEmpruntListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            fill_MembrePage(IDMEMBREEMPRUNT);
-            showInfoPage("membre");
+            if (membreEmpruntListBox.Items.Count != 0 && membreEmpruntListBox.SelectedItem != null)
+            {
+                fill_MembrePage(IDMEMBREEMPRUNT);
+                showInfoPage("membre");
+            }
         }
 
         private void infoTabs_Deselecting(object sender, TabControlCancelEventArgs e)
@@ -837,18 +859,63 @@ namespace ApplicationBiblioEPFC
             }
         }
 
-        #endregion
-
         private void ajouterEmpruntBouton_Click(object sender, EventArgs e)
         {
             addEmpruntResForm addEmprunt = new addEmpruntResForm("emprunt", SELECTEDOUVRAGE);
-            addEmprunt.ShowDialog();
+            var res = addEmprunt.ShowDialog();
+            if (res == DialogResult.Yes)
+                empruntState = Emprunt.EMPRUNTE;
+            else
+                empruntState = Emprunt.AUCUN;
+
+            refresh_All();
         }
 
         private void supprEmpruntBouton_Click(object sender, EventArgs e)
         {
             this.ouvrageTableAdapter.UpdateEmprunt(null, null, null, SELECTEDOUVRAGE);
-            fill_OuvragePage(SELECTEDOUVRAGE);
+
+            refresh_All();
+        }
+
+        private void ajouterEmpruntMenu_Click(object sender, EventArgs e)
+        {
+            addEmpruntResForm addEmprunt = new addEmpruntResForm("emprunt");
+            var res = addEmprunt.ShowDialog();
+            if (res == DialogResult.Yes)
+                empruntState = Emprunt.EMPRUNTE;
+            else
+                empruntState = Emprunt.AUCUN;
+
+            refresh_All();
+        }
+
+        private void supprReservBouton_Click(object sender, EventArgs e)
+        {
+            this.reserverTableAdapter1.DeleteReserv(listeIDOuvrageReserv[reservListBox.SelectedIndex], SELECTEDOUVRAGE);
+            listeIDOuvrageReserv.RemoveAt(reservListBox.SelectedIndex);
+
+            refresh_All();
+        }
+
+        private void ajouterReservationMenu_Click(object sender, EventArgs e)
+        {
+            addEmpruntResForm addRes = new addEmpruntResForm("réservation");
+            var res = addRes.ShowDialog();
+            if (res == DialogResult.Yes)
+            {
+                reservState = Reservation.EXISTANTE;
+            }
+
+            refresh_All();
+        }
+
+        #endregion
+
+        private void ajouterOuvrageMenu_Click(object sender, EventArgs e)
+        {
+            addOuvrageForm addOuvrage = new addOuvrageForm();
+            addOuvrage.ShowDialog();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.infosTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.empruntSplitContainer = new System.Windows.Forms.SplitContainer();
             this.membreNameSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -49,9 +50,13 @@
             this.dureeComboBox = new System.Windows.Forms.ComboBox();
             this.formSplitContainer = new System.Windows.Forms.SplitContainer();
             this.cancelBouton = new System.Windows.Forms.Button();
-            this.emprunterBouton = new System.Windows.Forms.Button();
+            this.goBouton = new System.Windows.Forms.Button();
             this.ouvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
             this.membreTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.MembreTableAdapter();
+            this.biblioEPFCDataSet = new ApplicationBiblioEPFC.BiblioEPFCDataSet();
+            this.membreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.infoOuvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.InfoOuvrageTableAdapter();
+            this.reserverTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.reserverTableAdapter();
             this.infosTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.empruntSplitContainer)).BeginInit();
             this.empruntSplitContainer.Panel1.SuspendLayout();
@@ -73,12 +78,14 @@
             this.formSplitContainer.Panel1.SuspendLayout();
             this.formSplitContainer.Panel2.SuspendLayout();
             this.formSplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membreBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // infosTableLayout
             // 
             this.infosTableLayout.ColumnCount = 2;
-            this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.infosTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.infosTableLayout.Controls.Add(this.empruntSplitContainer, 1, 1);
             this.infosTableLayout.Controls.Add(this.ouvrageLabel, 0, 0);
@@ -96,7 +103,7 @@
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.44231F));
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.infosTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.infosTableLayout.Size = new System.Drawing.Size(439, 364);
+            this.infosTableLayout.Size = new System.Drawing.Size(312, 298);
             this.infosTableLayout.TabIndex = 0;
             // 
             // empruntSplitContainer
@@ -104,7 +111,7 @@
             this.empruntSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.empruntSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.empruntSplitContainer.IsSplitterFixed = true;
-            this.empruntSplitContainer.Location = new System.Drawing.Point(73, 152);
+            this.empruntSplitContainer.Location = new System.Drawing.Point(58, 120);
             this.empruntSplitContainer.Name = "empruntSplitContainer";
             // 
             // empruntSplitContainer.Panel1
@@ -114,8 +121,8 @@
             // empruntSplitContainer.Panel2
             // 
             this.empruntSplitContainer.Panel2.Controls.Add(this.ajouterMembreBouton);
-            this.empruntSplitContainer.Size = new System.Drawing.Size(363, 152);
-            this.empruntSplitContainer.SplitterDistance = 334;
+            this.empruntSplitContainer.Size = new System.Drawing.Size(251, 118);
+            this.empruntSplitContainer.SplitterDistance = 222;
             this.empruntSplitContainer.TabIndex = 5;
             // 
             // membreNameSplitContainer
@@ -135,7 +142,7 @@
             // membreNameSplitContainer.Panel2
             // 
             this.membreNameSplitContainer.Panel2.Controls.Add(this.membreListBox);
-            this.membreNameSplitContainer.Size = new System.Drawing.Size(334, 152);
+            this.membreNameSplitContainer.Size = new System.Drawing.Size(222, 118);
             this.membreNameSplitContainer.SplitterDistance = 36;
             this.membreNameSplitContainer.TabIndex = 0;
             // 
@@ -144,8 +151,9 @@
             this.rechMembreTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rechMembreTextBox.Location = new System.Drawing.Point(73, 8);
             this.rechMembreTextBox.Name = "rechMembreTextBox";
-            this.rechMembreTextBox.Size = new System.Drawing.Size(258, 20);
+            this.rechMembreTextBox.Size = new System.Drawing.Size(146, 20);
             this.rechMembreTextBox.TabIndex = 1;
+            this.rechMembreTextBox.TextChanged += new System.EventHandler(this.rechMembreTextBox_TextChanged);
             // 
             // rechMembreLabel
             // 
@@ -163,14 +171,14 @@
             this.membreListBox.FormattingEnabled = true;
             this.membreListBox.Location = new System.Drawing.Point(0, 0);
             this.membreListBox.Name = "membreListBox";
-            this.membreListBox.Size = new System.Drawing.Size(334, 112);
+            this.membreListBox.Size = new System.Drawing.Size(222, 78);
             this.membreListBox.TabIndex = 0;
             this.membreListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.membreListBox_MouseClick);
             // 
             // ajouterMembreBouton
             // 
             this.ajouterMembreBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterMembreBouton.Location = new System.Drawing.Point(2, 66);
+            this.ajouterMembreBouton.Location = new System.Drawing.Point(2, 49);
             this.ajouterMembreBouton.Name = "ajouterMembreBouton";
             this.ajouterMembreBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterMembreBouton.TabIndex = 0;
@@ -181,7 +189,7 @@
             // 
             this.ouvrageLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ouvrageLabel.AutoSize = true;
-            this.ouvrageLabel.Location = new System.Drawing.Point(19, 68);
+            this.ouvrageLabel.Location = new System.Drawing.Point(4, 52);
             this.ouvrageLabel.Name = "ouvrageLabel";
             this.ouvrageLabel.Size = new System.Drawing.Size(48, 13);
             this.ouvrageLabel.TabIndex = 0;
@@ -191,7 +199,7 @@
             // 
             this.membreLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.membreLabel.AutoSize = true;
-            this.membreLabel.Location = new System.Drawing.Point(22, 221);
+            this.membreLabel.Location = new System.Drawing.Point(7, 172);
             this.membreLabel.Name = "membreLabel";
             this.membreLabel.Size = new System.Drawing.Size(45, 13);
             this.membreLabel.TabIndex = 1;
@@ -201,7 +209,7 @@
             // 
             this.dateEmpruntLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dateEmpruntLabel.AutoSize = true;
-            this.dateEmpruntLabel.Location = new System.Drawing.Point(37, 313);
+            this.dateEmpruntLabel.Location = new System.Drawing.Point(22, 247);
             this.dateEmpruntLabel.Name = "dateEmpruntLabel";
             this.dateEmpruntLabel.Size = new System.Drawing.Size(30, 13);
             this.dateEmpruntLabel.TabIndex = 2;
@@ -211,7 +219,7 @@
             // 
             this.dureeEmpruntLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dureeEmpruntLabel.AutoSize = true;
-            this.dureeEmpruntLabel.Location = new System.Drawing.Point(31, 342);
+            this.dureeEmpruntLabel.Location = new System.Drawing.Point(16, 276);
             this.dureeEmpruntLabel.Name = "dureeEmpruntLabel";
             this.dureeEmpruntLabel.Size = new System.Drawing.Size(36, 13);
             this.dureeEmpruntLabel.TabIndex = 3;
@@ -222,7 +230,7 @@
             this.ouvrageSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ouvrageSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.ouvrageSplitContainer.IsSplitterFixed = true;
-            this.ouvrageSplitContainer.Location = new System.Drawing.Point(73, 3);
+            this.ouvrageSplitContainer.Location = new System.Drawing.Point(58, 3);
             this.ouvrageSplitContainer.Name = "ouvrageSplitContainer";
             // 
             // ouvrageSplitContainer.Panel1
@@ -232,8 +240,8 @@
             // ouvrageSplitContainer.Panel2
             // 
             this.ouvrageSplitContainer.Panel2.Controls.Add(this.ajouterOuvrageBouton);
-            this.ouvrageSplitContainer.Size = new System.Drawing.Size(363, 143);
-            this.ouvrageSplitContainer.SplitterDistance = 334;
+            this.ouvrageSplitContainer.Size = new System.Drawing.Size(251, 111);
+            this.ouvrageSplitContainer.SplitterDistance = 222;
             this.ouvrageSplitContainer.TabIndex = 4;
             // 
             // ouvrageNameSplitContainer
@@ -253,7 +261,7 @@
             // ouvrageNameSplitContainer.Panel2
             // 
             this.ouvrageNameSplitContainer.Panel2.Controls.Add(this.ouvrageListBox);
-            this.ouvrageNameSplitContainer.Size = new System.Drawing.Size(334, 143);
+            this.ouvrageNameSplitContainer.Size = new System.Drawing.Size(222, 111);
             this.ouvrageNameSplitContainer.SplitterDistance = 34;
             this.ouvrageNameSplitContainer.TabIndex = 0;
             // 
@@ -262,8 +270,9 @@
             this.rechOuvrageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rechOuvrageTextBox.Location = new System.Drawing.Point(73, 7);
             this.rechOuvrageTextBox.Name = "rechOuvrageTextBox";
-            this.rechOuvrageTextBox.Size = new System.Drawing.Size(258, 20);
+            this.rechOuvrageTextBox.Size = new System.Drawing.Size(146, 20);
             this.rechOuvrageTextBox.TabIndex = 1;
+            this.rechOuvrageTextBox.TextChanged += new System.EventHandler(this.rechOuvrageTextBox_TextChanged);
             // 
             // rechOuvrageLabel
             // 
@@ -281,14 +290,14 @@
             this.ouvrageListBox.FormattingEnabled = true;
             this.ouvrageListBox.Location = new System.Drawing.Point(0, 0);
             this.ouvrageListBox.Name = "ouvrageListBox";
-            this.ouvrageListBox.Size = new System.Drawing.Size(334, 105);
+            this.ouvrageListBox.Size = new System.Drawing.Size(222, 73);
             this.ouvrageListBox.TabIndex = 0;
             this.ouvrageListBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ouvrageListBox_MouseClick);
             // 
             // ajouterOuvrageBouton
             // 
             this.ajouterOuvrageBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterOuvrageBouton.Location = new System.Drawing.Point(2, 61);
+            this.ajouterOuvrageBouton.Location = new System.Drawing.Point(2, 45);
             this.ajouterOuvrageBouton.Name = "ajouterOuvrageBouton";
             this.ajouterOuvrageBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterOuvrageBouton.TabIndex = 0;
@@ -298,7 +307,7 @@
             // dateEmpruntPicker
             // 
             this.dateEmpruntPicker.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateEmpruntPicker.Location = new System.Drawing.Point(154, 310);
+            this.dateEmpruntPicker.Location = new System.Drawing.Point(83, 244);
             this.dateEmpruntPicker.Name = "dateEmpruntPicker";
             this.dateEmpruntPicker.Size = new System.Drawing.Size(200, 20);
             this.dateEmpruntPicker.TabIndex = 6;
@@ -312,7 +321,7 @@
             "7 jours",
             "14 jours",
             "21 jours"});
-            this.dureeComboBox.Location = new System.Drawing.Point(154, 338);
+            this.dureeComboBox.Location = new System.Drawing.Point(83, 272);
             this.dureeComboBox.Name = "dureeComboBox";
             this.dureeComboBox.Size = new System.Drawing.Size(200, 21);
             this.dureeComboBox.TabIndex = 7;
@@ -331,31 +340,31 @@
             // formSplitContainer.Panel2
             // 
             this.formSplitContainer.Panel2.Controls.Add(this.cancelBouton);
-            this.formSplitContainer.Panel2.Controls.Add(this.emprunterBouton);
-            this.formSplitContainer.Size = new System.Drawing.Size(439, 428);
-            this.formSplitContainer.SplitterDistance = 364;
+            this.formSplitContainer.Panel2.Controls.Add(this.goBouton);
+            this.formSplitContainer.Size = new System.Drawing.Size(312, 351);
+            this.formSplitContainer.SplitterDistance = 298;
             this.formSplitContainer.TabIndex = 1;
             // 
             // cancelBouton
             // 
             this.cancelBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cancelBouton.Location = new System.Drawing.Point(222, 16);
+            this.cancelBouton.Location = new System.Drawing.Point(159, 10);
             this.cancelBouton.Name = "cancelBouton";
             this.cancelBouton.Size = new System.Drawing.Size(94, 28);
             this.cancelBouton.TabIndex = 1;
             this.cancelBouton.Text = "Annuler";
             this.cancelBouton.UseVisualStyleBackColor = true;
+            this.cancelBouton.Click += new System.EventHandler(this.cancelBouton_Click);
             // 
-            // emprunterBouton
+            // goBouton
             // 
-            this.emprunterBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.emprunterBouton.Location = new System.Drawing.Point(122, 16);
-            this.emprunterBouton.Name = "emprunterBouton";
-            this.emprunterBouton.Size = new System.Drawing.Size(94, 28);
-            this.emprunterBouton.TabIndex = 0;
-            this.emprunterBouton.Text = "Emprunter";
-            this.emprunterBouton.UseVisualStyleBackColor = true;
-            this.emprunterBouton.Click += new System.EventHandler(this.emprunterBouton_Click);
+            this.goBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.goBouton.Location = new System.Drawing.Point(59, 10);
+            this.goBouton.Name = "goBouton";
+            this.goBouton.Size = new System.Drawing.Size(94, 28);
+            this.goBouton.TabIndex = 0;
+            this.goBouton.UseVisualStyleBackColor = true;
+            this.goBouton.Click += new System.EventHandler(this.goBouton_Click);
             // 
             // ouvrageTableAdapter1
             // 
@@ -365,11 +374,29 @@
             // 
             this.membreTableAdapter1.ClearBeforeFill = true;
             // 
+            // biblioEPFCDataSet
+            // 
+            this.biblioEPFCDataSet.DataSetName = "BiblioEPFCDataSet";
+            this.biblioEPFCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // membreBindingSource
+            // 
+            this.membreBindingSource.DataMember = "Membre";
+            this.membreBindingSource.DataSource = this.biblioEPFCDataSet;
+            // 
+            // infoOuvrageTableAdapter1
+            // 
+            this.infoOuvrageTableAdapter1.ClearBeforeFill = true;
+            // 
+            // reserverTableAdapter1
+            // 
+            this.reserverTableAdapter1.ClearBeforeFill = true;
+            // 
             // addEmpruntResForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 428);
+            this.ClientSize = new System.Drawing.Size(312, 351);
             this.Controls.Add(this.formSplitContainer);
             this.Name = "addEmpruntResForm";
             this.Text = "Ajouter emprunt";
@@ -398,6 +425,8 @@
             this.formSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).EndInit();
             this.formSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membreBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -427,6 +456,10 @@
         private BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter ouvrageTableAdapter1;
         private BiblioEPFCDataSetTableAdapters.MembreTableAdapter membreTableAdapter1;
         private System.Windows.Forms.Button cancelBouton;
-        private System.Windows.Forms.Button emprunterBouton;
+        private System.Windows.Forms.Button goBouton;
+        private BiblioEPFCDataSet biblioEPFCDataSet;
+        private System.Windows.Forms.BindingSource membreBindingSource;
+        private BiblioEPFCDataSetTableAdapters.InfoOuvrageTableAdapter infoOuvrageTableAdapter1;
+        private BiblioEPFCDataSetTableAdapters.reserverTableAdapter reserverTableAdapter1;
     }
 }
