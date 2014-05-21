@@ -41,13 +41,9 @@ namespace ApplicationBiblioEPFC
             this.ajouterOuvrageMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.supprOuvrageMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.auteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajouterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajouterAuteurMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.supprAuteurMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.publicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ajouterToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.supprimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.éditerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.membresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterMembreMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.supprMembreMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -338,58 +334,31 @@ namespace ApplicationBiblioEPFC
             // auteursToolStripMenuItem
             // 
             this.auteursToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ajouterToolStripMenuItem,
+            this.ajouterAuteurMenu,
             this.supprAuteurMenu,
-            this.toolStripSeparator1,
-            this.publicationsToolStripMenuItem});
+            this.toolStripSeparator1});
             this.auteursToolStripMenuItem.Name = "auteursToolStripMenuItem";
             this.auteursToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.auteursToolStripMenuItem.Text = "Auteur";
             // 
-            // ajouterToolStripMenuItem
+            // ajouterAuteurMenu
             // 
-            this.ajouterToolStripMenuItem.Name = "ajouterToolStripMenuItem";
-            this.ajouterToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.ajouterToolStripMenuItem.Text = "Ajouter";
+            this.ajouterAuteurMenu.Name = "ajouterAuteurMenu";
+            this.ajouterAuteurMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterAuteurMenu.Text = "Ajouter";
+            this.ajouterAuteurMenu.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
             // supprAuteurMenu
             // 
             this.supprAuteurMenu.Name = "supprAuteurMenu";
-            this.supprAuteurMenu.Size = new System.Drawing.Size(139, 22);
+            this.supprAuteurMenu.Size = new System.Drawing.Size(152, 22);
             this.supprAuteurMenu.Text = "Supprimer";
+            this.supprAuteurMenu.Click += new System.EventHandler(this.supprAuteurMenu_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
-            // 
-            // publicationsToolStripMenuItem
-            // 
-            this.publicationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ajouterToolStripMenuItem1,
-            this.supprimeToolStripMenuItem,
-            this.éditerToolStripMenuItem});
-            this.publicationsToolStripMenuItem.Name = "publicationsToolStripMenuItem";
-            this.publicationsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.publicationsToolStripMenuItem.Text = "Publications";
-            // 
-            // ajouterToolStripMenuItem1
-            // 
-            this.ajouterToolStripMenuItem1.Name = "ajouterToolStripMenuItem1";
-            this.ajouterToolStripMenuItem1.Size = new System.Drawing.Size(129, 22);
-            this.ajouterToolStripMenuItem1.Text = "Ajouter";
-            // 
-            // supprimeToolStripMenuItem
-            // 
-            this.supprimeToolStripMenuItem.Name = "supprimeToolStripMenuItem";
-            this.supprimeToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.supprimeToolStripMenuItem.Text = "Supprimer";
-            // 
-            // éditerToolStripMenuItem
-            // 
-            this.éditerToolStripMenuItem.Name = "éditerToolStripMenuItem";
-            this.éditerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.éditerToolStripMenuItem.Text = "Éditer";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // membresToolStripMenuItem
             // 
@@ -403,14 +372,16 @@ namespace ApplicationBiblioEPFC
             // ajouterMembreMenu
             // 
             this.ajouterMembreMenu.Name = "ajouterMembreMenu";
-            this.ajouterMembreMenu.Size = new System.Drawing.Size(129, 22);
+            this.ajouterMembreMenu.Size = new System.Drawing.Size(152, 22);
             this.ajouterMembreMenu.Text = "Ajouter";
+            this.ajouterMembreMenu.Click += new System.EventHandler(this.ajouterMembreMenu_Click);
             // 
             // supprMembreMenu
             // 
             this.supprMembreMenu.Name = "supprMembreMenu";
-            this.supprMembreMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprMembreMenu.Size = new System.Drawing.Size(152, 22);
             this.supprMembreMenu.Text = "Supprimer";
+            this.supprMembreMenu.Click += new System.EventHandler(this.supprMembreMenu_Click);
             // 
             // empruntsToolStripMenuItem
             // 
@@ -424,15 +395,16 @@ namespace ApplicationBiblioEPFC
             // ajouterEmpruntMenu
             // 
             this.ajouterEmpruntMenu.Name = "ajouterEmpruntMenu";
-            this.ajouterEmpruntMenu.Size = new System.Drawing.Size(129, 22);
+            this.ajouterEmpruntMenu.Size = new System.Drawing.Size(152, 22);
             this.ajouterEmpruntMenu.Text = "Ajouter";
             this.ajouterEmpruntMenu.Click += new System.EventHandler(this.ajouterEmpruntMenu_Click);
             // 
             // supprEmpruntMenu
             // 
             this.supprEmpruntMenu.Name = "supprEmpruntMenu";
-            this.supprEmpruntMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprEmpruntMenu.Size = new System.Drawing.Size(152, 22);
             this.supprEmpruntMenu.Text = "Supprimer";
+            this.supprEmpruntMenu.Click += new System.EventHandler(this.supprEmpruntMenu_Click);
             // 
             // réservationsToolStripMenuItem
             // 
@@ -446,15 +418,16 @@ namespace ApplicationBiblioEPFC
             // ajouterReservationMenu
             // 
             this.ajouterReservationMenu.Name = "ajouterReservationMenu";
-            this.ajouterReservationMenu.Size = new System.Drawing.Size(129, 22);
+            this.ajouterReservationMenu.Size = new System.Drawing.Size(152, 22);
             this.ajouterReservationMenu.Text = "Ajouter";
             this.ajouterReservationMenu.Click += new System.EventHandler(this.ajouterReservationMenu_Click);
             // 
             // supprReservMenu
             // 
             this.supprReservMenu.Name = "supprReservMenu";
-            this.supprReservMenu.Size = new System.Drawing.Size(129, 22);
+            this.supprReservMenu.Size = new System.Drawing.Size(152, 22);
             this.supprReservMenu.Text = "Supprimer";
+            this.supprReservMenu.Click += new System.EventHandler(this.supprReservMenu_Click);
             // 
             // formSplitContainer
             // 
@@ -558,7 +531,7 @@ namespace ApplicationBiblioEPFC
             this.generalTreeView.Location = new System.Drawing.Point(2, 0);
             this.generalTreeView.Margin = new System.Windows.Forms.Padding(2, 3, 0, 1);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(226, 557);
+            this.generalTreeView.Size = new System.Drawing.Size(226, 560);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
@@ -837,22 +810,24 @@ namespace ApplicationBiblioEPFC
             // ajouterAuteurBouton
             // 
             this.ajouterAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterAuteurBouton.Location = new System.Drawing.Point(7, 10);
+            this.ajouterAuteurBouton.Location = new System.Drawing.Point(8, 10);
             this.ajouterAuteurBouton.Name = "ajouterAuteurBouton";
             this.ajouterAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterAuteurBouton.TabIndex = 0;
             this.ajouterAuteurBouton.Text = "+";
             this.ajouterAuteurBouton.UseVisualStyleBackColor = true;
+            this.ajouterAuteurBouton.Click += new System.EventHandler(this.ajouterAuteurBouton_Click);
             // 
             // supprAuteurBouton
             // 
             this.supprAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprAuteurBouton.Location = new System.Drawing.Point(7, 30);
+            this.supprAuteurBouton.Location = new System.Drawing.Point(8, 30);
             this.supprAuteurBouton.Name = "supprAuteurBouton";
             this.supprAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.supprAuteurBouton.TabIndex = 1;
             this.supprAuteurBouton.Text = "-";
             this.supprAuteurBouton.UseVisualStyleBackColor = true;
+            this.supprAuteurBouton.Click += new System.EventHandler(this.supprAuteurBouton_Click);
             // 
             // superSplitContainer
             // 
@@ -888,22 +863,24 @@ namespace ApplicationBiblioEPFC
             // ajouterSuperBouton
             // 
             this.ajouterSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterSuperBouton.Location = new System.Drawing.Point(7, 10);
+            this.ajouterSuperBouton.Location = new System.Drawing.Point(8, 10);
             this.ajouterSuperBouton.Name = "ajouterSuperBouton";
             this.ajouterSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterSuperBouton.TabIndex = 2;
             this.ajouterSuperBouton.Text = "+";
             this.ajouterSuperBouton.UseVisualStyleBackColor = true;
+            this.ajouterSuperBouton.Click += new System.EventHandler(this.ajouterSuperBouton_Click);
             // 
             // supprSuperBouton
             // 
             this.supprSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprSuperBouton.Location = new System.Drawing.Point(7, 30);
+            this.supprSuperBouton.Location = new System.Drawing.Point(8, 30);
             this.supprSuperBouton.Name = "supprSuperBouton";
             this.supprSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.supprSuperBouton.TabIndex = 3;
             this.supprSuperBouton.Text = "-";
             this.supprSuperBouton.UseVisualStyleBackColor = true;
+            this.supprSuperBouton.Click += new System.EventHandler(this.supprSuperBouton_Click);
             // 
             // empruntBox
             // 
@@ -1415,6 +1392,7 @@ namespace ApplicationBiblioEPFC
             this.ajouterSupervisionAuteurBouton.TabIndex = 4;
             this.ajouterSupervisionAuteurBouton.Text = "+";
             this.ajouterSupervisionAuteurBouton.UseVisualStyleBackColor = true;
+            this.ajouterSupervisionAuteurBouton.Click += new System.EventHandler(this.ajouterSupervisionAuteurBouton_Click);
             // 
             // supprSupervisionAuteurBouton
             // 
@@ -1425,6 +1403,7 @@ namespace ApplicationBiblioEPFC
             this.supprSupervisionAuteurBouton.TabIndex = 5;
             this.supprSupervisionAuteurBouton.Text = "-";
             this.supprSupervisionAuteurBouton.UseVisualStyleBackColor = true;
+            this.supprSupervisionAuteurBouton.Click += new System.EventHandler(this.supprSupervisionAuteurBouton_Click);
             // 
             // publiAuteurLabel
             // 
@@ -1485,6 +1464,7 @@ namespace ApplicationBiblioEPFC
             this.ajouterPubliAuteurBouton.TabIndex = 4;
             this.ajouterPubliAuteurBouton.Text = "+";
             this.ajouterPubliAuteurBouton.UseVisualStyleBackColor = true;
+            this.ajouterPubliAuteurBouton.Click += new System.EventHandler(this.ajouterPubliAuteurBouton_Click);
             // 
             // supprPubliAuteurBouton
             // 
@@ -1495,6 +1475,7 @@ namespace ApplicationBiblioEPFC
             this.supprPubliAuteurBouton.TabIndex = 5;
             this.supprPubliAuteurBouton.Text = "-";
             this.supprPubliAuteurBouton.UseVisualStyleBackColor = true;
+            this.supprPubliAuteurBouton.Click += new System.EventHandler(this.supprPubliAuteurBouton_Click);
             // 
             // membreInfoPage
             // 
@@ -1797,6 +1778,7 @@ namespace ApplicationBiblioEPFC
             this.ajouterReservMembreBouton.TabIndex = 4;
             this.ajouterReservMembreBouton.Text = "+";
             this.ajouterReservMembreBouton.UseVisualStyleBackColor = true;
+            this.ajouterReservMembreBouton.Click += new System.EventHandler(this.ajouterReservMembreBouton_Click);
             // 
             // supprReservMembreBouton
             // 
@@ -1807,6 +1789,7 @@ namespace ApplicationBiblioEPFC
             this.supprReservMembreBouton.TabIndex = 5;
             this.supprReservMembreBouton.Text = "-";
             this.supprReservMembreBouton.UseVisualStyleBackColor = true;
+            this.supprReservMembreBouton.Click += new System.EventHandler(this.supprReservMembreBouton_Click);
             // 
             // label1
             // 
@@ -1867,6 +1850,7 @@ namespace ApplicationBiblioEPFC
             this.ajouterEmpruntMembreBouton.TabIndex = 4;
             this.ajouterEmpruntMembreBouton.Text = "+";
             this.ajouterEmpruntMembreBouton.UseVisualStyleBackColor = true;
+            this.ajouterEmpruntMembreBouton.Click += new System.EventHandler(this.ajouterEmpruntMembreBouton_Click);
             // 
             // supprEmpruntMembreBouton
             // 
@@ -1877,6 +1861,7 @@ namespace ApplicationBiblioEPFC
             this.supprEmpruntMembreBouton.TabIndex = 5;
             this.supprEmpruntMembreBouton.Text = "-";
             this.supprEmpruntMembreBouton.UseVisualStyleBackColor = true;
+            this.supprEmpruntMembreBouton.Click += new System.EventHandler(this.supprEmpruntMembreBouton_Click);
             // 
             // statusStrip1
             // 
@@ -2123,7 +2108,7 @@ namespace ApplicationBiblioEPFC
         private System.Windows.Forms.ToolStripMenuItem sauvegarderLesModificationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ignorerLesModificationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem auteursToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ajouterAuteurMenu;
         private System.Windows.Forms.ToolStripMenuItem supprAuteurMenu;
         private System.Windows.Forms.SplitContainer auteursSplitContainer;
         private System.Windows.Forms.Button ajouterAuteurBouton;
@@ -2144,10 +2129,6 @@ namespace ApplicationBiblioEPFC
         private System.Windows.Forms.Button ajouterSuperBouton;
         private System.Windows.Forms.Button supprSuperBouton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem publicationsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ajouterToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem supprimeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem éditerToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel auteurPubliTableLayout;
         private System.Windows.Forms.Label publiAuteurLabel;
         private System.Windows.Forms.Label superviseLabel;

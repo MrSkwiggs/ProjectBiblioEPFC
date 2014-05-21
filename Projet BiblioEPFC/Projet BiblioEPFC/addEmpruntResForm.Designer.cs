@@ -184,6 +184,7 @@
             this.ajouterMembreBouton.TabIndex = 0;
             this.ajouterMembreBouton.Text = "+";
             this.ajouterMembreBouton.UseVisualStyleBackColor = true;
+            this.ajouterMembreBouton.Click += new System.EventHandler(this.ajouterMembreBouton_Click);
             // 
             // ouvrageLabel
             // 
@@ -303,6 +304,7 @@
             this.ajouterOuvrageBouton.TabIndex = 0;
             this.ajouterOuvrageBouton.Text = "+";
             this.ajouterOuvrageBouton.UseVisualStyleBackColor = true;
+            this.ajouterOuvrageBouton.Click += new System.EventHandler(this.ajouterOuvrageBouton_Click);
             // 
             // dateEmpruntPicker
             // 

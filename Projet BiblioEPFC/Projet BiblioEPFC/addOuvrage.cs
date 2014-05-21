@@ -278,5 +278,15 @@ namespace ApplicationBiblioEPFC
         {
             SELECTEDTYPE = listeIDType[typeComboBox.SelectedIndex];
         }
+
+        private void addAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un nouveau membre directement assigné à la liste d'auteurs d'un nouvel ouvrage
+        }
+
+        private void addSuperBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un nouveau membre superviseur dans nouvel ouvrage
+        }
     }
 }

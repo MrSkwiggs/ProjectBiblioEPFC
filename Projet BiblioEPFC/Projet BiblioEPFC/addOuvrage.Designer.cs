@@ -395,6 +395,7 @@
             this.addAuteurBouton.TabIndex = 1;
             this.addAuteurBouton.Text = "+";
             this.addAuteurBouton.UseVisualStyleBackColor = true;
+            this.addAuteurBouton.Click += new System.EventHandler(this.addAuteurBouton_Click);
             // 
             // auteursListBox
             // 
@@ -451,6 +452,7 @@
             this.addSuperBouton.TabIndex = 2;
             this.addSuperBouton.Text = "+";
             this.addSuperBouton.UseVisualStyleBackColor = true;
+            this.addSuperBouton.Click += new System.EventHandler(this.addSuperBouton_Click);
             // 
             // superListBox
             // 

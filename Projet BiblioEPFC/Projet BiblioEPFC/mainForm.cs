@@ -695,6 +695,7 @@ namespace ApplicationBiblioEPFC
 
         private void toggleEditionMode(object sender, EventArgs e)
         {
+            //TODO: gérer la sauvegarde (ou pas) des modifications
             bool locked;
             if (editState == Edition.NORMAL)
             {
@@ -926,12 +927,103 @@ namespace ApplicationBiblioEPFC
                 var res = MessageBox.Show("Voulez-vous vraiment supprimer l'ouvrage :\n\"" + titreTextBox.Text + "\" ?\nToutes les références vers cet ouvrage seront également supprimées.", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
-
+                    //TODO: gérer les suppressions en cascade résultant de la suppression d'un ouvrage
                     this.ouvrageTableAdapter.DeleteOuvrage(SELECTEDOUVRAGE);
                     SELECTEDOUVRAGE = -1;
                     refresh_All();
+                    //TODO: nettoyer les infoPages si rien n'est sélectionné
                 }
             }
+        }
+
+        private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un nouvel auteur via le menu
+        }
+
+        private void supprAuteurMenu_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'un auteur via le menu
+        }
+
+        private void ajouterMembreMenu_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un nouveau membre via le menu
+        }
+
+        private void supprMembreMenu_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'un membre via le menu
+        }
+
+        private void supprEmpruntMenu_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'emprunts via le menu
+        }
+
+        private void supprReservMenu_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression de réservations via le menu
+        }
+
+        private void ajouterAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'auteurs via le mode édition
+        }
+
+        private void supprAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'auteurs via le mode édition
+        }
+
+        private void ajouterSuperBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un superviseur via le mode édition
+        }
+
+        private void supprSuperBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'un superviseur via le mode édition
+        }
+
+        private void ajouterPubliAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout de publications d'un auteur via le mode édition
+        }
+
+        private void supprPubliAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression de publications d'un auteur via le mode édition
+        }
+
+        private void ajouterSupervisionAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'ouvrages supervisés d'un auteur via le mode édition
+        }
+
+        private void supprSupervisionAuteurBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'ouvrages supervisés d'un auteur via le mode édition
+        }
+
+        private void ajouterEmpruntMembreBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'emprunts d'un membre via le mode édition
+        }
+
+        private void supprEmpruntMembreBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression d'emprunts d'un membre via le mode édition
+        }
+
+        private void ajouterReservMembreBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout de réservations d'un membre via le mode édition
+        }
+
+        private void supprReservMembreBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer la suppression de réservations d'un membre via le mode édition
         }
     }
 }

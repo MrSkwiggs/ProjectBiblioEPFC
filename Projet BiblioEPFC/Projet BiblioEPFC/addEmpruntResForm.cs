@@ -154,6 +154,7 @@ namespace ApplicationBiblioEPFC
         {
             switch (SELECTEDTYPE)
             {
+                    //TODO: gérer le cas d'ajout d'emprunt qui finit après une date de réservation.
                 case "emprunt":
                     DataTable ouvrage = this.ouvrageTableAdapter1.GetDataBy2(SELECTEDOUVRAGE);
                     if (!ouvrage.Rows[0].ItemArray[8].ToString().Equals(""))
@@ -167,6 +168,7 @@ namespace ApplicationBiblioEPFC
                     }
                     return true;
 
+                    //TODO: gérer le cas d'ajout de réservation dans une période déjà réservée
                 case "réservation":
                     DataTable reservation = this.reserverTableAdapter1.GetProbableProblem(SELECTEDMEMBRE, SELECTEDOUVRAGE);
                     if (reservation.Rows.Count != 0)
@@ -243,6 +245,16 @@ namespace ApplicationBiblioEPFC
         private void rechMembreTextBox_TextChanged(object sender, EventArgs e)
         {
             filter_ListBox(rechMembreTextBox, membreListBox, listeIDMembre, cacheListeIDMembre, cacheMembreListBox);
+        }
+
+        private void ajouterOuvrageBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un ouvrage lors de l'ajout d'un(e) emprunt/réservation
+        }
+
+        private void ajouterMembreBouton_Click(object sender, EventArgs e)
+        {
+            //TODO: gérer l'ajout d'un membre lors de l'ajout d'un(e) emprunt/réservation
         }
     }
 }
