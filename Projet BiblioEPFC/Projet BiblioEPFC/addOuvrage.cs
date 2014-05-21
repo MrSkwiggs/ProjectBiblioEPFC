@@ -200,28 +200,52 @@ namespace ApplicationBiblioEPFC
         {
             if (filledMandatory())
             {
-                String titre, date, local, entrep, section, type, auteurs = "", super = "";
-                titre = titreTextBox.Text;
-                date = dateCreaPicker.Text;
-                local = localTextBox.Text;
-                entrep = entrepriseTextBox.Text;
-                section = sectionTextBox.Text;
-                type = typeComboBox.SelectedItem.ToString();
-                foreach (var i in auteursListBox.Items)
-                    auteurs = auteurs + i.ToString() + ", ";
-                if (superListBox.Items.Count != 0)
-                    super = superListBox.SelectedItem.ToString();
-                MessageBox.Show("Titre: " + titre
-                    + "\nDate de création: " + date
-                    + "\nLocalisation: " + local
-                    + "\nEntreprise: " + entrep
-                    + "\nSection: " + section
-                    + "\nType: " + type
-                    + "\nAuteur(s): " + auteurs
-                    + "\n(Superviseur): " + super);
+                if (ouvrageAlreadyExists())
+                    MessageBox.Show("Un ouvrage du même titre existe déjà.\nVeuillez choisir un titre différent","Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                else
+                {
+                    String titre, date, local, entrep, section, type, auteurs = "", super = "";
+                    titre = titreTextBox.Text;
+                    date = dateCreaPicker.Text;
+                    local = localTextBox.Text;
+                    entrep = entrepriseTextBox.Text;
+                    section = sectionTextBox.Text;
+                    type = typeComboBox.SelectedItem.ToString();
+                    if(superListBox.SelectedItem == null)
+                        addOuvrage(titre,local,date,section,entrep,SELECTEDTYPE,null);
+                    else
+                        addOuvrage(titre, local, date, section, entrep, SELECTEDTYPE, SELECTEDSUPER);
+
+                    addAuteurs();
+                }
             }
             else
-                MessageBox.Show("Veuillez remplir tous les champs!\n(seul le champ surperviseur est optionnel)","Erreur",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Veuillez remplir tous les champs!\n(seul le champ surperviseur est optionnel)","Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
+        }
+
+        private void addAuteurs()
+        {
+            int idOuvrage = getIDOfNewOuvrage(titreTextBox.Text);
+            foreach(String auteur in auteursListBox.Items)
+            {
+                int idAuteur;
+                if(listeAuteurs.TryGetValue(auteur,out idAuteur))
+                {
+                    ecrireTableAdapter1.InsertEcrire(idAuteur,idOuvrage);
+                }
+            }
+        }
+
+
+        private int getIDOfNewOuvrage(String titre)
+        {
+            DataTable ouvrages = this.ouvrageTableAdapter1.GetIDByTitre(titre);
+            return Convert.ToInt32(ouvrages.Rows[0].ItemArray[0].ToString());
+        }
+
+        private void addOuvrage(String titre, String local, String date, String section, String entrep, int type, int? super)
+        {
+            this.ouvrageTableAdapter1.InsertNewOuvrage(titre,local,date,section,null,null,type,null,entrep,super);
         }
 
         private bool filledMandatory()
@@ -233,6 +257,26 @@ namespace ApplicationBiblioEPFC
                 !sectionTextBox.Text.Equals("") &&
                 (typeComboBox.SelectedItem != null && typeComboBox.Items.Contains(typeComboBox.SelectedItem.ToString())) &&
                 auteursListBox.Items.Count != 0);
+        }
+
+        private bool ouvrageAlreadyExists()
+        {
+            bool res = false;
+
+            DataTable ouvrages = this.ouvrageTableAdapter1.GetData();
+            foreach (DataRow ouvrage in ouvrages.Rows)
+            {
+                String s = ouvrage.ItemArray[1].ToString().ToLower();
+                if (s.Equals(titreTextBox.Text.ToLower()))
+                    return true;
+            }
+
+            return res;
+        }
+
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SELECTEDTYPE = listeIDType[typeComboBox.SelectedIndex];
         }
     }
 }

@@ -333,6 +333,7 @@ namespace ApplicationBiblioEPFC
             this.supprOuvrageMenu.Name = "supprOuvrageMenu";
             this.supprOuvrageMenu.Size = new System.Drawing.Size(152, 22);
             this.supprOuvrageMenu.Text = "Supprimer";
+            this.supprOuvrageMenu.Click += new System.EventHandler(this.supprOuvrageMenu_Click);
             // 
             // auteursToolStripMenuItem
             // 
@@ -457,9 +458,9 @@ namespace ApplicationBiblioEPFC
             // 
             // formSplitContainer
             // 
-            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.formSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.formSplitContainer.IsSplitterFixed = true;
             this.formSplitContainer.Location = new System.Drawing.Point(0, 24);
@@ -508,9 +509,9 @@ namespace ApplicationBiblioEPFC
             // 
             // splitContainer3
             // 
-            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer3.IsSplitterFixed = true;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
@@ -539,8 +540,8 @@ namespace ApplicationBiblioEPFC
             // 
             // textBoxRechercher
             // 
-            this.textBoxRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRechercher.Location = new System.Drawing.Point(3, 3);
             this.textBoxRechercher.Name = "textBoxRechercher";
             this.textBoxRechercher.Size = new System.Drawing.Size(145, 20);
@@ -550,14 +551,14 @@ namespace ApplicationBiblioEPFC
             // 
             // generalTreeView
             // 
-            this.generalTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.generalTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.generalTreeView.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.ouvrageBindingSource, "titre", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, "null"));
             this.generalTreeView.Location = new System.Drawing.Point(2, 0);
             this.generalTreeView.Margin = new System.Windows.Forms.Padding(2, 3, 0, 1);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(226, 554);
+            this.generalTreeView.Size = new System.Drawing.Size(226, 557);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
@@ -615,9 +616,9 @@ namespace ApplicationBiblioEPFC
             // 
             // infoBox
             // 
-            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.infoBox.Controls.Add(this.infosOuvrageTableLayout);
             this.infoBox.Location = new System.Drawing.Point(3, 3);
             this.infoBox.Name = "infoBox";
@@ -628,9 +629,9 @@ namespace ApplicationBiblioEPFC
             // 
             // infosOuvrageTableLayout
             // 
-            this.infosOuvrageTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.infosOuvrageTableLayout.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.infosOuvrageTableLayout.ColumnCount = 4;
             this.infosOuvrageTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.infosOuvrageTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -836,7 +837,7 @@ namespace ApplicationBiblioEPFC
             // ajouterAuteurBouton
             // 
             this.ajouterAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterAuteurBouton.Location = new System.Drawing.Point(6, 10);
+            this.ajouterAuteurBouton.Location = new System.Drawing.Point(7, 10);
             this.ajouterAuteurBouton.Name = "ajouterAuteurBouton";
             this.ajouterAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterAuteurBouton.TabIndex = 0;
@@ -846,7 +847,7 @@ namespace ApplicationBiblioEPFC
             // supprAuteurBouton
             // 
             this.supprAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprAuteurBouton.Location = new System.Drawing.Point(6, 30);
+            this.supprAuteurBouton.Location = new System.Drawing.Point(7, 30);
             this.supprAuteurBouton.Name = "supprAuteurBouton";
             this.supprAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.supprAuteurBouton.TabIndex = 1;
@@ -887,7 +888,7 @@ namespace ApplicationBiblioEPFC
             // ajouterSuperBouton
             // 
             this.ajouterSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterSuperBouton.Location = new System.Drawing.Point(6, 10);
+            this.ajouterSuperBouton.Location = new System.Drawing.Point(7, 10);
             this.ajouterSuperBouton.Name = "ajouterSuperBouton";
             this.ajouterSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterSuperBouton.TabIndex = 2;
@@ -897,7 +898,7 @@ namespace ApplicationBiblioEPFC
             // supprSuperBouton
             // 
             this.supprSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprSuperBouton.Location = new System.Drawing.Point(6, 30);
+            this.supprSuperBouton.Location = new System.Drawing.Point(7, 30);
             this.supprSuperBouton.Name = "supprSuperBouton";
             this.supprSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.supprSuperBouton.TabIndex = 3;
@@ -906,9 +907,9 @@ namespace ApplicationBiblioEPFC
             // 
             // empruntBox
             // 
-            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.empruntBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.empruntBox.Controls.Add(this.empruntSplitContainer);
             this.empruntBox.Location = new System.Drawing.Point(3, 268);
             this.empruntBox.Name = "empruntBox";
@@ -1524,9 +1525,9 @@ namespace ApplicationBiblioEPFC
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.infosMembreTableLayout);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";

@@ -52,18 +52,20 @@
             this.swapAuteurBouton = new System.Windows.Forms.Button();
             this.auteursDispoListBox = new System.Windows.Forms.ListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.auteursLabel = new System.Windows.Forms.Label();
             this.addAuteurBouton = new System.Windows.Forms.Button();
             this.auteursListBox = new System.Windows.Forms.ListBox();
+            this.superLabel = new System.Windows.Forms.Label();
+            this.moveDownBouton = new System.Windows.Forms.Button();
+            this.moveUpBouton = new System.Windows.Forms.Button();
             this.addSuperBouton = new System.Windows.Forms.Button();
             this.superListBox = new System.Windows.Forms.ListBox();
             this.ajouterOuvrageBouton = new System.Windows.Forms.Button();
             this.cancelBouton = new System.Windows.Forms.Button();
-            this.moveUpBouton = new System.Windows.Forms.Button();
-            this.moveDownBouton = new System.Windows.Forms.Button();
-            this.auteursLabel = new System.Windows.Forms.Label();
-            this.superLabel = new System.Windows.Forms.Label();
             this.auteurSuperviseurTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
             this.typeTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.TypeTableAdapter();
+            this.ouvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
+            this.ecrireTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ecrireTableAdapter();
             this.infosTableLayout.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).BeginInit();
@@ -230,6 +232,7 @@
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(221, 21);
             this.typeComboBox.TabIndex = 0;
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // dateCreaPicker
             // 
@@ -374,6 +377,15 @@
             this.splitContainer1.SplitterDistance = 137;
             this.splitContainer1.TabIndex = 2;
             // 
+            // auteursLabel
+            // 
+            this.auteursLabel.AutoSize = true;
+            this.auteursLabel.Location = new System.Drawing.Point(3, 0);
+            this.auteursLabel.Name = "auteursLabel";
+            this.auteursLabel.Size = new System.Drawing.Size(49, 13);
+            this.auteursLabel.TabIndex = 2;
+            this.auteursLabel.Text = "Auteur(s)";
+            // 
             // addAuteurBouton
             // 
             this.addAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -396,6 +408,39 @@
             this.auteursListBox.Sorted = true;
             this.auteursListBox.TabIndex = 0;
             this.auteursListBox.SelectedIndexChanged += new System.EventHandler(this.GenericListBox_SelectedIndexChanged);
+            // 
+            // superLabel
+            // 
+            this.superLabel.AutoSize = true;
+            this.superLabel.Location = new System.Drawing.Point(3, 47);
+            this.superLabel.Name = "superLabel";
+            this.superLabel.Size = new System.Drawing.Size(63, 13);
+            this.superLabel.TabIndex = 5;
+            this.superLabel.Text = "Superviseur";
+            // 
+            // moveDownBouton
+            // 
+            this.moveDownBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.moveDownBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveDownBouton.Location = new System.Drawing.Point(148, 12);
+            this.moveDownBouton.Name = "moveDownBouton";
+            this.moveDownBouton.Size = new System.Drawing.Size(27, 36);
+            this.moveDownBouton.TabIndex = 4;
+            this.moveDownBouton.Text = "↓";
+            this.moveDownBouton.UseVisualStyleBackColor = true;
+            this.moveDownBouton.Click += new System.EventHandler(this.moveDownBouton_Click);
+            // 
+            // moveUpBouton
+            // 
+            this.moveUpBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.moveUpBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveUpBouton.Location = new System.Drawing.Point(115, 12);
+            this.moveUpBouton.Name = "moveUpBouton";
+            this.moveUpBouton.Size = new System.Drawing.Size(27, 36);
+            this.moveUpBouton.TabIndex = 3;
+            this.moveUpBouton.Text = "↑";
+            this.moveUpBouton.UseVisualStyleBackColor = true;
+            this.moveUpBouton.Click += new System.EventHandler(this.moveUpBouton_Click);
             // 
             // addSuperBouton
             // 
@@ -439,48 +484,6 @@
             this.cancelBouton.UseVisualStyleBackColor = true;
             this.cancelBouton.Click += new System.EventHandler(this.cancelBouton_Click);
             // 
-            // moveUpBouton
-            // 
-            this.moveUpBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.moveUpBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moveUpBouton.Location = new System.Drawing.Point(115, 12);
-            this.moveUpBouton.Name = "moveUpBouton";
-            this.moveUpBouton.Size = new System.Drawing.Size(27, 36);
-            this.moveUpBouton.TabIndex = 3;
-            this.moveUpBouton.Text = "↑";
-            this.moveUpBouton.UseVisualStyleBackColor = true;
-            this.moveUpBouton.Click += new System.EventHandler(this.moveUpBouton_Click);
-            // 
-            // moveDownBouton
-            // 
-            this.moveDownBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.moveDownBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moveDownBouton.Location = new System.Drawing.Point(148, 12);
-            this.moveDownBouton.Name = "moveDownBouton";
-            this.moveDownBouton.Size = new System.Drawing.Size(27, 36);
-            this.moveDownBouton.TabIndex = 4;
-            this.moveDownBouton.Text = "↓";
-            this.moveDownBouton.UseVisualStyleBackColor = true;
-            this.moveDownBouton.Click += new System.EventHandler(this.moveDownBouton_Click);
-            // 
-            // auteursLabel
-            // 
-            this.auteursLabel.AutoSize = true;
-            this.auteursLabel.Location = new System.Drawing.Point(3, 0);
-            this.auteursLabel.Name = "auteursLabel";
-            this.auteursLabel.Size = new System.Drawing.Size(49, 13);
-            this.auteursLabel.TabIndex = 2;
-            this.auteursLabel.Text = "Auteur(s)";
-            // 
-            // superLabel
-            // 
-            this.superLabel.AutoSize = true;
-            this.superLabel.Location = new System.Drawing.Point(3, 47);
-            this.superLabel.Name = "superLabel";
-            this.superLabel.Size = new System.Drawing.Size(63, 13);
-            this.superLabel.TabIndex = 5;
-            this.superLabel.Text = "Superviseur";
-            // 
             // auteurSuperviseurTableAdapter1
             // 
             this.auteurSuperviseurTableAdapter1.ClearBeforeFill = true;
@@ -488,6 +491,14 @@
             // typeTableAdapter1
             // 
             this.typeTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ouvrageTableAdapter1
+            // 
+            this.ouvrageTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ecrireTableAdapter1
+            // 
+            this.ecrireTableAdapter1.ClearBeforeFill = true;
             // 
             // addOuvrageForm
             // 
@@ -561,6 +572,8 @@
         private System.Windows.Forms.Button moveUpBouton;
         private System.Windows.Forms.Label auteursLabel;
         private System.Windows.Forms.Label superLabel;
+        private BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter ouvrageTableAdapter1;
+        private BiblioEPFCDataSetTableAdapters.ecrireTableAdapter ecrireTableAdapter1;
 
 
     }

@@ -909,13 +909,29 @@ namespace ApplicationBiblioEPFC
 
             refresh_All();
         }
-
-        #endregion
-
+        
         private void ajouterOuvrageMenu_Click(object sender, EventArgs e)
         {
             addOuvrageForm addOuvrage = new addOuvrageForm();
             addOuvrage.ShowDialog();
+            refresh_All();
+        }
+        
+        #endregion
+
+        private void supprOuvrageMenu_Click(object sender, EventArgs e)
+        {
+            if (SELECTEDOUVRAGE != -1)
+            {
+                var res = MessageBox.Show("Voulez-vous vraiment supprimer l'ouvrage :\n\"" + titreTextBox.Text + "\" ?\nToutes les références vers cet ouvrage seront également supprimées.", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (res == DialogResult.Yes)
+                {
+
+                    this.ouvrageTableAdapter.DeleteOuvrage(SELECTEDOUVRAGE);
+                    SELECTEDOUVRAGE = -1;
+                    refresh_All();
+                }
+            }
         }
     }
 }
