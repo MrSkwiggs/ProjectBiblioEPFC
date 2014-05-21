@@ -58,6 +58,10 @@
             this.superListBox = new System.Windows.Forms.ListBox();
             this.ajouterOuvrageBouton = new System.Windows.Forms.Button();
             this.cancelBouton = new System.Windows.Forms.Button();
+            this.moveUpBouton = new System.Windows.Forms.Button();
+            this.moveDownBouton = new System.Windows.Forms.Button();
+            this.auteursLabel = new System.Windows.Forms.Label();
+            this.superLabel = new System.Windows.Forms.Label();
             this.auteurSuperviseurTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
             this.typeTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.TypeTableAdapter();
             this.infosTableLayout.SuspendLayout();
@@ -214,6 +218,7 @@
             this.addTypeBouton.TabIndex = 2;
             this.addTypeBouton.Text = "+";
             this.addTypeBouton.UseVisualStyleBackColor = true;
+            this.addTypeBouton.Click += new System.EventHandler(this.addTypeBouton_Click);
             // 
             // typeComboBox
             // 
@@ -236,9 +241,9 @@
             // 
             // formSplitContainer
             // 
-            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.formSplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.formSplitContainer.Cursor = System.Windows.Forms.Cursors.Default;
             this.formSplitContainer.IsSplitterFixed = true;
             this.formSplitContainer.Location = new System.Drawing.Point(12, 12);
@@ -287,41 +292,44 @@
             // 
             // removeSuperBouton
             // 
-            this.removeSuperBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeSuperBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.removeSuperBouton.Location = new System.Drawing.Point(11, 220);
             this.removeSuperBouton.Name = "removeSuperBouton";
             this.removeSuperBouton.Size = new System.Drawing.Size(37, 23);
             this.removeSuperBouton.TabIndex = 3;
             this.removeSuperBouton.Text = "<-";
             this.removeSuperBouton.UseVisualStyleBackColor = true;
+            this.removeSuperBouton.Click += new System.EventHandler(this.removeSuperBouton_Click);
             // 
             // swapSuperBouton
             // 
-            this.swapSuperBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.swapSuperBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.swapSuperBouton.Location = new System.Drawing.Point(11, 191);
             this.swapSuperBouton.Name = "swapSuperBouton";
             this.swapSuperBouton.Size = new System.Drawing.Size(37, 23);
             this.swapSuperBouton.TabIndex = 2;
             this.swapSuperBouton.Text = "->";
             this.swapSuperBouton.UseVisualStyleBackColor = true;
+            this.swapSuperBouton.Click += new System.EventHandler(this.swapSuperBouton_Click);
             // 
             // removeAuteurBouton
             // 
-            this.removeAuteurBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeAuteurBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.removeAuteurBouton.Location = new System.Drawing.Point(11, 69);
             this.removeAuteurBouton.Name = "removeAuteurBouton";
             this.removeAuteurBouton.Size = new System.Drawing.Size(37, 23);
             this.removeAuteurBouton.TabIndex = 1;
             this.removeAuteurBouton.Text = "<-";
             this.removeAuteurBouton.UseVisualStyleBackColor = true;
+            this.removeAuteurBouton.Click += new System.EventHandler(this.removeAuteurBouton_Click);
             // 
             // swapAuteurBouton
             // 
-            this.swapAuteurBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.swapAuteurBouton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.swapAuteurBouton.Location = new System.Drawing.Point(11, 40);
             this.swapAuteurBouton.Name = "swapAuteurBouton";
             this.swapAuteurBouton.Size = new System.Drawing.Size(37, 23);
@@ -337,6 +345,7 @@
             this.auteursDispoListBox.Location = new System.Drawing.Point(3, 3);
             this.auteursDispoListBox.Name = "auteursDispoListBox";
             this.auteursDispoListBox.Size = new System.Drawing.Size(291, 283);
+            this.auteursDispoListBox.Sorted = true;
             this.auteursDispoListBox.TabIndex = 1;
             this.auteursDispoListBox.SelectedIndexChanged += new System.EventHandler(this.GenericListBox_SelectedIndexChanged);
             // 
@@ -350,11 +359,15 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.auteursLabel);
             this.splitContainer1.Panel1.Controls.Add(this.addAuteurBouton);
             this.splitContainer1.Panel1.Controls.Add(this.auteursListBox);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.superLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.moveDownBouton);
+            this.splitContainer1.Panel2.Controls.Add(this.moveUpBouton);
             this.splitContainer1.Panel2.Controls.Add(this.addSuperBouton);
             this.splitContainer1.Panel2.Controls.Add(this.superListBox);
             this.splitContainer1.Size = new System.Drawing.Size(291, 283);
@@ -373,13 +386,14 @@
             // 
             // auteursListBox
             // 
-            this.auteursListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.auteursListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.auteursListBox.FormattingEnabled = true;
-            this.auteursListBox.Location = new System.Drawing.Point(3, 1);
+            this.auteursListBox.Location = new System.Drawing.Point(3, 14);
             this.auteursListBox.Name = "auteursListBox";
-            this.auteursListBox.Size = new System.Drawing.Size(250, 134);
+            this.auteursListBox.Size = new System.Drawing.Size(250, 121);
+            this.auteursListBox.Sorted = true;
             this.auteursListBox.TabIndex = 0;
             this.auteursListBox.SelectedIndexChanged += new System.EventHandler(this.GenericListBox_SelectedIndexChanged);
             // 
@@ -412,6 +426,7 @@
             this.ajouterOuvrageBouton.TabIndex = 2;
             this.ajouterOuvrageBouton.Text = "Ajouter";
             this.ajouterOuvrageBouton.UseVisualStyleBackColor = true;
+            this.ajouterOuvrageBouton.Click += new System.EventHandler(this.ajouterOuvrageBouton_Click);
             // 
             // cancelBouton
             // 
@@ -422,6 +437,49 @@
             this.cancelBouton.TabIndex = 3;
             this.cancelBouton.Text = "Annuler";
             this.cancelBouton.UseVisualStyleBackColor = true;
+            this.cancelBouton.Click += new System.EventHandler(this.cancelBouton_Click);
+            // 
+            // moveUpBouton
+            // 
+            this.moveUpBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.moveUpBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveUpBouton.Location = new System.Drawing.Point(115, 12);
+            this.moveUpBouton.Name = "moveUpBouton";
+            this.moveUpBouton.Size = new System.Drawing.Size(27, 36);
+            this.moveUpBouton.TabIndex = 3;
+            this.moveUpBouton.Text = "↑";
+            this.moveUpBouton.UseVisualStyleBackColor = true;
+            this.moveUpBouton.Click += new System.EventHandler(this.moveUpBouton_Click);
+            // 
+            // moveDownBouton
+            // 
+            this.moveDownBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.moveDownBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveDownBouton.Location = new System.Drawing.Point(148, 12);
+            this.moveDownBouton.Name = "moveDownBouton";
+            this.moveDownBouton.Size = new System.Drawing.Size(27, 36);
+            this.moveDownBouton.TabIndex = 4;
+            this.moveDownBouton.Text = "↓";
+            this.moveDownBouton.UseVisualStyleBackColor = true;
+            this.moveDownBouton.Click += new System.EventHandler(this.moveDownBouton_Click);
+            // 
+            // auteursLabel
+            // 
+            this.auteursLabel.AutoSize = true;
+            this.auteursLabel.Location = new System.Drawing.Point(3, 0);
+            this.auteursLabel.Name = "auteursLabel";
+            this.auteursLabel.Size = new System.Drawing.Size(49, 13);
+            this.auteursLabel.TabIndex = 2;
+            this.auteursLabel.Text = "Auteur(s)";
+            // 
+            // superLabel
+            // 
+            this.superLabel.AutoSize = true;
+            this.superLabel.Location = new System.Drawing.Point(3, 47);
+            this.superLabel.Name = "superLabel";
+            this.superLabel.Size = new System.Drawing.Size(63, 13);
+            this.superLabel.TabIndex = 5;
+            this.superLabel.Text = "Superviseur";
             // 
             // auteurSuperviseurTableAdapter1
             // 
@@ -435,7 +493,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 492);
+            this.ClientSize = new System.Drawing.Size(684, 491);
             this.Controls.Add(this.cancelBouton);
             this.Controls.Add(this.ajouterOuvrageBouton);
             this.Controls.Add(this.formSplitContainer);
@@ -456,7 +514,9 @@
             this.auteursTableLayout.ResumeLayout(false);
             this.swapButtonsPanel.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -497,6 +557,10 @@
         private System.Windows.Forms.DateTimePicker dateCreaPicker;
         private BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter auteurSuperviseurTableAdapter1;
         private BiblioEPFCDataSetTableAdapters.TypeTableAdapter typeTableAdapter1;
+        private System.Windows.Forms.Button moveDownBouton;
+        private System.Windows.Forms.Button moveUpBouton;
+        private System.Windows.Forms.Label auteursLabel;
+        private System.Windows.Forms.Label superLabel;
 
 
     }

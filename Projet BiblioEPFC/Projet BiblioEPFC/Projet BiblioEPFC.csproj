@@ -90,6 +90,12 @@
     <Compile Include="addEmpruntResForm.Designer.cs">
       <DependentUpon>addEmpruntResForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="addTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>addTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addEmpruntResForm.resx">
       <DependentUpon>addEmpruntResForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>addTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainForm.resx">
       <DependentUpon>mainForm.cs</DependentUpon>
