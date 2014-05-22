@@ -70,6 +70,8 @@ namespace ApplicationBiblioEPFC
 
         private void fill_OuvrageListBox()
         {
+            ouvrageListBox.Items.Clear();
+            listeIDOuvrage.Clear();
             if(lockOuvrage)
             {
                 DataRow ouvrage = this.infoOuvrageTableAdapter1.GetDataByID(SELECTEDOUVRAGE).Rows[0];
@@ -95,6 +97,8 @@ namespace ApplicationBiblioEPFC
 
         private void fill_MembreListBox()
         {
+            membreListBox.Items.Clear();
+            listeIDMembre.Clear();
             DataTable membres = this.membreTableAdapter1.GetData();
             String s;
             foreach (DataRow membre in membres.Rows)
@@ -249,7 +253,10 @@ namespace ApplicationBiblioEPFC
 
         private void ajouterOuvrageBouton_Click(object sender, EventArgs e)
         {
-            //TODO: gérer l'ajout d'un ouvrage lors de l'ajout d'un(e) emprunt/réservation
+            addOuvrageForm addOuvrage = new addOuvrageForm();
+            addOuvrage.ShowDialog();
+
+            fill_OuvrageListBox();
         }
 
         private void ajouterMembreBouton_Click(object sender, EventArgs e)

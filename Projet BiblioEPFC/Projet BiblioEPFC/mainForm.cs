@@ -44,6 +44,7 @@ namespace ApplicationBiblioEPFC
             SELECTEDAUTEUR = SELECTEDOUVRAGE = SELECTEDMEMBRE = -1;
             editState = Edition.NORMAL;
             lockControls(true);
+            refreshStateDisplay();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -531,58 +532,55 @@ namespace ApplicationBiblioEPFC
 
         private void refreshStateDisplay()
         {
-            if (SELECTEDOUVRAGE != -1)
+            #region editionState
+
+            switch (this.editState)
             {
-                #region editionState
+                case Edition.EDITING:
+                    this.modifierToolStripMenuItem.Enabled = false;
+                    this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = true;
+                    break;
 
-                switch (this.editState)
-                {
-                    case Edition.EDITING:
-                        this.modifierToolStripMenuItem.Enabled = false;
-                        this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = true;
-                        break;
-
-                    case Edition.NORMAL:
-                        this.modifierToolStripMenuItem.Enabled = true;
-                        this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = false;
-                        break;
-                }
-
-                #endregion
-
-                #region empruntState
-                switch (this.empruntState)
-                {
-                    case Emprunt.EMPRUNTE:
-                        this.ajouterEmpruntBouton.Enabled = false;
-                        this.supprEmpruntBouton.Enabled = true;
-                        break;
-
-                    case Emprunt.AUCUN:
-                        this.ajouterEmpruntBouton.Enabled = true;
-                        this.supprEmpruntBouton.Enabled = false;
-
-                        break;
-                }
-
-                #endregion
-
-                #region reservState
-
-                switch (reservState)
-                {
-                    case Reservation.EXISTANTE:
-                        this.ajouterReservBouton.Enabled = true;
-                        this.supprReservBouton.Enabled = true;
-                        break;
-                    case Reservation.AUCUNE:
-                        this.ajouterReservBouton.Enabled = true;
-                        this.supprReservBouton.Enabled = false;
-                        break;
-                }
-
-                #endregion
+                case Edition.NORMAL:
+                    this.modifierToolStripMenuItem.Enabled = SELECTEDOUVRAGE != -1;
+                    this.sauvegarderLesModificationsToolStripMenuItem.Enabled = this.ignorerLesModificationsToolStripMenuItem.Enabled = false;
+                    break;
             }
+
+            #endregion
+
+            #region empruntState
+            switch (this.empruntState)
+            {
+                case Emprunt.EMPRUNTE:
+                    this.ajouterEmpruntBouton.Enabled = false;
+                    this.supprEmpruntBouton.Enabled = true;
+                    break;
+
+                case Emprunt.AUCUN:
+                    this.ajouterEmpruntBouton.Enabled = SELECTEDOUVRAGE != -1;
+                    this.supprEmpruntBouton.Enabled = false;
+
+                    break;
+            }
+
+            #endregion
+
+            #region reservState
+
+            switch (reservState)
+            {
+                case Reservation.EXISTANTE:
+                    this.ajouterReservBouton.Enabled = true;
+                    this.supprReservBouton.Enabled = true;
+                    break;
+                case Reservation.AUCUNE:
+                    this.ajouterReservBouton.Enabled = SELECTEDOUVRAGE != -1;
+                    this.supprReservBouton.Enabled = false;
+                    break;
+            }
+
+            #endregion
         }
 
         private void lockControls(bool locked)
@@ -687,7 +685,79 @@ namespace ApplicationBiblioEPFC
             this.ActiveControl = textBoxRechercher;
             refreshStateDisplay();
             refreshOuvrageReservBox(0);
+            if (SELECTEDOUVRAGE == -1)
+                lockControls(true);
         }
+
+        private void deleteOuvrage(int idOuvrage)
+        {
+            deletePubliAuteur(idOuvrage);
+            deleteSupervision(idOuvrage);
+            deleteEmprunt(idOuvrage);
+            deleteReservations(idOuvrage);
+            this.ouvrageTableAdapter.DeleteOuvrage(SELECTEDOUVRAGE);
+            SELECTEDOUVRAGE = -1;
+        }
+
+        private void deletePubliAuteur(int idOuvrage)
+        {
+            this.ecrireTableAdapter1.DeleteAllByOuvrage(idOuvrage);
+            SELECTEDAUTEUR = -1;
+        }
+
+        private void deleteSupervision(int idOuvrage)
+        {
+            this.ouvrageTableAdapter.UpdateSuperByOuvrage(null, idOuvrage);
+        }
+
+        private void deleteEmprunt(int idOuvrage)
+        {
+            this.ouvrageTableAdapter.UpdateEmprunt(null, null, null, idOuvrage);
+            empruntState = Emprunt.AUCUN;
+            SELECTEDMEMBRE = -1;
+        }
+
+        private void deleteReservations(int idOuvrage)
+        {
+            this.reserverTableAdapter1.DeleteAllByOuvrage(idOuvrage);
+            reservState = Reservation.AUCUNE;
+        }
+
+        private void clearInfoPage(String page)
+        {
+            switch (page)
+            {
+                case "ouvrage":
+                    clearOuvragePage();
+                    break;
+            }
+        }
+
+        private void clearOuvragePage()
+        {
+            foreach (Control t in infosOuvrageTableLayout.Controls)
+            {
+                if(t.GetType() == typeof(TextBox))
+                    t.Text = "";
+            }
+            auteursListBox.Items.Clear();
+            superListBox.Items.Clear();
+
+            foreach (Control t in empruntInfoTableLayout.Controls)
+            {
+                if (t.GetType() == typeof(TextBox))
+                    t.Text = "";
+            }
+            membreEmpruntListBox.Items.Clear();
+
+            foreach (Control t in reservOuvrageInfoTableLayout.Controls)
+            {
+                if (t.GetType() == typeof(TextBox))
+                    t.Text = "";
+            }
+            reservListBox.Items.Clear();
+        }
+
 
         #endregion
 
@@ -874,7 +944,7 @@ namespace ApplicationBiblioEPFC
 
         private void supprEmpruntBouton_Click(object sender, EventArgs e)
         {
-            this.ouvrageTableAdapter.UpdateEmprunt(null, null, null, SELECTEDOUVRAGE);
+            deleteEmprunt(SELECTEDOUVRAGE);
 
             refresh_All();
         }
@@ -914,11 +984,10 @@ namespace ApplicationBiblioEPFC
         private void ajouterOuvrageMenu_Click(object sender, EventArgs e)
         {
             addOuvrageForm addOuvrage = new addOuvrageForm();
-            addOuvrage.ShowDialog();
-            refresh_All();
+            var res = addOuvrage.ShowDialog();
+            if(res == DialogResult.OK)
+                refresh_All();
         }
-        
-        #endregion
 
         private void supprOuvrageMenu_Click(object sender, EventArgs e)
         {
@@ -927,11 +996,10 @@ namespace ApplicationBiblioEPFC
                 var res = MessageBox.Show("Voulez-vous vraiment supprimer l'ouvrage :\n\"" + titreTextBox.Text + "\" ?\nToutes les références vers cet ouvrage seront également supprimées.", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (res == DialogResult.Yes)
                 {
-                    //TODO: gérer les suppressions en cascade résultant de la suppression d'un ouvrage
-                    this.ouvrageTableAdapter.DeleteOuvrage(SELECTEDOUVRAGE);
-                    SELECTEDOUVRAGE = -1;
+                    deleteOuvrage(SELECTEDOUVRAGE);
+
+                    clearInfoPage("ouvrage");
                     refresh_All();
-                    //TODO: nettoyer les infoPages si rien n'est sélectionné
                 }
             }
         }
@@ -1025,5 +1093,7 @@ namespace ApplicationBiblioEPFC
         {
             //TODO: gérer la suppression de réservations d'un membre via le mode édition
         }
+        
+        #endregion
     }
 }

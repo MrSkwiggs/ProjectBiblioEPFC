@@ -43,7 +43,6 @@ namespace ApplicationBiblioEPFC
             this.auteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterAuteurMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.supprAuteurMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.membresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterMembreMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.supprMembreMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -182,6 +181,7 @@ namespace ApplicationBiblioEPFC
             this.empruntsParMembreTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.EmpruntsParMembreTableAdapter();
             this.reservParMembreTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ReservParMembreTableAdapter();
             this.reserverTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.reserverTableAdapter();
+            this.ecrireTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ecrireTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).BeginInit();
             this.formSplitContainer.Panel1.SuspendLayout();
@@ -320,14 +320,14 @@ namespace ApplicationBiblioEPFC
             // ajouterOuvrageMenu
             // 
             this.ajouterOuvrageMenu.Name = "ajouterOuvrageMenu";
-            this.ajouterOuvrageMenu.Size = new System.Drawing.Size(152, 22);
+            this.ajouterOuvrageMenu.Size = new System.Drawing.Size(129, 22);
             this.ajouterOuvrageMenu.Text = "Ajouter";
             this.ajouterOuvrageMenu.Click += new System.EventHandler(this.ajouterOuvrageMenu_Click);
             // 
             // supprOuvrageMenu
             // 
             this.supprOuvrageMenu.Name = "supprOuvrageMenu";
-            this.supprOuvrageMenu.Size = new System.Drawing.Size(152, 22);
+            this.supprOuvrageMenu.Size = new System.Drawing.Size(129, 22);
             this.supprOuvrageMenu.Text = "Supprimer";
             this.supprOuvrageMenu.Click += new System.EventHandler(this.supprOuvrageMenu_Click);
             // 
@@ -335,8 +335,7 @@ namespace ApplicationBiblioEPFC
             // 
             this.auteursToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajouterAuteurMenu,
-            this.supprAuteurMenu,
-            this.toolStripSeparator1});
+            this.supprAuteurMenu});
             this.auteursToolStripMenuItem.Name = "auteursToolStripMenuItem";
             this.auteursToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.auteursToolStripMenuItem.Text = "Auteur";
@@ -354,11 +353,6 @@ namespace ApplicationBiblioEPFC
             this.supprAuteurMenu.Size = new System.Drawing.Size(152, 22);
             this.supprAuteurMenu.Text = "Supprimer";
             this.supprAuteurMenu.Click += new System.EventHandler(this.supprAuteurMenu_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // membresToolStripMenuItem
             // 
@@ -531,7 +525,7 @@ namespace ApplicationBiblioEPFC
             this.generalTreeView.Location = new System.Drawing.Point(2, 0);
             this.generalTreeView.Margin = new System.Windows.Forms.Padding(2, 3, 0, 1);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(226, 560);
+            this.generalTreeView.Size = new System.Drawing.Size(226, 563);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
@@ -810,7 +804,7 @@ namespace ApplicationBiblioEPFC
             // ajouterAuteurBouton
             // 
             this.ajouterAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterAuteurBouton.Location = new System.Drawing.Point(8, 10);
+            this.ajouterAuteurBouton.Location = new System.Drawing.Point(9, 10);
             this.ajouterAuteurBouton.Name = "ajouterAuteurBouton";
             this.ajouterAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterAuteurBouton.TabIndex = 0;
@@ -821,7 +815,7 @@ namespace ApplicationBiblioEPFC
             // supprAuteurBouton
             // 
             this.supprAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprAuteurBouton.Location = new System.Drawing.Point(8, 30);
+            this.supprAuteurBouton.Location = new System.Drawing.Point(9, 30);
             this.supprAuteurBouton.Name = "supprAuteurBouton";
             this.supprAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.supprAuteurBouton.TabIndex = 1;
@@ -863,7 +857,7 @@ namespace ApplicationBiblioEPFC
             // ajouterSuperBouton
             // 
             this.ajouterSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterSuperBouton.Location = new System.Drawing.Point(8, 10);
+            this.ajouterSuperBouton.Location = new System.Drawing.Point(9, 10);
             this.ajouterSuperBouton.Name = "ajouterSuperBouton";
             this.ajouterSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterSuperBouton.TabIndex = 2;
@@ -874,7 +868,7 @@ namespace ApplicationBiblioEPFC
             // supprSuperBouton
             // 
             this.supprSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprSuperBouton.Location = new System.Drawing.Point(8, 30);
+            this.supprSuperBouton.Location = new System.Drawing.Point(9, 30);
             this.supprSuperBouton.Name = "supprSuperBouton";
             this.supprSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.supprSuperBouton.TabIndex = 3;
@@ -1923,6 +1917,10 @@ namespace ApplicationBiblioEPFC
             // 
             this.reserverTableAdapter1.ClearBeforeFill = true;
             // 
+            // ecrireTableAdapter1
+            // 
+            this.ecrireTableAdapter1.ClearBeforeFill = true;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2128,7 +2126,6 @@ namespace ApplicationBiblioEPFC
         private System.Windows.Forms.SplitContainer superSplitContainer;
         private System.Windows.Forms.Button ajouterSuperBouton;
         private System.Windows.Forms.Button supprSuperBouton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.TableLayoutPanel auteurPubliTableLayout;
         private System.Windows.Forms.Label publiAuteurLabel;
         private System.Windows.Forms.Label superviseLabel;
@@ -2177,6 +2174,7 @@ namespace ApplicationBiblioEPFC
         private BiblioEPFCDataSetTableAdapters.ReservParMembreTableAdapter reservParMembreTableAdapter1;
         private System.Windows.Forms.ListBox membreEmpruntListBox;
         private BiblioEPFCDataSetTableAdapters.reserverTableAdapter reserverTableAdapter1;
+        private BiblioEPFCDataSetTableAdapters.ecrireTableAdapter ecrireTableAdapter1;
 
     }
 }

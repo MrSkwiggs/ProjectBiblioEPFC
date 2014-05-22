@@ -422,24 +422,24 @@
             // moveDownBouton
             // 
             this.moveDownBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.moveDownBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveDownBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.moveDownBouton.Location = new System.Drawing.Point(148, 12);
             this.moveDownBouton.Name = "moveDownBouton";
             this.moveDownBouton.Size = new System.Drawing.Size(27, 36);
             this.moveDownBouton.TabIndex = 4;
-            this.moveDownBouton.Text = "↓";
+            this.moveDownBouton.Text = "˅";
             this.moveDownBouton.UseVisualStyleBackColor = true;
             this.moveDownBouton.Click += new System.EventHandler(this.moveDownBouton_Click);
             // 
             // moveUpBouton
             // 
             this.moveUpBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.moveUpBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveUpBouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.moveUpBouton.Location = new System.Drawing.Point(115, 12);
             this.moveUpBouton.Name = "moveUpBouton";
             this.moveUpBouton.Size = new System.Drawing.Size(27, 36);
             this.moveUpBouton.TabIndex = 3;
-            this.moveUpBouton.Text = "↑";
+            this.moveUpBouton.Text = "˄";
             this.moveUpBouton.UseVisualStyleBackColor = true;
             this.moveUpBouton.Click += new System.EventHandler(this.moveUpBouton_Click);
             // 

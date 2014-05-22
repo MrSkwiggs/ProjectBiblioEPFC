@@ -109,6 +109,7 @@ namespace ApplicationBiblioEPFC
 
         private void cancelBouton_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Dispose();
         }
 
@@ -217,6 +218,8 @@ namespace ApplicationBiblioEPFC
                         addOuvrage(titre, local, date, section, entrep, SELECTEDTYPE, SELECTEDSUPER);
 
                     addAuteurs();
+                    this.DialogResult = DialogResult.OK;
+                    this.Dispose();
                 }
             }
             else
