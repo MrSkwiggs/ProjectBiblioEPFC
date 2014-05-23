@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addOuvrageForm));
             this.infosTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.localTextBox = new System.Windows.Forms.TextBox();
             this.sectionTextBox = new System.Windows.Forms.TextBox();
@@ -510,6 +511,7 @@
             this.Controls.Add(this.cancelBouton);
             this.Controls.Add(this.ajouterOuvrageBouton);
             this.Controls.Add(this.formSplitContainer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(700, 530);
             this.MinimizeBox = false;

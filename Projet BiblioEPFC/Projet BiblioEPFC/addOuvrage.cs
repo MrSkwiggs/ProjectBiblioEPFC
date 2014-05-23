@@ -285,6 +285,8 @@ namespace ApplicationBiblioEPFC
         private void addAuteurBouton_Click(object sender, EventArgs e)
         {
             //TODO: gérer l'ajout d'un nouveau membre directement assigné à la liste d'auteurs d'un nouvel ouvrage
+            addAuteurForm addAuteur = new addAuteurForm();
+            addAuteur.ShowDialog();
         }
 
         private void addSuperBouton_Click(object sender, EventArgs e)
