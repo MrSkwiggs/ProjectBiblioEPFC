@@ -1007,6 +1007,8 @@ namespace ApplicationBiblioEPFC
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: gérer l'ajout d'un nouvel auteur via le menu
+            addAuteurForm addAuteur = new addAuteurForm();
+            addAuteur.ShowDialog();
         }
 
         private void supprAuteurMenu_Click(object sender, EventArgs e)

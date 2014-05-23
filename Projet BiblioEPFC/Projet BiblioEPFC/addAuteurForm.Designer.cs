@@ -30,42 +30,42 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addAuteurForm));
-            this.auteurSuperviseurTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
-            this.ecrireTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ecrireTableAdapter();
-            this.ouvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
             this.formSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.statutComboBox = new System.Windows.Forms.ComboBox();
+            this.prenomTextBox = new System.Windows.Forms.TextBox();
+            this.nomTextBox = new System.Windows.Forms.TextBox();
             this.statutLabel = new System.Windows.Forms.Label();
             this.prenomLabel = new System.Windows.Forms.Label();
             this.nomLabel = new System.Windows.Forms.Label();
-            this.nomTextBox = new System.Windows.Forms.TextBox();
-            this.prenomTextBox = new System.Windows.Forms.TextBox();
-            this.statutComboBox = new System.Windows.Forms.ComboBox();
             this.subSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.ajouterBouton = new System.Windows.Forms.Button();
-            this.cancelBouton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ouvrageDispoGroupBox = new System.Windows.Forms.GroupBox();
+            this.ouvragesDispoListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ecritsPanel = new System.Windows.Forms.Panel();
+            this.addEcritBouton = new System.Windows.Forms.Button();
+            this.ecritsGroupBox = new System.Windows.Forms.GroupBox();
+            this.ecritsListBox = new System.Windows.Forms.ListBox();
             this.versEcritsPanel = new System.Windows.Forms.Panel();
-            this.versSuperviseLabel = new System.Windows.Forms.Panel();
-            this.swapEcritBouton = new System.Windows.Forms.Button();
             this.removeEcritBouton = new System.Windows.Forms.Button();
+            this.swapEcritBouton = new System.Windows.Forms.Button();
+            this.versSuperviseLabel = new System.Windows.Forms.Panel();
             this.removeSuperBouton = new System.Windows.Forms.Button();
             this.swapSuperBouton = new System.Windows.Forms.Button();
             this.swapEcritSuper = new System.Windows.Forms.Panel();
             this.moveDownBouton = new System.Windows.Forms.Button();
             this.moveUpBouton = new System.Windows.Forms.Button();
-            this.ecritsGroupBox = new System.Windows.Forms.GroupBox();
-            this.ecritsPanel = new System.Windows.Forms.Panel();
             this.superPanel = new System.Windows.Forms.Panel();
-            this.superGroupBox = new System.Windows.Forms.GroupBox();
-            this.addEcritBouton = new System.Windows.Forms.Button();
             this.addSuperBouton = new System.Windows.Forms.Button();
-            this.ouvragesDispoListBox = new System.Windows.Forms.ListBox();
-            this.ecritsListBox = new System.Windows.Forms.ListBox();
+            this.superGroupBox = new System.Windows.Forms.GroupBox();
             this.superListBox = new System.Windows.Forms.ListBox();
-            this.biblioEPFCDataSet = new ApplicationBiblioEPFC.BiblioEPFCDataSet();
+            this.cancelBouton = new System.Windows.Forms.Button();
+            this.ajouterBouton = new System.Windows.Forms.Button();
+            this.auteurSuperviseurTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.AuteurSuperviseurTableAdapter();
+            this.ecrireTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.ecrireTableAdapter();
+            this.ouvrageTableAdapter1 = new ApplicationBiblioEPFC.BiblioEPFCDataSetTableAdapters.OuvrageTableAdapter();
             this.ouvrageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.biblioEPFCDataSet = new ApplicationBiblioEPFC.BiblioEPFCDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.formSplitContainer)).BeginInit();
             this.formSplitContainer.Panel1.SuspendLayout();
             this.formSplitContainer.Panel2.SuspendLayout();
@@ -77,28 +77,16 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.ouvrageDispoGroupBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.ecritsPanel.SuspendLayout();
+            this.ecritsGroupBox.SuspendLayout();
             this.versEcritsPanel.SuspendLayout();
             this.versSuperviseLabel.SuspendLayout();
             this.swapEcritSuper.SuspendLayout();
-            this.ecritsGroupBox.SuspendLayout();
-            this.ecritsPanel.SuspendLayout();
             this.superPanel.SuspendLayout();
             this.superGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // auteurSuperviseurTableAdapter1
-            // 
-            this.auteurSuperviseurTableAdapter1.ClearBeforeFill = true;
-            // 
-            // ecrireTableAdapter1
-            // 
-            this.ecrireTableAdapter1.ClearBeforeFill = true;
-            // 
-            // ouvrageTableAdapter1
-            // 
-            this.ouvrageTableAdapter1.ClearBeforeFill = true;
             // 
             // formSplitContainer
             // 
@@ -124,6 +112,37 @@
             this.formSplitContainer.Size = new System.Drawing.Size(674, 516);
             this.formSplitContainer.SplitterDistance = 85;
             this.formSplitContainer.TabIndex = 0;
+            // 
+            // statutComboBox
+            // 
+            this.statutComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.statutComboBox.FormattingEnabled = true;
+            this.statutComboBox.Items.AddRange(new object[] {
+            "auteur",
+            "etudiant",
+            "professeur"});
+            this.statutComboBox.Location = new System.Drawing.Point(481, 32);
+            this.statutComboBox.Name = "statutComboBox";
+            this.statutComboBox.Size = new System.Drawing.Size(181, 21);
+            this.statutComboBox.TabIndex = 5;
+            // 
+            // prenomTextBox
+            // 
+            this.prenomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.prenomTextBox.Location = new System.Drawing.Point(59, 46);
+            this.prenomTextBox.Name = "prenomTextBox";
+            this.prenomTextBox.Size = new System.Drawing.Size(373, 20);
+            this.prenomTextBox.TabIndex = 4;
+            // 
+            // nomTextBox
+            // 
+            this.nomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.nomTextBox.Location = new System.Drawing.Point(59, 20);
+            this.nomTextBox.Name = "nomTextBox";
+            this.nomTextBox.Size = new System.Drawing.Size(373, 20);
+            this.nomTextBox.TabIndex = 3;
             // 
             // statutLabel
             // 
@@ -153,37 +172,6 @@
             this.nomLabel.TabIndex = 0;
             this.nomLabel.Text = "Nom";
             // 
-            // nomTextBox
-            // 
-            this.nomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.nomTextBox.Location = new System.Drawing.Point(59, 20);
-            this.nomTextBox.Name = "nomTextBox";
-            this.nomTextBox.Size = new System.Drawing.Size(373, 20);
-            this.nomTextBox.TabIndex = 3;
-            // 
-            // prenomTextBox
-            // 
-            this.prenomTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.prenomTextBox.Location = new System.Drawing.Point(59, 46);
-            this.prenomTextBox.Name = "prenomTextBox";
-            this.prenomTextBox.Size = new System.Drawing.Size(373, 20);
-            this.prenomTextBox.TabIndex = 4;
-            // 
-            // statutComboBox
-            // 
-            this.statutComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.statutComboBox.FormattingEnabled = true;
-            this.statutComboBox.Items.AddRange(new object[] {
-            "auteur",
-            "etudiant",
-            "professeur"});
-            this.statutComboBox.Location = new System.Drawing.Point(481, 32);
-            this.statutComboBox.Name = "statutComboBox";
-            this.statutComboBox.Size = new System.Drawing.Size(181, 21);
-            this.statutComboBox.TabIndex = 5;
-            // 
             // subSplitContainer
             // 
             this.subSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,26 +192,6 @@
             this.subSplitContainer.Size = new System.Drawing.Size(674, 427);
             this.subSplitContainer.SplitterDistance = 380;
             this.subSplitContainer.TabIndex = 0;
-            // 
-            // ajouterBouton
-            // 
-            this.ajouterBouton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.ajouterBouton.Location = new System.Drawing.Point(244, 5);
-            this.ajouterBouton.Name = "ajouterBouton";
-            this.ajouterBouton.Size = new System.Drawing.Size(90, 32);
-            this.ajouterBouton.TabIndex = 0;
-            this.ajouterBouton.Text = "Ajouter";
-            this.ajouterBouton.UseVisualStyleBackColor = true;
-            // 
-            // cancelBouton
-            // 
-            this.cancelBouton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.cancelBouton.Location = new System.Drawing.Point(340, 5);
-            this.cancelBouton.Name = "cancelBouton";
-            this.cancelBouton.Size = new System.Drawing.Size(90, 32);
-            this.cancelBouton.TabIndex = 1;
-            this.cancelBouton.Text = "Annuler";
-            this.cancelBouton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -252,6 +220,17 @@
             this.ouvrageDispoGroupBox.TabStop = false;
             this.ouvrageDispoGroupBox.Text = "Ouvrages disponibles";
             // 
+            // ouvragesDispoListBox
+            // 
+            this.ouvragesDispoListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ouvragesDispoListBox.FormattingEnabled = true;
+            this.ouvragesDispoListBox.Location = new System.Drawing.Point(3, 16);
+            this.ouvragesDispoListBox.Name = "ouvragesDispoListBox";
+            this.ouvragesDispoListBox.Size = new System.Drawing.Size(302, 355);
+            this.ouvragesDispoListBox.Sorted = true;
+            this.ouvragesDispoListBox.TabIndex = 0;
+            this.ouvragesDispoListBox.SelectedIndexChanged += new System.EventHandler(this.ouvragesDispoListBox_SelectedIndexChanged);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -272,6 +251,50 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(354, 374);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
+            // ecritsPanel
+            // 
+            this.ecritsPanel.Controls.Add(this.addEcritBouton);
+            this.ecritsPanel.Controls.Add(this.ecritsGroupBox);
+            this.ecritsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ecritsPanel.Location = new System.Drawing.Point(47, 3);
+            this.ecritsPanel.Name = "ecritsPanel";
+            this.ecritsPanel.Size = new System.Drawing.Size(304, 161);
+            this.ecritsPanel.TabIndex = 0;
+            // 
+            // addEcritBouton
+            // 
+            this.addEcritBouton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.addEcritBouton.Location = new System.Drawing.Point(275, 69);
+            this.addEcritBouton.Name = "addEcritBouton";
+            this.addEcritBouton.Size = new System.Drawing.Size(23, 22);
+            this.addEcritBouton.TabIndex = 4;
+            this.addEcritBouton.Text = "+";
+            this.addEcritBouton.UseVisualStyleBackColor = true;
+            this.addEcritBouton.Click += new System.EventHandler(this.addEcritBouton_Click);
+            // 
+            // ecritsGroupBox
+            // 
+            this.ecritsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ecritsGroupBox.Controls.Add(this.ecritsListBox);
+            this.ecritsGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.ecritsGroupBox.Name = "ecritsGroupBox";
+            this.ecritsGroupBox.Size = new System.Drawing.Size(267, 155);
+            this.ecritsGroupBox.TabIndex = 3;
+            this.ecritsGroupBox.TabStop = false;
+            this.ecritsGroupBox.Text = "Ouvrages écrits";
+            // 
+            // ecritsListBox
+            // 
+            this.ecritsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ecritsListBox.FormattingEnabled = true;
+            this.ecritsListBox.Location = new System.Drawing.Point(3, 16);
+            this.ecritsListBox.Name = "ecritsListBox";
+            this.ecritsListBox.Size = new System.Drawing.Size(261, 136);
+            this.ecritsListBox.Sorted = true;
+            this.ecritsListBox.TabIndex = 0;
+            // 
             // versEcritsPanel
             // 
             this.versEcritsPanel.Controls.Add(this.removeEcritBouton);
@@ -281,6 +304,28 @@
             this.versEcritsPanel.Name = "versEcritsPanel";
             this.versEcritsPanel.Size = new System.Drawing.Size(38, 161);
             this.versEcritsPanel.TabIndex = 0;
+            // 
+            // removeEcritBouton
+            // 
+            this.removeEcritBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.removeEcritBouton.Location = new System.Drawing.Point(3, 83);
+            this.removeEcritBouton.Name = "removeEcritBouton";
+            this.removeEcritBouton.Size = new System.Drawing.Size(32, 24);
+            this.removeEcritBouton.TabIndex = 1;
+            this.removeEcritBouton.Text = "<-";
+            this.removeEcritBouton.UseVisualStyleBackColor = true;
+            this.removeEcritBouton.Click += new System.EventHandler(this.removeEcritBouton_Click);
+            // 
+            // swapEcritBouton
+            // 
+            this.swapEcritBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.swapEcritBouton.Location = new System.Drawing.Point(3, 53);
+            this.swapEcritBouton.Name = "swapEcritBouton";
+            this.swapEcritBouton.Size = new System.Drawing.Size(32, 24);
+            this.swapEcritBouton.TabIndex = 0;
+            this.swapEcritBouton.Text = "->";
+            this.swapEcritBouton.UseVisualStyleBackColor = true;
+            this.swapEcritBouton.Click += new System.EventHandler(this.swapEcritBouton_Click);
             // 
             // versSuperviseLabel
             // 
@@ -292,26 +337,6 @@
             this.versSuperviseLabel.Size = new System.Drawing.Size(38, 161);
             this.versSuperviseLabel.TabIndex = 1;
             // 
-            // swapEcritBouton
-            // 
-            this.swapEcritBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.swapEcritBouton.Location = new System.Drawing.Point(3, 53);
-            this.swapEcritBouton.Name = "swapEcritBouton";
-            this.swapEcritBouton.Size = new System.Drawing.Size(32, 24);
-            this.swapEcritBouton.TabIndex = 0;
-            this.swapEcritBouton.Text = "->";
-            this.swapEcritBouton.UseVisualStyleBackColor = true;
-            // 
-            // removeEcritBouton
-            // 
-            this.removeEcritBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.removeEcritBouton.Location = new System.Drawing.Point(3, 83);
-            this.removeEcritBouton.Name = "removeEcritBouton";
-            this.removeEcritBouton.Size = new System.Drawing.Size(32, 24);
-            this.removeEcritBouton.TabIndex = 1;
-            this.removeEcritBouton.Text = "<-";
-            this.removeEcritBouton.UseVisualStyleBackColor = true;
-            // 
             // removeSuperBouton
             // 
             this.removeSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -321,6 +346,7 @@
             this.removeSuperBouton.TabIndex = 3;
             this.removeSuperBouton.Text = "<-";
             this.removeSuperBouton.UseVisualStyleBackColor = true;
+            this.removeSuperBouton.Click += new System.EventHandler(this.removeSuperBouton_Click);
             // 
             // swapSuperBouton
             // 
@@ -331,6 +357,7 @@
             this.swapSuperBouton.TabIndex = 2;
             this.swapSuperBouton.Text = "->";
             this.swapSuperBouton.UseVisualStyleBackColor = true;
+            this.swapSuperBouton.Click += new System.EventHandler(this.swapSuperBouton_Click);
             // 
             // swapEcritSuper
             // 
@@ -352,6 +379,7 @@
             this.moveDownBouton.TabIndex = 6;
             this.moveDownBouton.Text = "˅";
             this.moveDownBouton.UseVisualStyleBackColor = true;
+            this.moveDownBouton.Click += new System.EventHandler(this.moveDownBouton_Click);
             // 
             // moveUpBouton
             // 
@@ -363,29 +391,7 @@
             this.moveUpBouton.TabIndex = 5;
             this.moveUpBouton.Text = "˄";
             this.moveUpBouton.UseVisualStyleBackColor = true;
-            // 
-            // ecritsGroupBox
-            // 
-            this.ecritsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ecritsGroupBox.Controls.Add(this.ecritsListBox);
-            this.ecritsGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.ecritsGroupBox.Name = "ecritsGroupBox";
-            this.ecritsGroupBox.Size = new System.Drawing.Size(267, 155);
-            this.ecritsGroupBox.TabIndex = 3;
-            this.ecritsGroupBox.TabStop = false;
-            this.ecritsGroupBox.Text = "Ouvrages écrits";
-            // 
-            // ecritsPanel
-            // 
-            this.ecritsPanel.Controls.Add(this.addEcritBouton);
-            this.ecritsPanel.Controls.Add(this.ecritsGroupBox);
-            this.ecritsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ecritsPanel.Location = new System.Drawing.Point(47, 3);
-            this.ecritsPanel.Name = "ecritsPanel";
-            this.ecritsPanel.Size = new System.Drawing.Size(304, 161);
-            this.ecritsPanel.TabIndex = 0;
+            this.moveUpBouton.Click += new System.EventHandler(this.moveUpBouton_Click);
             // 
             // superPanel
             // 
@@ -396,6 +402,16 @@
             this.superPanel.Name = "superPanel";
             this.superPanel.Size = new System.Drawing.Size(304, 161);
             this.superPanel.TabIndex = 3;
+            // 
+            // addSuperBouton
+            // 
+            this.addSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.addSuperBouton.Location = new System.Drawing.Point(275, 69);
+            this.addSuperBouton.Name = "addSuperBouton";
+            this.addSuperBouton.Size = new System.Drawing.Size(23, 22);
+            this.addSuperBouton.TabIndex = 5;
+            this.addSuperBouton.Text = "+";
+            this.addSuperBouton.UseVisualStyleBackColor = true;
             // 
             // superGroupBox
             // 
@@ -410,48 +426,6 @@
             this.superGroupBox.TabStop = false;
             this.superGroupBox.Text = "Ouvrages supervisés";
             // 
-            // addEcritBouton
-            // 
-            this.addEcritBouton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.addEcritBouton.Location = new System.Drawing.Point(275, 69);
-            this.addEcritBouton.Name = "addEcritBouton";
-            this.addEcritBouton.Size = new System.Drawing.Size(23, 22);
-            this.addEcritBouton.TabIndex = 4;
-            this.addEcritBouton.Text = "+";
-            this.addEcritBouton.UseVisualStyleBackColor = true;
-            // 
-            // addSuperBouton
-            // 
-            this.addSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.addSuperBouton.Location = new System.Drawing.Point(275, 69);
-            this.addSuperBouton.Name = "addSuperBouton";
-            this.addSuperBouton.Size = new System.Drawing.Size(23, 22);
-            this.addSuperBouton.TabIndex = 5;
-            this.addSuperBouton.Text = "+";
-            this.addSuperBouton.UseVisualStyleBackColor = true;
-            // 
-            // ouvragesDispoListBox
-            // 
-            this.ouvragesDispoListBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.ouvrageBindingSource, "titre", true));
-            this.ouvragesDispoListBox.DataSource = this.ouvrageBindingSource;
-            this.ouvragesDispoListBox.DisplayMember = "titre";
-            this.ouvragesDispoListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ouvragesDispoListBox.FormattingEnabled = true;
-            this.ouvragesDispoListBox.Location = new System.Drawing.Point(3, 16);
-            this.ouvragesDispoListBox.Name = "ouvragesDispoListBox";
-            this.ouvragesDispoListBox.Size = new System.Drawing.Size(302, 355);
-            this.ouvragesDispoListBox.TabIndex = 0;
-            this.ouvragesDispoListBox.ValueMember = "idOuvrage";
-            // 
-            // ecritsListBox
-            // 
-            this.ecritsListBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ecritsListBox.FormattingEnabled = true;
-            this.ecritsListBox.Location = new System.Drawing.Point(3, 16);
-            this.ecritsListBox.Name = "ecritsListBox";
-            this.ecritsListBox.Size = new System.Drawing.Size(261, 136);
-            this.ecritsListBox.TabIndex = 0;
-            // 
             // superListBox
             // 
             this.superListBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -459,17 +433,52 @@
             this.superListBox.Location = new System.Drawing.Point(3, 16);
             this.superListBox.Name = "superListBox";
             this.superListBox.Size = new System.Drawing.Size(261, 136);
+            this.superListBox.Sorted = true;
             this.superListBox.TabIndex = 0;
             // 
-            // biblioEPFCDataSet
+            // cancelBouton
             // 
-            this.biblioEPFCDataSet.DataSetName = "BiblioEPFCDataSet";
-            this.biblioEPFCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.cancelBouton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cancelBouton.Location = new System.Drawing.Point(340, 5);
+            this.cancelBouton.Name = "cancelBouton";
+            this.cancelBouton.Size = new System.Drawing.Size(90, 32);
+            this.cancelBouton.TabIndex = 1;
+            this.cancelBouton.Text = "Annuler";
+            this.cancelBouton.UseVisualStyleBackColor = true;
+            this.cancelBouton.Click += new System.EventHandler(this.cancelBouton_Click);
+            // 
+            // ajouterBouton
+            // 
+            this.ajouterBouton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ajouterBouton.Location = new System.Drawing.Point(244, 5);
+            this.ajouterBouton.Name = "ajouterBouton";
+            this.ajouterBouton.Size = new System.Drawing.Size(90, 32);
+            this.ajouterBouton.TabIndex = 0;
+            this.ajouterBouton.Text = "Ajouter";
+            this.ajouterBouton.UseVisualStyleBackColor = true;
+            this.ajouterBouton.Click += new System.EventHandler(this.ajouterBouton_Click);
+            // 
+            // auteurSuperviseurTableAdapter1
+            // 
+            this.auteurSuperviseurTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ecrireTableAdapter1
+            // 
+            this.ecrireTableAdapter1.ClearBeforeFill = true;
+            // 
+            // ouvrageTableAdapter1
+            // 
+            this.ouvrageTableAdapter1.ClearBeforeFill = true;
             // 
             // ouvrageBindingSource
             // 
             this.ouvrageBindingSource.DataMember = "Ouvrage";
             this.ouvrageBindingSource.DataSource = this.biblioEPFCDataSet;
+            // 
+            // biblioEPFCDataSet
+            // 
+            this.biblioEPFCDataSet.DataSetName = "BiblioEPFCDataSet";
+            this.biblioEPFCDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // addAuteurForm
             // 
@@ -480,6 +489,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "addAuteurForm";
             this.Text = "Ajouteur auteur";
             this.Load += new System.EventHandler(this.addAuteurForm_Load);
@@ -495,15 +505,15 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ouvrageDispoGroupBox.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.ecritsPanel.ResumeLayout(false);
+            this.ecritsGroupBox.ResumeLayout(false);
             this.versEcritsPanel.ResumeLayout(false);
             this.versSuperviseLabel.ResumeLayout(false);
             this.swapEcritSuper.ResumeLayout(false);
-            this.ecritsGroupBox.ResumeLayout(false);
-            this.ecritsPanel.ResumeLayout(false);
             this.superPanel.ResumeLayout(false);
             this.superGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ouvrageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioEPFCDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

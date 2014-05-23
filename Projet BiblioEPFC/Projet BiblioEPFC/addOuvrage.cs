@@ -14,11 +14,20 @@ namespace ApplicationBiblioEPFC
         private List<int> listeIDType;
         private Dictionary<String, int> listeAuteursDispo, listeAuteurs;
         private int SELECTEDSUPER, SELECTEDTYPE;
+        bool goDeeper;
 
         public addOuvrageForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            goDeeper = true;
+        }
+
+        public addOuvrageForm(bool goDeeper)
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.goDeeper = goDeeper;
         }
 
         private void addOuvrageForm_Load(object sender, EventArgs e)
@@ -29,7 +38,7 @@ namespace ApplicationBiblioEPFC
             listeAuteursDispo = new Dictionary<string, int>();
 
             fill_ListBoxes();
-            lockControls();
+            tryLockControls();
         }
 
         private void fill_ListBoxes()
@@ -66,7 +75,7 @@ namespace ApplicationBiblioEPFC
             }
         }
 
-        private void lockControls()
+        private void tryLockControls()
         {
             swapAuteurBouton.Enabled = auteursDispoListBox.Items.Count != 0 && auteursDispoListBox.SelectedItem != null;
             swapSuperBouton.Enabled = swapAuteurBouton.Enabled && superListBox.Items.Count == 0;
@@ -74,7 +83,8 @@ namespace ApplicationBiblioEPFC
             removeSuperBouton.Enabled = superListBox.Items.Count != 0;
             moveUpBouton.Enabled = removeSuperBouton.Enabled;
             moveDownBouton.Enabled = removeAuteurBouton.Enabled && superListBox.Items.Count == 0;
-            addSuperBouton.Enabled = superListBox.Items.Count == 0;
+            addSuperBouton.Enabled = goDeeper && superListBox.Items.Count == 0;
+            addAuteurBouton.Enabled = goDeeper;
         }
 
         private void swapAuteurBouton_Click(object sender, EventArgs e)
@@ -92,12 +102,12 @@ namespace ApplicationBiblioEPFC
                 auteursListBox.SelectedIndex = 0;
             }
 
-            lockControls();
+            tryLockControls();
         }
 
         private void GenericListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lockControls();
+            tryLockControls();
         }
 
         private void addTypeBouton_Click(object sender, EventArgs e)
@@ -128,7 +138,7 @@ namespace ApplicationBiblioEPFC
                 auteursDispoListBox.SelectedIndex = 0;
             }
 
-            lockControls();
+            tryLockControls();
         }
 
         private void swapSuperBouton_Click(object sender, EventArgs e)
@@ -146,7 +156,7 @@ namespace ApplicationBiblioEPFC
                 superListBox.SelectedIndex = 0;
             }
 
-            lockControls();
+            tryLockControls();
         }
 
         private void removeSuperBouton_Click(object sender, EventArgs e)
@@ -161,7 +171,7 @@ namespace ApplicationBiblioEPFC
 
             auteursDispoListBox.SelectedIndex = 0;
             
-            lockControls();
+            tryLockControls();
         }
 
         private void moveUpBouton_Click(object sender, EventArgs e)
@@ -176,7 +186,7 @@ namespace ApplicationBiblioEPFC
 
             auteursListBox.SelectedIndex = 0;
 
-            lockControls();
+            tryLockControls();
         }
 
         private void moveDownBouton_Click(object sender, EventArgs e)
@@ -194,7 +204,7 @@ namespace ApplicationBiblioEPFC
                 superListBox.SelectedIndex = 0;
             }
 
-            lockControls();
+            tryLockControls();
         }
 
         private void ajouterOuvrageBouton_Click(object sender, EventArgs e)
@@ -285,7 +295,7 @@ namespace ApplicationBiblioEPFC
         private void addAuteurBouton_Click(object sender, EventArgs e)
         {
             //TODO: gérer l'ajout d'un nouveau membre directement assigné à la liste d'auteurs d'un nouvel ouvrage
-            addAuteurForm addAuteur = new addAuteurForm();
+            addAuteurForm addAuteur = new addAuteurForm(false);
             addAuteur.ShowDialog();
         }
 
