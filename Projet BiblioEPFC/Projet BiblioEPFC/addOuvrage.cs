@@ -14,7 +14,7 @@ namespace ApplicationBiblioEPFC
         private List<int> listeIDType;
         private Dictionary<String, int> listeAuteursDispo, listeAuteurs;
         private int SELECTEDSUPER, SELECTEDTYPE;
-        bool goDeeper;
+        private bool goDeeper;
 
         public addOuvrageForm()
         {
@@ -294,14 +294,28 @@ namespace ApplicationBiblioEPFC
 
         private void addAuteurBouton_Click(object sender, EventArgs e)
         {
-            //TODO: gérer l'ajout d'un nouveau membre directement assigné à la liste d'auteurs d'un nouvel ouvrage
             addAuteurForm addAuteur = new addAuteurForm(false);
-            addAuteur.ShowDialog();
+            var res = addAuteur.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                auteursListBox.Items.Add(addAuteur.returnName);
+                listeAuteurs.Add(addAuteur.returnName, addAuteur.returnID);
+                auteursListBox.SelectedIndex = 0;
+            }
+            addAuteur.Dispose();
         }
 
         private void addSuperBouton_Click(object sender, EventArgs e)
         {
-            //TODO: gérer l'ajout d'un nouveau membre superviseur dans nouvel ouvrage
+            addAuteurForm addSuper = new addAuteurForm();
+            var res = addSuper.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                superListBox.Items.Add(addSuper.returnName);
+                SELECTEDSUPER = addSuper.returnID;
+                superListBox.SelectedIndex = 0;
+            }
+            addSuper.Dispose();
         }
     }
 }

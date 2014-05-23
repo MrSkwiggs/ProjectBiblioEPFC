@@ -12,6 +12,8 @@ namespace ApplicationBiblioEPFC
     public partial class addAuteurForm : Form
     {
         Dictionary<String, int> listeOuvragesDispo, listeEcrits, listeSuper;
+        public String returnName;
+        public int returnID;
 
         public addAuteurForm()
         {
@@ -31,6 +33,8 @@ namespace ApplicationBiblioEPFC
             listeOuvragesDispo = new Dictionary<String, int>();
             listeEcrits = new Dictionary<String, int>();
             listeSuper = new Dictionary<String, int>();
+
+            returnName = "";
 
             this.ouvrageTableAdapter1.Fill(biblioEPFCDataSet.Ouvrage);
             fill_OuvrageListBox();
@@ -225,18 +229,28 @@ namespace ApplicationBiblioEPFC
                 if (!selected_Ouvrages())
                 {
                     var res = MessageBox.Show("Vous n'avez pas attribué d'ouvrage(s) à cet auteur.\nContinuer ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (res == DialogResult.Yes)
-                        addAuteur();
-                    else
+                    if (res == DialogResult.No)
                         return;
                 }
-                else
+                if (!alreadyExists())
+                {
                     addAuteur();
-
-                this.Dispose();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("Un auteur du même nom et prénom existe déjà", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Veuillez remplir au minimum les champs suivants:\n\tNom\n\tPrénom\n\tStatut", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Veuillez remplir au minimum les champs suivants:\n- Nom\n- Prénom\n- Statut", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private bool alreadyExists()
+        {
+            DataTable auteurs = this.auteurSuperviseurTableAdapter1.GetIDByName(nomTextBox.Text, prenomTextBox.Text);
+            foreach (DataRow auteur in auteurs.Rows)
+                return true;
+            return false;
         }
 
         private bool filled_Minimum()
@@ -259,6 +273,8 @@ namespace ApplicationBiblioEPFC
             prenom = prenomTextBox.Text;
             statut = statutComboBox.SelectedItem.ToString();
 
+            returnName = nom + ' ' + prenom;
+
             this.auteurSuperviseurTableAdapter1.AddNewAuteur(nom, prenom, statut);
             appendOuvrages(nom, prenom);
         }
@@ -270,6 +286,7 @@ namespace ApplicationBiblioEPFC
             if (auteurs.Rows.Count != 0)
             {
                 idAuteur = Convert.ToInt32(auteurs.Rows[0].ItemArray[0].ToString());
+                returnID = idAuteur;
                 int idOuvrage;
                 foreach (var ecrit in ecritsListBox.Items)
                 {
@@ -278,9 +295,15 @@ namespace ApplicationBiblioEPFC
                         ecrireTableAdapter1.InsertEcrire(idAuteur, idOuvrage);
                     }
                 }
+
+                foreach (String ouvrage in listeSuper.Keys)
+                {
+                    if(listeSuper.TryGetValue(ouvrage,out idOuvrage))
+                    {
+                        this.ouvrageTableAdapter1.UpdateSuperByOuvrage(idAuteur, idOuvrage);
+                    }
+                }
             }
-            //TODO: finir appendOuvrages (partie supervisions)
-            //if(
         }
     }
 }

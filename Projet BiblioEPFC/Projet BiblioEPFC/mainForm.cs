@@ -317,6 +317,7 @@ namespace ApplicationBiblioEPFC
             fill_OuvrageReservBox();
 
             refreshStateDisplay();
+            lockControls(!(editState == Edition.EDITING));
         }
 
         private void fill_OuvrageInfoBox()
@@ -598,13 +599,19 @@ namespace ApplicationBiblioEPFC
                     ((TextBox)c).ReadOnly = locked;
             }
 
-            foreach (Control c in auteursSplitContainer.Panel2.Controls)
-                if (c.GetType() == typeof(Button))
-                    c.Enabled = !locked;
+            ajouterAuteurBouton.Enabled = !locked;
+            supprAuteurBouton.Enabled = !locked && auteursListBox.Items.Count != 0;
 
-            foreach (Control c in superSplitContainer.Panel2.Controls)
-                if (c.GetType() == typeof(Button))
-                    c.Enabled = !locked;
+            ajouterSuperBouton.Enabled = !locked && superListBox.Items.Count == 0;
+            supprSuperBouton.Enabled = !locked && superListBox.Items.Count != 0;
+
+            //foreach (Control c in auteursSplitContainer.Panel2.Controls)
+            //    if (c.GetType() == typeof(Button))
+            //        c.Enabled = !locked;
+
+            //foreach (Control c in superSplitContainer.Panel2.Controls)
+            //    if (c.GetType() == typeof(Button))
+            //        c.Enabled = !locked;
         }
 
         private void lockAuteurPage(bool locked)
@@ -1006,9 +1013,12 @@ namespace ApplicationBiblioEPFC
 
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO: gérer l'ajout d'un nouvel auteur via le menu
             addAuteurForm addAuteur = new addAuteurForm();
-            addAuteur.ShowDialog();
+            var res = addAuteur.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                refresh_All();
+            }
         }
 
         private void supprAuteurMenu_Click(object sender, EventArgs e)
