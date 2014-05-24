@@ -199,7 +199,7 @@ namespace ApplicationBiblioEPFC
                                     + dateMax.AddDays(1).ToShortDateString(), "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return false;
                             }
-                            else if (nouvelEmprunt.CompareTo(dateMax) <= 0)
+                            else if (nouvelEmprunt.CompareTo(dateMax) <= 0 && dateFinNewEmprunt.CompareTo(dateMax) >= 0)
                             {
                                 MessageBox.Show("La date d'emprunt empiète sur une période durant laquelle cet ouvrage est déjà réservé.\nCet ouvrage sera disponible au plus tôt le : "
                                     + dateMax.AddDays(1).ToShortDateString(), "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
