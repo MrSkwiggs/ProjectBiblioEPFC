@@ -221,6 +221,63 @@ namespace ApplicationBiblioEPFC
 
                         return res == DialogResult.Yes;
                     }
+                    else
+                    {
+                        DataTable reservations = this.reserverTableAdapter1.GetData();
+                        DataTable infoOuvrage = this.ouvrageTableAdapter1.GetDataBy2(SELECTEDOUVRAGE);
+                        if (infoOuvrage.Rows.Count != 0)
+                        {
+                            DateTime dateEmprunt = DateTime.Parse(infoOuvrage.Rows[0].ItemArray[1].ToString());
+                            int dureeEmprunt = Convert.ToInt32(infoOuvrage.Rows[0].ItemArray[2].ToString());
+                            DateTime dateFinEmprunt = dateEmprunt.AddDays(dureeEmprunt);
+
+                            DateTime dateReserv = DateTime.Parse(dateEmpruntPicker.Text);
+                            int dureeReserv = Convert.ToInt32(dureeComboBox.SelectedItem.ToString().Split(' ')[0]);
+                            DateTime dateFinReserv = dateReserv.AddDays(dureeReserv);
+
+                            DateTime dateMin, dateMax;
+                            dateMin = new DateTime();
+                            dateMax = new DateTime();
+
+                            for (int i = 0; i < reservations.Rows.Count; ++i)
+                            {
+                                if (i == 0)
+                                    dateMin = DateTime.Parse(reservations.Rows[i].ItemArray[2].ToString());
+                                dateMax = DateTime.Parse(reservations.Rows[i].ItemArray[2].ToString()).AddDays(Convert.ToInt32(reservations.Rows[i].ItemArray[3].ToString()));
+                            }
+
+                            if(dateFinReserv.CompareTo(dateEmprunt) >= 0 && dateFinReserv.CompareTo(dateFinEmprunt) <= 0)
+                            {
+                                MessageBox.Show("Un emprunt déjà programmé aura commencé avant la fin de cette réservation."
+                                    + "\nVeuillez si possible diminuer la durée de la réservation."
+                                    + "\nSinon, la première date de réservation possible est : " 
+                                    + dateMax.AddDays(1).ToShortDateString(),"Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                return false;
+                            }
+                            else if(dateReserv.CompareTo(dateFinEmprunt) <= 0 && dateFinReserv.CompareTo(dateFinEmprunt) >= 0)
+                            {
+                                MessageBox.Show("Cette réservation empiète sur un emprunt déjà en cours."
+                                    + "\nLa première date de réservation possible est : " 
+                                    + dateMax.AddDays(1).ToShortDateString(),"Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                                return false;
+                            }
+                            else if (dateFinReserv.CompareTo(dateMin) >= 0 && dateFinReserv.CompareTo(dateMax) <= 0)
+                            {
+                                MessageBox.Show("La date de fin de cette réservation empiète sur une période d'une autre réservation."
+                                    + "\nVeuillez si possible diminuer la durée de la réservation."
+                                    + "\nSinon, la première date de réservation possible est : "
+                                    + dateMax.AddDays(1).ToShortDateString(), "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+                            else if (dateReserv.CompareTo(dateMin) >= 0 && dateReserv.CompareTo(dateMax) <= 0)
+                            {
+                                MessageBox.Show("La réservation empiète sur la période d'une autre réservation."
+                                    + "\nLa première date de réservation possible est :"
+                                    + dateMax.AddDays(1).ToShortDateString(), "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+                        }
+                    }
                     return true;
             }
             return false;
