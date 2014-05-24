@@ -209,7 +209,6 @@ namespace ApplicationBiblioEPFC
                     }
                     return true;
 
-                    //TODO: gérer le cas d'ajout de réservation dans une période déjà réservée
                 case "réservation":
                     DataTable reservation = this.reserverTableAdapter1.GetProbableProblem(SELECTEDMEMBRE, SELECTEDOUVRAGE);
                     if (reservation.Rows.Count != 0)
@@ -223,12 +222,12 @@ namespace ApplicationBiblioEPFC
                     }
                     else
                     {
-                        DataTable reservations = this.reserverTableAdapter1.GetData();
+                        DataTable reservations = this.reserverTableAdapter1.GetReservsByOuvrage(SELECTEDOUVRAGE);
                         DataTable infoOuvrage = this.ouvrageTableAdapter1.GetDataBy2(SELECTEDOUVRAGE);
-                        if (infoOuvrage.Rows.Count != 0)
+                        if (infoOuvrage.Rows.Count != 0 && !infoOuvrage.Rows[0].ItemArray[5].ToString().Equals(""))
                         {
-                            DateTime dateEmprunt = DateTime.Parse(infoOuvrage.Rows[0].ItemArray[1].ToString());
-                            int dureeEmprunt = Convert.ToInt32(infoOuvrage.Rows[0].ItemArray[2].ToString());
+                            DateTime dateEmprunt = DateTime.Parse(infoOuvrage.Rows[0].ItemArray[5].ToString());
+                            int dureeEmprunt = Convert.ToInt32(infoOuvrage.Rows[0].ItemArray[6].ToString());
                             DateTime dateFinEmprunt = dateEmprunt.AddDays(dureeEmprunt);
 
                             DateTime dateReserv = DateTime.Parse(dateEmpruntPicker.Text);
@@ -236,8 +235,8 @@ namespace ApplicationBiblioEPFC
                             DateTime dateFinReserv = dateReserv.AddDays(dureeReserv);
 
                             DateTime dateMin, dateMax;
-                            dateMin = new DateTime();
-                            dateMax = new DateTime();
+                            dateMin = new DateTime(dateEmprunt.Year,dateEmprunt.Month,dateEmprunt.Day);
+                            dateMax = new DateTime(dateFinEmprunt.Year,dateFinEmprunt.Month,dateFinEmprunt.Day);
 
                             for (int i = 0; i < reservations.Rows.Count; ++i)
                             {
