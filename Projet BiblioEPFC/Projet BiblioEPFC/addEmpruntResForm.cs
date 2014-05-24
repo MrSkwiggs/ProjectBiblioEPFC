@@ -78,6 +78,7 @@ namespace ApplicationBiblioEPFC
                 ouvrageListBox.Items.Add(ouvrage.ItemArray[0].ToString());
                 listeIDOuvrage.Add(SELECTEDOUVRAGE);
                 ouvrageListBox.SelectedIndex = 0;
+                ajouterOuvrageBouton.Enabled = false;
                 rechOuvrageTextBox.ReadOnly = true;
             }
             else
@@ -158,7 +159,6 @@ namespace ApplicationBiblioEPFC
         {
             switch (SELECTEDTYPE)
             {
-                    //TODO: gérer le cas d'ajout d'emprunt qui finit après une date de réservation.
                 case "emprunt":
                     DataTable ouvrage = this.ouvrageTableAdapter1.GetDataBy2(SELECTEDOUVRAGE);
                     if (!ouvrage.Rows[0].ItemArray[8].ToString().Equals(""))
@@ -169,6 +169,43 @@ namespace ApplicationBiblioEPFC
                             , MessageBoxIcon.Exclamation);
 
                         return res == DialogResult.Yes;
+                    }
+                    else
+                    {
+                        DataTable reservations = reserverTableAdapter1.GetReservsByOuvrage(SELECTEDOUVRAGE);
+                        DateTime dateMin, dateMax;
+                        dateMin = new DateTime();
+                        dateMax = new DateTime();
+                        if (reservations.Rows.Count != 0)
+                        {
+                            for (int i = 0; i < reservations.Rows.Count; ++i)
+                            {
+                                if (i == 0)
+                                    dateMin = DateTime.Parse(reservations.Rows[i].ItemArray[2].ToString());
+                                dateMax = DateTime.Parse(reservations.Rows[i].ItemArray[2].ToString()).AddDays(Convert.ToInt32(reservations.Rows[i].ItemArray[3].ToString()));
+                            }
+
+                            //DateTime dateEmprunt = DateTime.Parse(ouvrage.Rows[0].ItemArray[5].ToString());
+                            //int duree = Convert.ToInt32(ouvrage.Rows[0].ItemArray[6].ToString());
+                            //DateTime dateFinEmprunt = dateEmprunt.AddDays(duree);
+
+                            DateTime nouvelEmprunt = DateTime.Parse(dateEmpruntPicker.Text);
+                            int newDuree = Convert.ToInt32(dureeComboBox.Text.Split(' ')[0]);
+                            DateTime dateFinNewEmprunt = nouvelEmprunt.AddDays(newDuree);
+
+                            if (dateFinNewEmprunt.CompareTo(dateMin) >= 0 && dateFinNewEmprunt.CompareTo(dateMax) <= 0)
+                            {
+                                MessageBox.Show("La date de retour de cet emprunt empiète sur une période durant laquelle cet ouvrage est déjà réservé.\nRéduisez si possible la durée de l'emprunt.\nSinon, la première date libre est : "
+                                    + dateMax.AddDays(1).ToShortDateString(), "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+                            else if (nouvelEmprunt.CompareTo(dateMax) <= 0)
+                            {
+                                MessageBox.Show("La date d'emprunt empiète sur une période durant laquelle cet ouvrage est déjà réservé.\nCet ouvrage sera disponible au plus tôt le : "
+                                    + dateMax.AddDays(1).ToShortDateString(), "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+                        }
                     }
                     return true;
 
@@ -261,7 +298,10 @@ namespace ApplicationBiblioEPFC
 
         private void ajouterMembreBouton_Click(object sender, EventArgs e)
         {
-            //TODO: gérer l'ajout d'un membre lors de l'ajout d'un(e) emprunt/réservation
+            addMembreForm addMembre = new addMembreForm();
+            var res = addMembre.ShowDialog();
+            if (res == DialogResult.OK)
+                fill_MembreListBox();
         }
     }
 }

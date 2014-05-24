@@ -75,6 +75,12 @@
     <Compile Include="addAuteurForm.Designer.cs">
       <DependentUpon>addAuteurForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="addMembreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addMembreForm.Designer.cs">
+      <DependentUpon>addMembreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BiblioEPFCDataSet.cs">
       <DependentUpon>BiblioEPFCDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -112,6 +118,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="addAuteurForm.resx">
       <DependentUpon>addAuteurForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addMembreForm.resx">
+      <DependentUpon>addMembreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addOuvrage.resx">
       <DependentUpon>addOuvrage.cs</DependentUpon>

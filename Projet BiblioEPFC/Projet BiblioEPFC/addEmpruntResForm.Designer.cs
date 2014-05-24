@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addEmpruntResForm));
             this.infosTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.empruntSplitContainer = new System.Windows.Forms.SplitContainer();
             this.membreNameSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -400,6 +401,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(312, 351);
             this.Controls.Add(this.formSplitContainer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "addEmpruntResForm";
             this.Text = "Ajouter emprunt";
             this.Load += new System.EventHandler(this.Form2_Load);

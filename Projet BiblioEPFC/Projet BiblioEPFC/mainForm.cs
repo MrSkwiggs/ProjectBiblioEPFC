@@ -1028,7 +1028,10 @@ namespace ApplicationBiblioEPFC
 
         private void ajouterMembreMenu_Click(object sender, EventArgs e)
         {
-            //TODO: gérer l'ajout d'un nouveau membre via le menu
+            addMembreForm addMembre = new addMembreForm();
+            var res = addMembre.ShowDialog();
+            if (res == DialogResult.OK)
+                refresh_All();
         }
 
         private void supprMembreMenu_Click(object sender, EventArgs e)
