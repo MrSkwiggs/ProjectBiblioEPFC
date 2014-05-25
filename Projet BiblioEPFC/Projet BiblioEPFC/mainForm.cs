@@ -737,7 +737,20 @@ namespace ApplicationBiblioEPFC
                 case "ouvrage":
                     clearOuvragePage();
                     break;
+
+                case "auteur":
+                    clearAuteurPage();
+                    break;
             }
+        }
+
+        private void clearAuteurPage()
+        {
+            foreach (Control c in infosAuteurTableLayout.Controls)
+                if (c.GetType() == typeof(TextBox))
+                    c.Text = "";
+            publiAuteurListBox.Items.Clear();
+            auteurSuperviseListBox.Items.Clear();
         }
 
         private void clearOuvragePage()
@@ -1023,21 +1036,47 @@ namespace ApplicationBiblioEPFC
 
         private void supprAuteurMenu_Click(object sender, EventArgs e)
         {
-            String ouvragesAsupprimer = "";
+            if (SELECTEDAUTEUR != -1)
+            {
+                var supprAuteur = MessageBox.Show("Voulez-vous vraiment supprimer l'auteur \"" + nomAuteurTextBox.Text + ' ' + prenomAuteurTextBox.Text + "\" ?", "Confirmer", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (supprAuteur == DialogResult.Yes)
+                {
+                    String ouvragesAsupprimer = "";
+                    List<int> idOuvragesAsupprimer = new List<int>();
 
-            for(int i = 0; i < publiAuteurListBox.Items.Count; ++i)
-            {
-                int idOuvrage = listeIDAuteurPubli[i];
-                int nbAuteurs = (int)this.ecrireTableAdapter1.GetCountAuteursByOuvrage(idOuvrage);
-                if (nbAuteurs == 1)
-                    ouvragesAsupprimer = ouvragesAsupprimer + "\n- " + publiAuteurListBox.Items[i].ToString();
-            }
-            if (!ouvragesAsupprimer.Equals(""))
-            {
-                var res = MessageBox.Show("Les ouvrages suivants n'ont pas d'autre auteur et seront par conséquent supprimés :"
-                    + ouvragesAsupprimer + "\n\nContiner ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (res == DialogResult.No)
-                    return;
+                    for (int i = 0; i < publiAuteurListBox.Items.Count; ++i)
+                    {
+                        int idOuvrage = listeIDAuteurPubli[i];
+                        int nbAuteurs = (int)this.ecrireTableAdapter1.GetCountAuteursByOuvrage(idOuvrage);
+                        if (nbAuteurs == 1)
+                        {
+                            ouvragesAsupprimer = ouvragesAsupprimer + "\n- " + publiAuteurListBox.Items[i].ToString();
+                            idOuvragesAsupprimer.Add(idOuvrage);
+                        }
+                    }
+                    if (!ouvragesAsupprimer.Equals(""))
+                    {
+                        var res = MessageBox.Show("Les ouvrages suivants n'ont pas d'autre auteur et seront par conséquent supprimés :"
+                            + ouvragesAsupprimer + "\n\nContiner ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        if (res == DialogResult.No)
+                            return;
+                    }
+
+                    int tmp = SELECTEDAUTEUR;
+
+                    this.ecrireTableAdapter1.DeleteAllByAuteur(SELECTEDAUTEUR);
+                    foreach (int idOuvrageSupervisé in listeIDAuteurSupervise)
+                        this.ouvrageTableAdapter.UpdateSuperByOuvrage(null, idOuvrageSupervisé);
+                    foreach (int idOuvASuppr in idOuvragesAsupprimer)
+                        deleteOuvrage(idOuvASuppr);
+                    this.auteurSuperviseurTableAdapter1.DeleteAuteurSuper(tmp);
+
+                    SELECTEDAUTEUR = -1;
+                    SELECTEDOUVRAGE = -1;
+                    clearInfoPage("auteur");
+                    clearInfoPage("ouvrage");
+                    refresh_All();
+                }
             }
             //TODO: gérer la suppression d'un auteur via le menu
         }
