@@ -1023,6 +1023,22 @@ namespace ApplicationBiblioEPFC
 
         private void supprAuteurMenu_Click(object sender, EventArgs e)
         {
+            String ouvragesAsupprimer = "";
+
+            for(int i = 0; i < publiAuteurListBox.Items.Count; ++i)
+            {
+                int idOuvrage = listeIDAuteurPubli[i];
+                int nbAuteurs = (int)this.ecrireTableAdapter1.GetCountAuteursByOuvrage(idOuvrage);
+                if (nbAuteurs == 1)
+                    ouvragesAsupprimer = ouvragesAsupprimer + "\n- " + publiAuteurListBox.Items[i].ToString();
+            }
+            if (!ouvragesAsupprimer.Equals(""))
+            {
+                var res = MessageBox.Show("Les ouvrages suivants n'ont pas d'autre auteur et seront par conséquent supprimés :"
+                    + ouvragesAsupprimer + "\n\nContiner ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (res == DialogResult.No)
+                    return;
+            }
             //TODO: gérer la suppression d'un auteur via le menu
         }
 
