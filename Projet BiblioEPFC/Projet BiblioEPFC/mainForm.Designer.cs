@@ -525,7 +525,7 @@ namespace ApplicationBiblioEPFC
             this.generalTreeView.Location = new System.Drawing.Point(2, 0);
             this.generalTreeView.Margin = new System.Windows.Forms.Padding(2, 3, 0, 1);
             this.generalTreeView.Name = "generalTreeView";
-            this.generalTreeView.Size = new System.Drawing.Size(226, 566);
+            this.generalTreeView.Size = new System.Drawing.Size(226, 569);
             this.generalTreeView.TabIndex = 0;
             this.generalTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseClick);
             this.generalTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.generalTreeView_NodeMouseDoubleClick);
@@ -804,7 +804,7 @@ namespace ApplicationBiblioEPFC
             // ajouterAuteurBouton
             // 
             this.ajouterAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterAuteurBouton.Location = new System.Drawing.Point(5, 10);
+            this.ajouterAuteurBouton.Location = new System.Drawing.Point(6, 10);
             this.ajouterAuteurBouton.Name = "ajouterAuteurBouton";
             this.ajouterAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterAuteurBouton.TabIndex = 0;
@@ -815,7 +815,7 @@ namespace ApplicationBiblioEPFC
             // supprAuteurBouton
             // 
             this.supprAuteurBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprAuteurBouton.Location = new System.Drawing.Point(5, 30);
+            this.supprAuteurBouton.Location = new System.Drawing.Point(6, 30);
             this.supprAuteurBouton.Name = "supprAuteurBouton";
             this.supprAuteurBouton.Size = new System.Drawing.Size(20, 20);
             this.supprAuteurBouton.TabIndex = 1;
@@ -857,7 +857,7 @@ namespace ApplicationBiblioEPFC
             // ajouterSuperBouton
             // 
             this.ajouterSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ajouterSuperBouton.Location = new System.Drawing.Point(5, 10);
+            this.ajouterSuperBouton.Location = new System.Drawing.Point(6, 10);
             this.ajouterSuperBouton.Name = "ajouterSuperBouton";
             this.ajouterSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.ajouterSuperBouton.TabIndex = 2;
@@ -868,7 +868,7 @@ namespace ApplicationBiblioEPFC
             // supprSuperBouton
             // 
             this.supprSuperBouton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.supprSuperBouton.Location = new System.Drawing.Point(5, 30);
+            this.supprSuperBouton.Location = new System.Drawing.Point(6, 30);
             this.supprSuperBouton.Name = "supprSuperBouton";
             this.supprSuperBouton.Size = new System.Drawing.Size(20, 20);
             this.supprSuperBouton.TabIndex = 3;
