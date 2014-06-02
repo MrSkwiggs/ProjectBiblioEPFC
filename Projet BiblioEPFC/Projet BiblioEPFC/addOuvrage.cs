@@ -16,6 +16,8 @@ namespace ApplicationBiblioEPFC
         private int SELECTEDSUPER, SELECTEDTYPE;
         private bool goDeeper;
 
+        #region Methods
+
         public addOuvrageForm()
         {
             InitializeComponent();
@@ -28,17 +30,6 @@ namespace ApplicationBiblioEPFC
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.goDeeper = goDeeper;
-        }
-
-        private void addOuvrageForm_Load(object sender, EventArgs e)
-        {
-            listeIDType = new List<int>();
-
-            listeAuteurs = new Dictionary<string, int>();
-            listeAuteursDispo = new Dictionary<string, int>();
-
-            fill_ListBoxes();
-            tryLockControls();
         }
 
         private void fill_ListBoxes()
@@ -85,6 +76,71 @@ namespace ApplicationBiblioEPFC
             moveDownBouton.Enabled = removeAuteurBouton.Enabled && superListBox.Items.Count == 0;
             addSuperBouton.Enabled = goDeeper && superListBox.Items.Count == 0;
             addAuteurBouton.Enabled = goDeeper;
+        }
+
+        private void addAuteurs()
+        {
+            int idOuvrage = getIDOfNewOuvrage(titreTextBox.Text);
+            foreach(String auteur in auteursListBox.Items)
+            {
+                int idAuteur;
+                if(listeAuteurs.TryGetValue(auteur,out idAuteur))
+                {
+                    ecrireTableAdapter1.InsertEcrire(idAuteur,idOuvrage);
+                }
+            }
+        }
+
+        private int getIDOfNewOuvrage(String titre)
+        {
+            DataTable ouvrages = this.ouvrageTableAdapter1.GetIDByTitre(titre);
+            return Convert.ToInt32(ouvrages.Rows[0].ItemArray[0].ToString());
+        }
+
+        private void addOuvrage(String titre, String local, String date, String section, String entrep, int type, int? super)
+        {
+            this.ouvrageTableAdapter1.InsertNewOuvrage(titre,local,date,section,null,null,type,null,entrep,super);
+        }
+
+        private bool filledMandatory()
+        {
+            return (!titreTextBox.Text.Equals("") &&
+                dateCreaPicker.Checked &&
+                !localTextBox.Text.Equals("") &&
+                !entrepriseTextBox.Text.Equals("") &&
+                !sectionTextBox.Text.Equals("") &&
+                (typeComboBox.SelectedItem != null && typeComboBox.Items.Contains(typeComboBox.SelectedItem.ToString())) &&
+                auteursListBox.Items.Count != 0);
+        }
+
+        private bool ouvrageAlreadyExists()
+        {
+            bool res = false;
+
+            DataTable ouvrages = this.ouvrageTableAdapter1.GetData();
+            foreach (DataRow ouvrage in ouvrages.Rows)
+            {
+                String s = ouvrage.ItemArray[1].ToString().ToLower();
+                if (s.Equals(titreTextBox.Text.ToLower()))
+                    return true;
+            }
+
+            return res;
+        }
+
+        #endregion
+
+        #region Events
+
+        private void addOuvrageForm_Load(object sender, EventArgs e)
+        {
+            listeIDType = new List<int>();
+
+            listeAuteurs = new Dictionary<string, int>();
+            listeAuteursDispo = new Dictionary<string, int>();
+
+            fill_ListBoxes();
+            tryLockControls();
         }
 
         private void swapAuteurBouton_Click(object sender, EventArgs e)
@@ -236,57 +292,6 @@ namespace ApplicationBiblioEPFC
                 MessageBox.Show("Veuillez remplir tous les champs!\n(seul le champ surperviseur est optionnel)","Erreur",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 
-        private void addAuteurs()
-        {
-            int idOuvrage = getIDOfNewOuvrage(titreTextBox.Text);
-            foreach(String auteur in auteursListBox.Items)
-            {
-                int idAuteur;
-                if(listeAuteurs.TryGetValue(auteur,out idAuteur))
-                {
-                    ecrireTableAdapter1.InsertEcrire(idAuteur,idOuvrage);
-                }
-            }
-        }
-
-
-        private int getIDOfNewOuvrage(String titre)
-        {
-            DataTable ouvrages = this.ouvrageTableAdapter1.GetIDByTitre(titre);
-            return Convert.ToInt32(ouvrages.Rows[0].ItemArray[0].ToString());
-        }
-
-        private void addOuvrage(String titre, String local, String date, String section, String entrep, int type, int? super)
-        {
-            this.ouvrageTableAdapter1.InsertNewOuvrage(titre,local,date,section,null,null,type,null,entrep,super);
-        }
-
-        private bool filledMandatory()
-        {
-            return (!titreTextBox.Text.Equals("") &&
-                dateCreaPicker.Checked &&
-                !localTextBox.Text.Equals("") &&
-                !entrepriseTextBox.Text.Equals("") &&
-                !sectionTextBox.Text.Equals("") &&
-                (typeComboBox.SelectedItem != null && typeComboBox.Items.Contains(typeComboBox.SelectedItem.ToString())) &&
-                auteursListBox.Items.Count != 0);
-        }
-
-        private bool ouvrageAlreadyExists()
-        {
-            bool res = false;
-
-            DataTable ouvrages = this.ouvrageTableAdapter1.GetData();
-            foreach (DataRow ouvrage in ouvrages.Rows)
-            {
-                String s = ouvrage.ItemArray[1].ToString().ToLower();
-                if (s.Equals(titreTextBox.Text.ToLower()))
-                    return true;
-            }
-
-            return res;
-        }
-
         private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SELECTEDTYPE = listeIDType[typeComboBox.SelectedIndex];
@@ -317,5 +322,7 @@ namespace ApplicationBiblioEPFC
             }
             addSuper.Dispose();
         }
+
+        #endregion
     }
 }

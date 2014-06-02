@@ -27,6 +27,8 @@ namespace ApplicationBiblioEPFC
         private bool selectedAll;
         private bool lockOuvrage;
 
+        #region Methods
+
         public addEmpruntResForm(String type)
         {
             InitializeComponent();
@@ -44,28 +46,6 @@ namespace ApplicationBiblioEPFC
             this.Text = "Ajouter " + type;
             lockOuvrage = true;
             StartPosition = FormStartPosition.CenterScreen;
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            listeIDOuvrage = new List<int>();
-            listeIDMembre = new List<int>();
-
-            cacheOuvrageListBox = new ListBox();
-            cacheMembreListBox = new ListBox();
-            
-            cacheListeIDMembre = new List<int>();
-            cacheListeIDOuvrage = new List<int>();
-
-            selectedAll = false;
-            fill_OuvrageListBox();
-            fill_MembreListBox();
-            dureeComboBox.SelectedIndex = 2;
-
-            if (SELECTEDTYPE.Equals("emprunt"))
-                goBouton.Text = "Emprunter";
-            else
-                goBouton.Text = "Réserver";
         }
 
         private void fill_OuvrageListBox()
@@ -139,22 +119,7 @@ namespace ApplicationBiblioEPFC
                 }
             }
         }
-
-        private void goBouton_Click(object sender, EventArgs e)
-        {
-            if (!selectedAll)
-                MessageBox.Show("Veuillez sélectionner un ouvrage et un membre", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            else
-            {
-                if (noConcurringData())
-                {
-                    addEmpruntRes();
-                    DialogResult = DialogResult.Yes;
-                    this.Dispose();
-                }
-            }
-        }
-
+        
         private bool noConcurringData()
         {
             switch (SELECTEDTYPE)
@@ -282,34 +247,9 @@ namespace ApplicationBiblioEPFC
             return false;
         }
 
-        private void ouvrageListBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (ouvrageListBox.Items.Count != 0 && ouvrageListBox.SelectedItem != null)
-                SELECTEDOUVRAGE = listeIDOuvrage[ouvrageListBox.SelectedIndex];
-            verifySelection();
-        }
-
-        private void membreListBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (membreListBox.Items.Count != 0 && membreListBox.SelectedItem != null)
-                SELECTEDMEMBRE = listeIDMembre[membreListBox.SelectedIndex];
-            verifySelection();
-        }
-
         private void verifySelection()
         {
             selectedAll = (ouvrageListBox.Items.Count != 0 && ouvrageListBox.SelectedItem != null) && (membreListBox.Items.Count != 0 && membreListBox.SelectedItem != null);
-        }
-
-        private void cancelBouton_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            this.Dispose();
-        }
-
-        private void rechOuvrageTextBox_TextChanged(object sender, EventArgs e)
-        {
-            filter_ListBox((TextBox)sender, ouvrageListBox, listeIDOuvrage, cacheListeIDOuvrage, cacheOuvrageListBox);
         }
 
         private void filter_ListBox(TextBox rech, ListBox listBox, List<int> ListeID, List<int> cacheListeID, ListBox cacheListBox)
@@ -339,6 +279,72 @@ namespace ApplicationBiblioEPFC
             listBox.EndUpdate();
         }
 
+        #endregion
+
+        #region Events        
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            listeIDOuvrage = new List<int>();
+            listeIDMembre = new List<int>();
+
+            cacheOuvrageListBox = new ListBox();
+            cacheMembreListBox = new ListBox();
+            
+            cacheListeIDMembre = new List<int>();
+            cacheListeIDOuvrage = new List<int>();
+
+            selectedAll = false;
+            fill_OuvrageListBox();
+            fill_MembreListBox();
+            dureeComboBox.SelectedIndex = 2;
+
+            if (SELECTEDTYPE.Equals("emprunt"))
+                goBouton.Text = "Emprunter";
+            else
+                goBouton.Text = "Réserver";
+        }
+
+        private void goBouton_Click(object sender, EventArgs e)
+        {
+            if (!selectedAll)
+                MessageBox.Show("Veuillez sélectionner un ouvrage et un membre", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                if (noConcurringData())
+                {
+                    addEmpruntRes();
+                    DialogResult = DialogResult.Yes;
+                    this.Dispose();
+                }
+            }
+        }
+
+        private void ouvrageListBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (ouvrageListBox.Items.Count != 0 && ouvrageListBox.SelectedItem != null)
+                SELECTEDOUVRAGE = listeIDOuvrage[ouvrageListBox.SelectedIndex];
+            verifySelection();
+        }
+
+        private void membreListBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (membreListBox.Items.Count != 0 && membreListBox.SelectedItem != null)
+                SELECTEDMEMBRE = listeIDMembre[membreListBox.SelectedIndex];
+            verifySelection();
+        }
+
+        private void cancelBouton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            this.Dispose();
+        }
+
+        private void rechOuvrageTextBox_TextChanged(object sender, EventArgs e)
+        {
+            filter_ListBox((TextBox)sender, ouvrageListBox, listeIDOuvrage, cacheListeIDOuvrage, cacheOuvrageListBox);
+        }
+
         private void rechMembreTextBox_TextChanged(object sender, EventArgs e)
         {
             filter_ListBox(rechMembreTextBox, membreListBox, listeIDMembre, cacheListeIDMembre, cacheMembreListBox);
@@ -359,5 +365,7 @@ namespace ApplicationBiblioEPFC
             if (res == DialogResult.OK)
                 fill_MembreListBox();
         }
+
+        #endregion
     }
 }

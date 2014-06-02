@@ -15,6 +15,8 @@ namespace ApplicationBiblioEPFC
         public String returnName;
         public int returnID;
 
+        #region Methods
+
         public addAuteurForm()
         {
             InitializeComponent();
@@ -27,20 +29,7 @@ namespace ApplicationBiblioEPFC
             this.StartPosition = FormStartPosition.CenterScreen;
             lockAddOuvrage(goDeeper);
         }
-
-        private void addAuteurForm_Load(object sender, EventArgs e)
-        {
-            listeOuvragesDispo = new Dictionary<String, int>();
-            listeEcrits = new Dictionary<String, int>();
-            listeSuper = new Dictionary<String, int>();
-
-            returnName = "";
-
-            this.ouvrageTableAdapter1.Fill(biblioEPFCDataSet.Ouvrage);
-            fill_OuvrageListBox();
-            tryLockControls();
-        }
-
+        
         private void fill_OuvrageListBox()
         {
             DataTable ouvrages = this.ouvrageTableAdapter1.GetData();
@@ -69,6 +58,100 @@ namespace ApplicationBiblioEPFC
         {
             addEcritBouton.Enabled = goDeeper;
             addSuperBouton.Enabled = goDeeper;
+        }
+
+        private bool alreadySupervised(String titre)
+        {
+            DataTable ouvrages = this.ouvrageTableAdapter1.GetIDByTitre(titre);
+            if (ouvrages.Rows.Count != 0)
+            {
+                return ouvrages.Rows[0].ItemArray[10].ToString().Equals("");
+            }
+            else
+                return false;
+        }
+
+        private void showErrorAlreadySupervised(String titre)
+        {
+            MessageBox.Show("L'ouvrage \"" + titre + "\" est déjà supervisé par un autre auteur.\nIl n'est pas possible d'attribuer plus d'un superviseur par ouvrage.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private bool alreadyExists()
+        {
+            DataTable auteurs = this.auteurSuperviseurTableAdapter1.GetIDByName(nomTextBox.Text, prenomTextBox.Text);
+            foreach (DataRow auteur in auteurs.Rows)
+                return true;
+            return false;
+        }
+
+        private bool filled_Minimum()
+        {
+            return nomTextBox.Text != ""
+                && prenomTextBox.Text != ""
+                && statutComboBox.SelectedItem != null;
+        }
+
+        private bool selected_Ouvrages()
+        {
+            return ecritsListBox.SelectedItem != null
+                || superListBox.SelectedItem != null;
+        }
+
+        private void addAuteur()
+        {
+            String nom, prenom, statut;
+            nom = nomTextBox.Text;
+            prenom = prenomTextBox.Text;
+            statut = statutComboBox.SelectedItem.ToString();
+
+            returnName = nom + ' ' + prenom;
+
+            this.auteurSuperviseurTableAdapter1.AddNewAuteur(nom, prenom, statut);
+            appendOuvrages(nom, prenom);
+        }
+
+        private void appendOuvrages(String nom, String prenom)
+        {
+            DataTable auteurs = auteurSuperviseurTableAdapter1.GetIDByName(nom,prenom);
+            int idAuteur;
+            if (auteurs.Rows.Count != 0)
+            {
+                idAuteur = Convert.ToInt32(auteurs.Rows[0].ItemArray[0].ToString());
+                returnID = idAuteur;
+                int idOuvrage;
+                foreach (var ecrit in ecritsListBox.Items)
+                {
+                    if (listeEcrits.TryGetValue(ecrit.ToString(), out idOuvrage))
+                    {
+                        ecrireTableAdapter1.InsertEcrire(idAuteur, idOuvrage);
+                    }
+                }
+
+                foreach (String ouvrage in listeSuper.Keys)
+                {
+                    if(listeSuper.TryGetValue(ouvrage,out idOuvrage))
+                    {
+                        this.ouvrageTableAdapter1.UpdateSuperByOuvrage(idAuteur, idOuvrage);
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Events
+
+        private void addAuteurForm_Load(object sender, EventArgs e)
+        {
+            listeOuvragesDispo = new Dictionary<String, int>();
+            listeEcrits = new Dictionary<String, int>();
+            listeSuper = new Dictionary<String, int>();
+
+            returnName = "";
+
+            this.ouvrageTableAdapter1.Fill(biblioEPFCDataSet.Ouvrage);
+            fill_OuvrageListBox();
+            tryLockControls();
         }
 
         private void addEcritBouton_Click(object sender, EventArgs e)
@@ -182,22 +265,6 @@ namespace ApplicationBiblioEPFC
                 showErrorAlreadySupervised(titre);
         }
 
-        private bool alreadySupervised(String titre)
-        {
-            DataTable ouvrages = this.ouvrageTableAdapter1.GetIDByTitre(titre);
-            if (ouvrages.Rows.Count != 0)
-            {
-                return ouvrages.Rows[0].ItemArray[10].ToString().Equals("");
-            }
-            else
-                return false;
-        }
-
-        private void showErrorAlreadySupervised(String titre)
-        {
-            MessageBox.Show("L'ouvrage \"" + titre + "\" est déjà supervisé par un autre auteur.\nIl n'est pas possible d'attribuer plus d'un superviseur par ouvrage.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         private void removeSuperBouton_Click(object sender, EventArgs e)
         {
             string titre = superListBox.SelectedItem.ToString();
@@ -245,65 +312,6 @@ namespace ApplicationBiblioEPFC
                 MessageBox.Show("Veuillez remplir au minimum les champs suivants:\n- Nom\n- Prénom\n- Statut", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool alreadyExists()
-        {
-            DataTable auteurs = this.auteurSuperviseurTableAdapter1.GetIDByName(nomTextBox.Text, prenomTextBox.Text);
-            foreach (DataRow auteur in auteurs.Rows)
-                return true;
-            return false;
-        }
-
-        private bool filled_Minimum()
-        {
-            return nomTextBox.Text != ""
-                && prenomTextBox.Text != ""
-                && statutComboBox.SelectedItem != null;
-        }
-
-        private bool selected_Ouvrages()
-        {
-            return ecritsListBox.SelectedItem != null
-                || superListBox.SelectedItem != null;
-        }
-
-        private void addAuteur()
-        {
-            String nom, prenom, statut;
-            nom = nomTextBox.Text;
-            prenom = prenomTextBox.Text;
-            statut = statutComboBox.SelectedItem.ToString();
-
-            returnName = nom + ' ' + prenom;
-
-            this.auteurSuperviseurTableAdapter1.AddNewAuteur(nom, prenom, statut);
-            appendOuvrages(nom, prenom);
-        }
-
-        private void appendOuvrages(String nom, String prenom)
-        {
-            DataTable auteurs = auteurSuperviseurTableAdapter1.GetIDByName(nom,prenom);
-            int idAuteur;
-            if (auteurs.Rows.Count != 0)
-            {
-                idAuteur = Convert.ToInt32(auteurs.Rows[0].ItemArray[0].ToString());
-                returnID = idAuteur;
-                int idOuvrage;
-                foreach (var ecrit in ecritsListBox.Items)
-                {
-                    if (listeEcrits.TryGetValue(ecrit.ToString(), out idOuvrage))
-                    {
-                        ecrireTableAdapter1.InsertEcrire(idAuteur, idOuvrage);
-                    }
-                }
-
-                foreach (String ouvrage in listeSuper.Keys)
-                {
-                    if(listeSuper.TryGetValue(ouvrage,out idOuvrage))
-                    {
-                        this.ouvrageTableAdapter1.UpdateSuperByOuvrage(idAuteur, idOuvrage);
-                    }
-                }
-            }
-        }
+        #endregion
     }
 }
